@@ -173,6 +173,28 @@
     return footer;
   }
 
+  // ---------- Sự nghiệp: thuyết con nhóm (3 vòng tròn lồng nhau) ----------
+  function renderCareerVenn(part) {
+    const wrap = el("div", "venn-wrap");
+    const diagram = el("div", "venn");
+    const spots = ["a", "b", "c"];
+
+    part.sections.forEach((section, index) => {
+      const circle = el("div", `venn__circle venn__circle--${spots[index] || "a"}`);
+      const label = el("div", "venn__label");
+      label.appendChild(
+        textButton(section.title, section.items.length, "text-button--venn", () =>
+          goTo(`#/phan/${part.id}/muc/${index}`)
+        )
+      );
+      circle.appendChild(label);
+      diagram.appendChild(circle);
+    });
+
+    wrap.appendChild(diagram);
+    return wrap;
+  }
+
   function renderPart(partId) {
     const part = partsById[partId];
     const view = el("div", "view view--part");
@@ -185,6 +207,16 @@
 
     const title = el("h1", "detail-title", part.label);
     view.appendChild(title);
+
+    if (part.layout === "venn") {
+      view.appendChild(
+        el("p", "detail-subtitle", "3 vòng tròn giao nhau — chọn 1 vòng để xem chi tiết")
+      );
+      view.appendChild(renderCareerVenn(part));
+      view.appendChild(renderBackFooter("Bản đồ cuộc đời", () => goTo("#/")));
+      return view;
+    }
+
     view.appendChild(
       el("p", "detail-subtitle", `${part.sections.length} mục nhỏ`)
     );
@@ -220,7 +252,18 @@
     view.appendChild(el("h1", "detail-title", section.title));
 
     if (section.items.length === 0) {
-      view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+      if (section.detail && section.detail.length > 0) {
+        const fields = el("ul", "detail-fields");
+        section.detail.forEach((field) => {
+          const li = el("li", "detail-field");
+          li.appendChild(el("p", "detail-field__label", field.label));
+          li.appendChild(el("p", "detail-field__text", field.text));
+          fields.appendChild(li);
+        });
+        view.appendChild(fields);
+      } else {
+        view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+      }
       view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
       return view;
     }
