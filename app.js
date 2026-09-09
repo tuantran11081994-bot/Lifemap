@@ -161,7 +161,8 @@
     view.appendChild(map);
 
     const footer = el("footer", "page-footer");
-    footer.appendChild(el("p", null, "Cập nhật mỗi ngày · Nhìn lại mục tiêu · Bước tiếp con đường của bạn"));
+    footer.appendChild(el("p", null, "Bản đồ này dẫn đến kho báu của cuộc đời mày."));
+    footer.appendChild(el("p", null, "Hãy đảm bảo rằng mày sẽ theo sát nó bằng cả tính mạng mình."));
     view.appendChild(footer);
 
     return view;

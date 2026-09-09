@@ -225,6 +225,14 @@ button {
   font-size: 13px;
 }
 
+.page-footer p {
+  margin: 0 0 4px;
+}
+
+.page-footer p:last-child {
+  margin-bottom: 0;
+}
+
 /* ---------- Màn hình chi tiết (Phần / Mục nhỏ) ---------- */
 .view--part,
 .view--section,
