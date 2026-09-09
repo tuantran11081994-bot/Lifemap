@@ -125,13 +125,13 @@ button {
 
 @media (max-width: 760px) {
   .map {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "center"
-      "top"
-      "left"
-      "right"
-      "bottom";
+      "top    top"
+      "center center"
+      "left   right"
+      "bottom bottom";
+    gap: 20px;
   }
 }
 
