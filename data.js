@@ -47,7 +47,7 @@ const LIFE_MAP_DATA = {
       sections: [
         {
           title: "Thân thể",
-          items: []
+          items: ["Dinh dưỡng", "Tập luyện", "Nghỉ ngơi"]
         },
         {
           title: "Tâm hồn",
@@ -66,16 +66,24 @@ const LIFE_MAP_DATA = {
       edge: "left",
       sections: [
         {
-          title: "Kết nối",
-          items: ["Chủ động liên lạc bạn bè thường xuyên", "Gặp gỡ định kỳ"]
+          title: "Bè (bạn nhậu)",
+          items: []
         },
         {
-          title: "Hỗ trợ",
-          items: ["Sẵn sàng giúp đỡ khi bạn cần", "Không ngại nhờ giúp đỡ khi mình khó khăn"]
+          title: "Bạn",
+          items: []
         },
         {
-          title: "Mở rộng",
-          items: ["Kết bạn mới có giá trị chung", "Tham gia cộng đồng phù hợp"]
+          title: "Đệ tử (Lãnh đạo con/Người kế nhiệm)",
+          items: []
+        },
+        {
+          title: "Chính mình",
+          items: []
+        },
+        {
+          title: "Thầy",
+          items: []
         }
       ]
     },

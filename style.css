@@ -226,7 +226,8 @@ button {
 
 /* ---------- Màn hình chi tiết (Phần / Mục nhỏ) ---------- */
 .view--part,
-.view--section {
+.view--section,
+.view--item {
   max-width: 640px;
   margin: 0 auto;
   padding: 32px 24px 60px;
@@ -291,20 +292,24 @@ button {
 }
 
 .item-list__item {
-  padding: 14px 0;
   border-top: 1px solid rgba(244, 239, 226, 0.12);
-  font-size: 15.5px;
-  line-height: 1.6;
-  color: var(--color-text);
 }
 
 .item-list__item:last-child {
   border-bottom: 1px solid rgba(244, 239, 226, 0.12);
 }
 
-.item-list__item::before {
-  content: "— ";
-  color: var(--color-primary);
+.text-button--item {
+  width: 100%;
+  padding: 14px 0;
+  justify-content: space-between;
+  font-size: 15.5px;
+  font-weight: 600;
+}
+
+.text-button--item::after {
+  content: "›";
+  color: var(--color-text-soft);
 }
 
 .empty-state {

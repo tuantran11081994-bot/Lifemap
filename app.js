@@ -222,9 +222,19 @@
     view.appendChild(el("p", "detail-eyebrow", part.label));
     view.appendChild(el("h1", "detail-title", section.title));
 
+    if (section.items.length === 0) {
+      view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+      return view;
+    }
+
     const list = el("ul", "item-list");
-    section.items.forEach((text) => {
-      const item = el("li", "item-list__item", text);
+    section.items.forEach((text, index) => {
+      const item = el("li", "item-list__item");
+      item.appendChild(
+        textButton(text, null, "text-button--item", () =>
+          goTo(`#/phan/${part.id}/muc/${sectionIndex}/con/${index}`)
+        )
+      );
       list.appendChild(item);
     });
     view.appendChild(list);
@@ -232,10 +242,46 @@
     return view;
   }
 
+  function renderItem(partId, sectionIndex, itemIndex) {
+    const part = partsById[partId];
+    const section = part && part.sections[sectionIndex];
+    const text = section && section.items[itemIndex];
+    const view = el("div", "view view--item");
+
+    if (!part || !section || text == null) {
+      view.appendChild(renderBackHeader("Về bản đồ", () => goTo("#/")));
+      view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
+      return view;
+    }
+
+    view.appendChild(renderBackHeader(section.title, () => goTo(`#/phan/${part.id}/muc/${sectionIndex}`)));
+
+    view.appendChild(el("p", "detail-eyebrow", `${part.label} · ${section.title}`));
+    view.appendChild(el("h1", "detail-title", text));
+    view.appendChild(el("p", "empty-state", "Nội dung sẽ được bổ sung sau."));
+
+    return view;
+  }
+
   function parseHash() {
     const hash = location.hash.replace(/^#\/?/, "");
     const segments = hash.split("/").filter(Boolean);
-    // segments: [] | ["phan", id] | ["phan", id, "muc", index]
+    // segments: [] | ["phan", id] | ["phan", id, "muc", index] | ["phan", id, "muc", index, "con", itemIndex]
+    if (
+      segments[0] === "phan" &&
+      segments[1] &&
+      segments[2] === "muc" &&
+      segments[3] != null &&
+      segments[4] === "con" &&
+      segments[5] != null
+    ) {
+      return {
+        view: "item",
+        partId: segments[1],
+        sectionIndex: Number(segments[3]),
+        itemIndex: Number(segments[5])
+      };
+    }
     if (segments[0] === "phan" && segments[1] && segments[2] === "muc" && segments[3] != null) {
       return { view: "section", partId: segments[1], sectionIndex: Number(segments[3]) };
     }
@@ -253,6 +299,8 @@
       node = renderPart(route.partId);
     } else if (route.view === "section") {
       node = renderSection(route.partId, route.sectionIndex);
+    } else if (route.view === "item") {
+      node = renderItem(route.partId, route.sectionIndex, route.itemIndex);
     } else {
       node = renderHome();
     }
