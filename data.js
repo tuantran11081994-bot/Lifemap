@@ -14,22 +14,9 @@ const LIFE_MAP_DATA = {
       label: "Độc Lập",
       group: "center",
       sections: [
-        {
-          title: "Tài chính",
-          items: [
-            "Có quỹ dự phòng đủ 6 tháng chi tiêu",
-            "Không nợ tiêu dùng",
-            "Có ít nhất 1 nguồn thu nhập thụ động"
-          ]
-        },
-        {
-          title: "Tư duy",
-          items: [
-            "Tự ra quyết định, không phụ thuộc ý kiến người khác",
-            "Chịu trách nhiệm với lựa chọn của mình",
-            "Không so sánh cuộc đời mình với người khác"
-          ]
-        }
+        { title: "Tự ra quyết định", items: [] },
+        { title: "Tự chịu trách nhiệm", items: [] },
+        { title: "Tự lực - không phụ thuộc người khác", items: [] }
       ]
     },
     {
@@ -37,22 +24,9 @@ const LIFE_MAP_DATA = {
       label: "Tự Do",
       group: "center",
       sections: [
-        {
-          title: "Thời gian",
-          items: [
-            "Tự chủ lịch làm việc của mình",
-            "Có thời gian riêng mỗi ngày cho bản thân",
-            "Không bị cuốn vào việc không quan trọng"
-          ]
-        },
-        {
-          title: "Không gian sống",
-          items: [
-            "Sống ở nơi mình chọn, không bị ràng buộc",
-            "Có thể đi du lịch khi muốn",
-            "Môi trường sống thoải mái, không gò bó"
-          ]
-        }
+        { title: "Tự do về thời gian", items: [] },
+        { title: "Tự do về tài chính", items: [] },
+        { title: "Tự do tự chủ", items: [] }
       ]
     },
     {
@@ -60,22 +34,9 @@ const LIFE_MAP_DATA = {
       label: "Hạnh Phúc",
       group: "center",
       sections: [
-        {
-          title: "Nội tâm",
-          items: [
-            "Biết ơn những gì đang có",
-            "Bình an với chính mình",
-            "Sống đúng giá trị bản thân tin tưởng"
-          ]
-        },
-        {
-          title: "Kết nối",
-          items: [
-            "Có những mối quan hệ chân thành",
-            "Dành thời gian cho người mình yêu thương",
-            "Cho đi và giúp đỡ người khác"
-          ]
-        }
+        { title: "Yêu và được yêu", items: [] },
+        { title: "Cho nhiều hơn nhận", items: [] },
+        { title: "Nhu cầu ít hơn khát vọng", items: [] }
       ]
     },
     {
