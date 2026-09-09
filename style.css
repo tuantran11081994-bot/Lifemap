@@ -109,45 +109,34 @@ button {
 }
 
 .map {
-  max-width: 980px;
+  max-width: clamp(300px, 90vw, 460px);
   margin: 20px auto 0;
-  padding: 20px 24px 40px;
+  padding: 12px 4px 40px;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas:
-    "top    top    top"
-    "left   center right"
-    "bottom bottom bottom";
-  gap: var(--gap);
+    ".    top    ."
+    "left center right"
+    ".    bottom .";
+  row-gap: 14px;
+  column-gap: 2px;
   align-items: center;
   justify-items: center;
 }
 
-@media (max-width: 760px) {
-  .map {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "top    top"
-      "center center"
-      "left   right"
-      "bottom bottom";
-    gap: 20px;
-  }
-}
-
 .center-frame {
   width: 100%;
-  max-width: 520px;
+  max-width: clamp(220px, 62vw, 300px);
   background: var(--color-bg-frame);
   border: 1px solid rgba(244, 239, 226, 0.35);
   border-radius: var(--radius-frame);
-  padding: clamp(32px, 6vw, 56px) clamp(20px, 5vw, 40px);
+  padding: clamp(24px, 6vw, 36px) clamp(16px, 4vw, 24px);
   text-align: center;
   transition: transform 0.25s ease;
 }
 
 .center-frame__eyebrow {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: var(--color-accent);
   font-size: 13px;
   font-weight: 700;
@@ -155,16 +144,24 @@ button {
   text-transform: uppercase;
 }
 
+/* 3 chữ xếp tam giác: Tự Do ở trên, Độc Lập + Hạnh Phúc ngang hàng ở dưới */
 .center-frame__values {
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-frame__values-top,
+.center-frame__values-bottom {
+  display: flex;
   align-items: baseline;
-  gap: 6px;
+  justify-content: center;
+  gap: 8px;
 }
 
 .text-button--value {
-  font-size: clamp(14px, 4.4vw, 30px);
+  font-size: clamp(15px, 5vw, 24px);
   font-weight: 800;
   color: var(--color-primary);
   white-space: nowrap;
@@ -179,11 +176,45 @@ button {
 .pillar {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .text-button--pillar {
-  font-size: clamp(18px, 3vw, 23px);
+  font-size: clamp(16px, 3vw, 20px);
   font-weight: 700;
+  padding: 10px 6px;
+}
+
+/* Bạn bè / Sự nghiệp xoay dọc theo cạnh bên của khung trung tâm */
+.pillar--left .text-button--pillar,
+.pillar--right .text-button--pillar {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.pillar--left .text-button--pillar {
+  transform: rotate(180deg);
+}
+
+.pillar--left .text-button--pillar:active {
+  transform: rotate(180deg) scale(0.96);
+}
+
+@keyframes buttonPulseRotatedLeft {
+  0% {
+    transform: rotate(180deg) scale(1);
+  }
+  45% {
+    transform: rotate(180deg) scale(0.92);
+    color: var(--color-accent);
+  }
+  100% {
+    transform: rotate(180deg) scale(1);
+  }
+}
+
+.pillar--left .text-button--pillar.is-pulsing {
+  animation-name: buttonPulseRotatedLeft;
 }
 
 .page-footer {

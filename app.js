@@ -121,15 +121,29 @@
 
     const map = el("main", "map");
 
-    const centerParts = LIFE_MAP_DATA.parts.filter((p) => p.group === "center");
+    const centerById = Object.fromEntries(
+      LIFE_MAP_DATA.parts.filter((p) => p.group === "center").map((p) => [p.id, p])
+    );
     const centerFrame = el("section", "center-frame");
     centerFrame.style.gridArea = "center";
     centerFrame.appendChild(el("p", "center-frame__eyebrow", "Mục tiêu cuộc đời"));
+
     const values = el("div", "center-frame__values");
-    centerParts.forEach((part, index) => {
-      const className = `text-button--value${index > 0 ? " text-button--value-dot" : ""}`;
-      values.appendChild(textButton(part.label, null, className, () => openModal(part)));
-    });
+    const topRow = el("div", "center-frame__values-top");
+    topRow.appendChild(
+      textButton(centerById.tudo.label, null, "text-button--value", () => openModal(centerById.tudo))
+    );
+    const bottomRow = el("div", "center-frame__values-bottom");
+    bottomRow.appendChild(
+      textButton(centerById.doclap.label, null, "text-button--value", () => openModal(centerById.doclap))
+    );
+    bottomRow.appendChild(
+      textButton(centerById.hanhphuc.label, null, "text-button--value text-button--value-dot", () =>
+        openModal(centerById.hanhphuc)
+      )
+    );
+    values.appendChild(topRow);
+    values.appendChild(bottomRow);
     centerFrame.appendChild(values);
     map.appendChild(centerFrame);
 
