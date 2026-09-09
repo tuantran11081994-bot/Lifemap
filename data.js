@@ -106,16 +106,12 @@ const LIFE_MAP_DATA = {
       edge: "bottom",
       sections: [
         {
-          title: "Thời gian cùng nhau",
-          items: ["Ăn tối cùng gia đình khi có thể", "Dành cuối tuần cho gia đình"]
+          title: "Gia đình lớn",
+          items: ["Ông, bà, bố, mẹ, cô, chú, bác, dì, anh, chị, em, họ hàng..."]
         },
         {
-          title: "Chăm sóc cha mẹ",
-          items: ["Gọi điện thăm hỏi thường xuyên", "Hỗ trợ tài chính khi cần"]
-        },
-        {
-          title: "Tổ ấm",
-          items: ["Xây dựng không khí gia đình vui vẻ", "Giải quyết mâu thuẫn bằng thấu hiểu"]
+          title: "Gia đình nhỏ",
+          items: ["Vợ", "Con"]
         }
       ]
     }
