@@ -167,10 +167,10 @@
     return view;
   }
 
-  function renderBackHeader(label, onBack) {
-    const header = el("header", "detail-header");
-    header.appendChild(textButton(`← ${label}`, null, "text-button--back", onBack));
-    return header;
+  function renderBackFooter(label, onBack) {
+    const footer = el("footer", "detail-footer");
+    footer.appendChild(textButton(`← ${label}`, null, "text-button--back", onBack));
+    return footer;
   }
 
   function renderPart(partId) {
@@ -178,12 +178,10 @@
     const view = el("div", "view view--part");
 
     if (!part) {
-      view.appendChild(renderBackHeader("Về bản đồ", () => goTo("#/")));
       view.appendChild(el("p", "empty-state", "Không tìm thấy phần này."));
+      view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
-
-    view.appendChild(renderBackHeader("Bản đồ cuộc đời", () => goTo("#/")));
 
     const title = el("h1", "detail-title", part.label);
     view.appendChild(title);
@@ -202,6 +200,7 @@
       list.appendChild(item);
     });
     view.appendChild(list);
+    view.appendChild(renderBackFooter("Bản đồ cuộc đời", () => goTo("#/")));
 
     return view;
   }
@@ -212,18 +211,17 @@
     const view = el("div", "view view--section");
 
     if (!part || !section) {
-      view.appendChild(renderBackHeader("Về bản đồ", () => goTo("#/")));
       view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
+      view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
-
-    view.appendChild(renderBackHeader(part.label, () => goTo(`#/phan/${part.id}`)));
 
     view.appendChild(el("p", "detail-eyebrow", part.label));
     view.appendChild(el("h1", "detail-title", section.title));
 
     if (section.items.length === 0) {
       view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+      view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
       return view;
     }
 
@@ -238,6 +236,7 @@
       list.appendChild(item);
     });
     view.appendChild(list);
+    view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
 
     return view;
   }
@@ -249,16 +248,17 @@
     const view = el("div", "view view--item");
 
     if (!part || !section || text == null) {
-      view.appendChild(renderBackHeader("Về bản đồ", () => goTo("#/")));
       view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
+      view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
-
-    view.appendChild(renderBackHeader(section.title, () => goTo(`#/phan/${part.id}/muc/${sectionIndex}`)));
 
     view.appendChild(el("p", "detail-eyebrow", `${part.label} · ${section.title}`));
     view.appendChild(el("h1", "detail-title", text));
     view.appendChild(el("p", "empty-state", "Nội dung sẽ được bổ sung sau."));
+    view.appendChild(
+      renderBackFooter(section.title, () => goTo(`#/phan/${part.id}/muc/${sectionIndex}`))
+    );
 
     return view;
   }
