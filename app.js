@@ -192,6 +192,14 @@
       diagram.appendChild(circle);
     });
 
+    // Vùng giao nhau cả 3 vòng ("sweet spot") — 3 lớp clip-path lồng nhau, xem style.css.
+    const centerA = el("div", "venn__center");
+    const centerB = el("div", "venn__center-b");
+    const centerC = el("div", "venn__center-c");
+    centerB.appendChild(centerC);
+    centerA.appendChild(centerB);
+    diagram.appendChild(centerA);
+
     wrap.appendChild(diagram);
     return wrap;
   }
