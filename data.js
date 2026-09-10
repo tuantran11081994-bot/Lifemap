@@ -579,7 +579,7 @@ const LIFE_MAP_DATA = {
                         "Loại 4 — Khơi cho ta động lực và cảm hứng: thầy thiên tài."
                       ]
                     },
-                    { type: "subheading", text: "2. Vì sao cần kỹ năng Tự Học" },
+                    { type: "subheading", text: "5 người thầy của bạn" },
                     { type: "paragraph", text: "Xét theo góc độ người thầy, có 5 nguồn học sau đây:" },
                     {
                       type: "list",

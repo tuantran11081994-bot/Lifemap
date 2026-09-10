@@ -598,112 +598,80 @@
     return wrap;
   }
 
-  // headingRefs (tuỳ chọn): mảng để gom { id, text } của các block "heading" —
-  // dùng làm mục lục (xem renderArticleToc), mỗi heading được gắn id để scroll tới.
-  // highlightCtx (tuỳ chọn): { set, storageKey } — bật highlight-khi-bấm cho các dòng nội dung.
-  function renderArticleBody(container, body, headingRefs, highlightCtx) {
-    body.forEach((block, blockIndex) => {
-      if (block.type === "heading") {
-        const heading = el("h2", "article-heading", block.text);
-        if (headingRefs) {
-          const id = `toc-heading-${headingRefs.length}`;
-          heading.id = id;
-          headingRefs.push({ id, text: block.text });
+  // Render 1 block nội dung (không phải heading/subheading) vào 1 điểm chèn cho trước —
+  // dùng chung cho nội dung nằm ngay đầu bài lẫn nội dung ẩn bên trong 1 tiêu đề gập lại.
+  function renderContentBlock(target, block, blockIndex, highlightCtx) {
+    if (block.type === "paragraph") {
+      const p = el("p", "article-paragraph", block.text);
+      makeHighlightable(p, `b${blockIndex}`, highlightCtx);
+      target.appendChild(p);
+    } else if (block.type === "note") {
+      const note = el("p", "article-note", block.text);
+      makeHighlightable(note, `b${blockIndex}`, highlightCtx);
+      target.appendChild(note);
+    } else if (block.type === "list") {
+      const ul = el("ul", "article-list");
+      block.items.forEach((entry, itemIndex) => {
+        const li = el("li", "article-list__item");
+        if (typeof entry === "string") {
+          li.textContent = entry;
+        } else {
+          li.appendChild(el("strong", "article-list__label", `${entry.label}: `));
+          li.appendChild(document.createTextNode(entry.text));
         }
-        container.appendChild(heading);
-      } else if (block.type === "subheading") {
-        container.appendChild(el("h3", "article-subheading", block.text));
-      } else if (block.type === "paragraph") {
-        const p = el("p", "article-paragraph", block.text);
-        makeHighlightable(p, `b${blockIndex}`, highlightCtx);
-        container.appendChild(p);
-      } else if (block.type === "note") {
-        const note = el("p", "article-note", block.text);
-        makeHighlightable(note, `b${blockIndex}`, highlightCtx);
-        container.appendChild(note);
-      } else if (block.type === "list") {
-        const ul = el("ul", "article-list");
-        block.items.forEach((entry, itemIndex) => {
-          const li = el("li", "article-list__item");
-          if (typeof entry === "string") {
-            li.textContent = entry;
-          } else {
-            li.appendChild(el("strong", "article-list__label", `${entry.label}: `));
-            li.appendChild(document.createTextNode(entry.text));
-          }
-          makeHighlightable(li, `b${blockIndex}-i${itemIndex}`, highlightCtx);
-          ul.appendChild(li);
-        });
-        container.appendChild(ul);
-      } else if (block.type === "clock") {
-        container.appendChild(renderArticleClock(block.segments));
-      } else if (block.type === "table") {
-        container.appendChild(renderArticleTable(block));
-      } else if (block.type === "flow") {
-        container.appendChild(renderArticleFlow(block.steps));
-      }
-    });
+        makeHighlightable(li, `b${blockIndex}-i${itemIndex}`, highlightCtx);
+        ul.appendChild(li);
+      });
+      target.appendChild(ul);
+    } else if (block.type === "clock") {
+      target.appendChild(renderArticleClock(block.segments));
+    } else if (block.type === "table") {
+      target.appendChild(renderArticleTable(block));
+    } else if (block.type === "flow") {
+      target.appendChild(renderArticleFlow(block.steps));
+    }
   }
 
-  // Nút mục lục nhỏ (3 gạch) ở góc phải trên bài viết — bấm để bung danh sách
-  // heading, chọn 1 mục để cuộn tới đúng vị trí trong bài.
-  function renderArticleToc(headingRefs) {
-    const wrap = el("div", "toc");
+  // 1 tiêu đề (lớn hoặc nhỏ) dạng nút bấm gập/mở — bấm vào mới lộ nội dung bên dưới,
+  // thay cho mục lục riêng: bài viết mặc định chỉ hiện các tiêu đề, không hiện nội dung.
+  function buildToggleSection(text, kind) {
+    const section = el("div", `article-section article-section--${kind}`);
+    const toggle = textButton(
+      text,
+      null,
+      kind === "heading" ? "text-button--heading-toggle" : "text-button--subheading-toggle",
+      () => section.classList.toggle("is-open")
+    );
+    toggle.appendChild(el("span", "article-toggle__icon", "+"));
+    const contentWrap = el("div", "article-toggle__content");
+    const contentInner = el("div", "article-toggle__content-inner");
+    contentWrap.appendChild(contentInner);
+    section.appendChild(toggle);
+    section.appendChild(contentWrap);
+    return { section, contentInner };
+  }
 
-    const toggle = document.createElement("button");
-    toggle.type = "button";
-    toggle.className = "toc-toggle";
-    toggle.setAttribute("aria-label", "Mục lục");
-    toggle.appendChild(el("span", "toc-toggle__line"));
-    toggle.appendChild(el("span", "toc-toggle__line"));
-    toggle.appendChild(el("span", "toc-toggle__line"));
+  // highlightCtx (tuỳ chọn): { set, storageKey } — bật highlight-khi-bấm cho các dòng nội dung.
+  // Nội dung trước tiêu đề đầu tiên (nếu có) hiện thẳng, không gập — phần còn lại luôn nằm
+  // trong 1 tiêu đề (lớn) hoặc tiêu đề con (nhỏ, lồng trong tiêu đề lớn gần nhất phía trên).
+  function renderArticleBody(container, body, highlightCtx) {
+    let headingTarget = container;
+    let leafTarget = container;
 
-    let outsideClickHandler = null;
-
-    function closePanel() {
-      wrap.classList.remove("is-open");
-      if (outsideClickHandler) {
-        document.removeEventListener("click", outsideClickHandler);
-        outsideClickHandler = null;
+    body.forEach((block, blockIndex) => {
+      if (block.type === "heading") {
+        const { section, contentInner } = buildToggleSection(block.text, "heading");
+        container.appendChild(section);
+        headingTarget = contentInner;
+        leafTarget = contentInner;
+      } else if (block.type === "subheading") {
+        const { section, contentInner } = buildToggleSection(block.text, "subheading");
+        headingTarget.appendChild(section);
+        leafTarget = contentInner;
+      } else {
+        renderContentBlock(leafTarget, block, blockIndex, highlightCtx);
       }
-    }
-
-    function openPanel() {
-      wrap.classList.add("is-open");
-      outsideClickHandler = (event) => {
-        if (!wrap.isConnected) {
-          document.removeEventListener("click", outsideClickHandler);
-          outsideClickHandler = null;
-          return;
-        }
-        if (!wrap.contains(event.target)) closePanel();
-      };
-      document.addEventListener("click", outsideClickHandler);
-    }
-
-    withClickAnimation(toggle, () => {
-      if (wrap.classList.contains("is-open")) closePanel();
-      else openPanel();
     });
-
-    const panel = el("div", "toc-panel");
-    const list = el("ul", "toc-list");
-    headingRefs.forEach((ref) => {
-      const li = el("li", "toc-list__item");
-      li.appendChild(
-        textButton(ref.text, null, "text-button--toc", () => {
-          closePanel();
-          const target = document.getElementById(ref.id);
-          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-        })
-      );
-      list.appendChild(li);
-    });
-    panel.appendChild(list);
-
-    wrap.appendChild(toggle);
-    wrap.appendChild(panel);
-    return wrap;
   }
 
   // Bảng ghi chú tự điền ở cuối bài viết — mỗi dòng là 1 ô contenteditable, tự lưu vào
@@ -764,14 +732,9 @@
     const highlightKey = `lifemap:highlight:${articlePath}`;
     const highlightCtx = { set: new Set(readLocal(highlightKey, [])), storageKey: highlightKey };
 
-    const headingRefs = [];
     const body = el("div", "article-body");
-    renderArticleBody(body, article.body || [], headingRefs, highlightCtx);
+    renderArticleBody(body, article.body || [], highlightCtx);
     view.appendChild(body);
-
-    if (headingRefs.length > 0) {
-      view.appendChild(renderArticleToc(headingRefs));
-    }
 
     view.appendChild(renderArticleNotes(`lifemap:notes:${articlePath}`));
 
