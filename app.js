@@ -460,10 +460,18 @@
     return view;
   }
 
-  function renderArticleBody(container, body) {
+  // headingRefs (tuỳ chọn): mảng để gom { id, text } của các block "heading" —
+  // dùng làm mục lục (xem renderArticleToc), mỗi heading được gắn id để scroll tới.
+  function renderArticleBody(container, body, headingRefs) {
     body.forEach((block) => {
       if (block.type === "heading") {
-        container.appendChild(el("h2", "article-heading", block.text));
+        const heading = el("h2", "article-heading", block.text);
+        if (headingRefs) {
+          const id = `toc-heading-${headingRefs.length}`;
+          heading.id = id;
+          headingRefs.push({ id, text: block.text });
+        }
+        container.appendChild(heading);
       } else if (block.type === "subheading") {
         container.appendChild(el("h3", "article-subheading", block.text));
       } else if (block.type === "paragraph") {
@@ -487,6 +495,67 @@
     });
   }
 
+  // Nút mục lục nhỏ (3 gạch) ở góc phải trên bài viết — bấm để bung danh sách
+  // heading, chọn 1 mục để cuộn tới đúng vị trí trong bài.
+  function renderArticleToc(headingRefs) {
+    const wrap = el("div", "toc");
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "toc-toggle";
+    toggle.setAttribute("aria-label", "Mục lục");
+    toggle.appendChild(el("span", "toc-toggle__line"));
+    toggle.appendChild(el("span", "toc-toggle__line"));
+    toggle.appendChild(el("span", "toc-toggle__line"));
+
+    let outsideClickHandler = null;
+
+    function closePanel() {
+      wrap.classList.remove("is-open");
+      if (outsideClickHandler) {
+        document.removeEventListener("click", outsideClickHandler);
+        outsideClickHandler = null;
+      }
+    }
+
+    function openPanel() {
+      wrap.classList.add("is-open");
+      outsideClickHandler = (event) => {
+        if (!wrap.isConnected) {
+          document.removeEventListener("click", outsideClickHandler);
+          outsideClickHandler = null;
+          return;
+        }
+        if (!wrap.contains(event.target)) closePanel();
+      };
+      document.addEventListener("click", outsideClickHandler);
+    }
+
+    withClickAnimation(toggle, () => {
+      if (wrap.classList.contains("is-open")) closePanel();
+      else openPanel();
+    });
+
+    const panel = el("div", "toc-panel");
+    const list = el("ul", "toc-list");
+    headingRefs.forEach((ref) => {
+      const li = el("li", "toc-list__item");
+      li.appendChild(
+        textButton(ref.text, null, "text-button--toc", () => {
+          closePanel();
+          const target = document.getElementById(ref.id);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        })
+      );
+      list.appendChild(li);
+    });
+    panel.appendChild(list);
+
+    wrap.appendChild(toggle);
+    wrap.appendChild(panel);
+    return wrap;
+  }
+
   function renderArticle(partId, tabId, sectionIndex, itemIndex, articleIndex) {
     const ctx = getSectionsContext(partId, tabId);
     const section = ctx && ctx.sections[sectionIndex];
@@ -504,9 +573,14 @@
     view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title} · ${itemTitle(entry)}`));
     view.appendChild(el("h1", "detail-title", article.title));
 
+    const headingRefs = [];
     const body = el("div", "article-body");
-    renderArticleBody(body, article.body || []);
+    renderArticleBody(body, article.body || [], headingRefs);
     view.appendChild(body);
+
+    if (headingRefs.length > 0) {
+      view.appendChild(renderArticleToc(headingRefs));
+    }
 
     view.appendChild(
       renderBackFooter(itemTitle(entry), () =>
