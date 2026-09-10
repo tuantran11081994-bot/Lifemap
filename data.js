@@ -537,8 +537,8 @@ const LIFE_MAP_DATA = {
                     },
                     { type: "paragraph", text: "Tự phát triển là một chuỗi quá trình:" },
                     {
-                      type: "flow",
-                      steps: [
+                      type: "list",
+                      items: [
                         "Tự phát triển",
                         "Người khác trang bị cho ta (đệ tử)",
                         "Người khác giúp đỡ (bạn)",
@@ -557,17 +557,17 @@ const LIFE_MAP_DATA = {
                       type: "table",
                       headers: ["Kiến thức", "Kỹ Năng", "Thái độ"],
                       rows: [
-                        ["1. Nhớ", "—", "1. Nghe"],
-                        ["2. Hiểu", "—", "2. Đáp ứng"],
-                        ["3. Vận dụng", "—", "3. Có quan điểm riêng"],
-                        ["4. Phân tích", "—", "4. Chi phối quan điểm/giá trị"],
-                        ["5. Tổng hợp/đánh giá", "—", "5. Đặc trưng hóa"],
-                        ["6. Sáng tạo", "—", "—"]
+                        ["1. Nhớ", "1. Bắt chước", "1. Nghe"],
+                        ["2. Hiểu", "2. Làm được", "2. Đáp ứng"],
+                        ["3. Vận dụng", "3. Thành thạo", "3. Có quan điểm riêng"],
+                        ["4. Phân tích", "4. Phối hợp", "4. Chi phối quan điểm/giá trị"],
+                        ["5. Tổng hợp/đánh giá", "5. Sáng tạo", "5. Đặc trưng hóa"],
+                        ["6. Sáng tạo (Trí tuệ)", "—", "—"]
                       ]
                     },
                     {
                       type: "note",
-                      text: "Thiếu cột Kỹ Năng (chưa có nội dung nguồn) — mục tiêu tối thiểu là đạt mức 3 (3-3-3) trên cả 3 cột."
+                      text: "Mục tiêu tối thiểu là đạt mức 3 (3-3-3) trên cả 3 cột."
                     },
                     { type: "subheading", text: "4 mức người hướng dẫn" },
                     {
