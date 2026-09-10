@@ -150,10 +150,13 @@
     LIFE_MAP_DATA.parts
       .filter((p) => p.group === "pillar")
       .forEach((part) => {
+        const count = part.tabs
+          ? part.tabs.reduce((sum, tab) => sum + tab.sections.length, 0)
+          : part.sections.length;
         const wrap = el("div", `pillar pillar--${part.edge}`);
         wrap.style.gridArea = part.edge;
         wrap.appendChild(
-          textButton(part.label, part.sections.length, "text-button--pillar", () => goTo(`#/phan/${part.id}`))
+          textButton(part.label, count, "text-button--pillar", () => goTo(`#/phan/${part.id}`))
         );
         map.appendChild(wrap);
       });
@@ -174,31 +177,45 @@
     return footer;
   }
 
-  // ---------- Sự nghiệp: thuyết con nhóm (3 vòng tròn lồng nhau) ----------
-  function renderCareerVenn(part) {
+  // ---------- Thuyết con nhím: 3 vòng tròn lồng nhau + 3 vùng giao đôi + 1 tâm ----------
+  // Mỗi section cần field "spot": "top" | "left" | "right" (vòng chính),
+  // "top-left" | "top-right" | "bottom" (giao đôi), "center" (giao cả 3).
+  const VENN_MAIN_SPOTS = ["top", "left", "right"];
+
+  function renderCareerVenn(partId, tabId, sections) {
     const wrap = el("div", "venn-wrap");
     const diagram = el("div", "venn");
-    const spots = ["a", "b", "c"];
 
-    part.sections.forEach((section, index) => {
-      const circle = el("div", `venn__circle venn__circle--${spots[index] || "a"}`);
-      const label = el("div", "venn__label");
-      label.appendChild(
-        textButton(section.title, section.items.length, "text-button--venn", () =>
-          goTo(`#/phan/${part.id}/muc/${index}`)
-        )
-      );
-      circle.appendChild(label);
-      diagram.appendChild(circle);
+    sections.forEach((section, index) => {
+      const spot = section.spot;
+      const goToSection = () => goTo(`#/phan/${partId}/tab/${tabId}/muc/${index}`);
+
+      if (VENN_MAIN_SPOTS.includes(spot)) {
+        const circle = el("div", `venn__circle venn__circle--${spot}`);
+        const label = el("div", "venn__label");
+        label.appendChild(
+          textButton(section.title, section.items.length, "text-button--venn", goToSection)
+        );
+        circle.appendChild(label);
+        diagram.appendChild(circle);
+      } else if (spot === "center") {
+        // Vùng giao cả 3 vòng ("sweet spot") — 3 lớp clip-path lồng nhau, xem style.css.
+        const centerA = el("div", "venn__center");
+        const centerB = el("div", "venn__center-b");
+        const centerC = el("div", "venn__center-c");
+        centerB.appendChild(centerC);
+        centerA.appendChild(centerB);
+        diagram.appendChild(centerA);
+
+        const centerLabel = el("div", "venn__center-label");
+        centerLabel.appendChild(textButton(section.title, null, "text-button--venn-center", goToSection));
+        diagram.appendChild(centerLabel);
+      } else {
+        const overlap = el("div", `venn__overlap venn__overlap--${spot}`);
+        overlap.appendChild(textButton(section.title, null, "text-button--venn-overlap", goToSection));
+        diagram.appendChild(overlap);
+      }
     });
-
-    // Vùng giao nhau cả 3 vòng ("sweet spot") — 3 lớp clip-path lồng nhau, xem style.css.
-    const centerA = el("div", "venn__center");
-    const centerB = el("div", "venn__center-b");
-    const centerC = el("div", "venn__center-c");
-    centerB.appendChild(centerC);
-    centerA.appendChild(centerB);
-    diagram.appendChild(centerA);
 
     wrap.appendChild(diagram);
     return wrap;
@@ -217,11 +234,20 @@
     const title = el("h1", "detail-title", part.label);
     view.appendChild(title);
 
-    if (part.layout === "venn") {
-      view.appendChild(
-        el("p", "detail-subtitle", "3 vòng tròn giao nhau — chọn 1 vòng để xem chi tiết")
-      );
-      view.appendChild(renderCareerVenn(part));
+    if (part.tabs) {
+      view.appendChild(el("p", "detail-subtitle", `${part.tabs.length} phần`));
+
+      const tabList = el("ul", "section-list");
+      part.tabs.forEach((tab) => {
+        const item = el("li", "section-list__item");
+        item.appendChild(
+          textButton(tab.label, tab.sections.length, "text-button--section", () =>
+            goTo(`#/phan/${part.id}/tab/${tab.id}`)
+          )
+        );
+        tabList.appendChild(item);
+      });
+      view.appendChild(tabList);
       view.appendChild(renderBackFooter("Bản đồ cuộc đời", () => goTo("#/")));
       return view;
     }
@@ -246,18 +272,90 @@
     return view;
   }
 
-  function renderSection(partId, sectionIndex) {
+  function renderTab(partId, tabId) {
     const part = partsById[partId];
-    const section = part && part.sections[sectionIndex];
-    const view = el("div", "view view--section");
+    const tab = part && part.tabs && part.tabs.find((t) => t.id === tabId);
+    const view = el("div", "view view--part");
 
-    if (!part || !section) {
-      view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
+    if (!part || !tab) {
+      view.appendChild(el("p", "empty-state", "Không tìm thấy phần này."));
       view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
 
     view.appendChild(el("p", "detail-eyebrow", part.label));
+    view.appendChild(el("h1", "detail-title", tab.label));
+
+    if (tab.layout === "venn") {
+      view.appendChild(el("p", "detail-subtitle", "Chạm vào từng vùng để xem chi tiết"));
+      view.appendChild(renderCareerVenn(part.id, tab.id, tab.sections));
+      view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
+      return view;
+    }
+
+    if (tab.sections.length === 0) {
+      view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+      view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
+      return view;
+    }
+
+    view.appendChild(el("p", "detail-subtitle", `${tab.sections.length} mục nhỏ`));
+
+    const list = el("ul", "section-list");
+    tab.sections.forEach((section, index) => {
+      const item = el("li", "section-list__item");
+      item.appendChild(
+        textButton(section.title, section.items.length, "text-button--section", () =>
+          goTo(`#/phan/${part.id}/tab/${tab.id}/muc/${index}`)
+        )
+      );
+      list.appendChild(item);
+    });
+    view.appendChild(list);
+    view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
+
+    return view;
+  }
+
+  // Gom logic tra cứu sections dùng chung cho renderSection/renderItem — hoạt động cho cả
+  // Phần thường (part.sections) lẫn Phần có tab (part.tabs[].sections, khi có tabId).
+  function getSectionsContext(partId, tabId) {
+    const part = partsById[partId];
+    if (!part) return null;
+
+    if (tabId) {
+      const tab = part.tabs && part.tabs.find((t) => t.id === tabId);
+      if (!tab) return null;
+      return {
+        sections: tab.sections,
+        eyebrow: `${part.label} · ${tab.label}`,
+        backLabel: tab.label,
+        backHash: `#/phan/${partId}/tab/${tabId}`,
+        basePath: `#/phan/${partId}/tab/${tabId}`
+      };
+    }
+
+    return {
+      sections: part.sections,
+      eyebrow: part.label,
+      backLabel: part.label,
+      backHash: `#/phan/${partId}`,
+      basePath: `#/phan/${partId}`
+    };
+  }
+
+  function renderSection(partId, tabId, sectionIndex) {
+    const ctx = getSectionsContext(partId, tabId);
+    const section = ctx && ctx.sections[sectionIndex];
+    const view = el("div", "view view--section");
+
+    if (!ctx || !section) {
+      view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
+      view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
+      return view;
+    }
+
+    view.appendChild(el("p", "detail-eyebrow", ctx.eyebrow));
     view.appendChild(el("h1", "detail-title", section.title));
 
     if (section.items.length === 0) {
@@ -273,7 +371,7 @@
       } else {
         view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
       }
-      view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
+      view.appendChild(renderBackFooter(ctx.backLabel, () => goTo(ctx.backHash)));
       return view;
     }
 
@@ -282,34 +380,34 @@
       const item = el("li", "item-list__item");
       item.appendChild(
         textButton(text, null, "text-button--item", () =>
-          goTo(`#/phan/${part.id}/muc/${sectionIndex}/con/${index}`)
+          goTo(`${ctx.basePath}/muc/${sectionIndex}/con/${index}`)
         )
       );
       list.appendChild(item);
     });
     view.appendChild(list);
-    view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
+    view.appendChild(renderBackFooter(ctx.backLabel, () => goTo(ctx.backHash)));
 
     return view;
   }
 
-  function renderItem(partId, sectionIndex, itemIndex) {
-    const part = partsById[partId];
-    const section = part && part.sections[sectionIndex];
+  function renderItem(partId, tabId, sectionIndex, itemIndex) {
+    const ctx = getSectionsContext(partId, tabId);
+    const section = ctx && ctx.sections[sectionIndex];
     const text = section && section.items[itemIndex];
     const view = el("div", "view view--item");
 
-    if (!part || !section || text == null) {
+    if (!ctx || !section || text == null) {
       view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
       view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
 
-    view.appendChild(el("p", "detail-eyebrow", `${part.label} · ${section.title}`));
+    view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title}`));
     view.appendChild(el("h1", "detail-title", text));
     view.appendChild(el("p", "empty-state", "Nội dung sẽ được bổ sung sau."));
     view.appendChild(
-      renderBackFooter(section.title, () => goTo(`#/phan/${part.id}/muc/${sectionIndex}`))
+      renderBackFooter(section.title, () => goTo(`${ctx.basePath}/muc/${sectionIndex}`))
     );
 
     return view;
@@ -318,29 +416,46 @@
   function parseHash() {
     const hash = location.hash.replace(/^#\/?/, "");
     const segments = hash.split("/").filter(Boolean);
-    // segments: [] | ["phan", id] | ["phan", id, "muc", index] | ["phan", id, "muc", index, "con", itemIndex]
-    if (
-      segments[0] === "phan" &&
-      segments[1] &&
-      segments[2] === "muc" &&
-      segments[3] != null &&
-      segments[4] === "con" &&
-      segments[5] != null
-    ) {
+    // segments: [] | ["phan", id] | ["phan", id, "muc", idx] | ["phan", id, "muc", idx, "con", itemIdx]
+    //   | ["phan", id, "tab", tabId] | ["phan", id, "tab", tabId, "muc", idx]
+    //   | ["phan", id, "tab", tabId, "muc", idx, "con", itemIdx]
+    if (segments[0] !== "phan" || !segments[1]) {
+      return { view: "home" };
+    }
+
+    const partId = segments[1];
+
+    if (segments[2] === "tab" && segments[3]) {
+      const tabId = segments[3];
+      if (segments[4] === "muc" && segments[5] != null && segments[6] === "con" && segments[7] != null) {
+        return {
+          view: "item",
+          partId,
+          tabId,
+          sectionIndex: Number(segments[5]),
+          itemIndex: Number(segments[7])
+        };
+      }
+      if (segments[4] === "muc" && segments[5] != null) {
+        return { view: "section", partId, tabId, sectionIndex: Number(segments[5]) };
+      }
+      return { view: "tab", partId, tabId };
+    }
+
+    if (segments[2] === "muc" && segments[3] != null && segments[4] === "con" && segments[5] != null) {
       return {
         view: "item",
-        partId: segments[1],
+        partId,
+        tabId: null,
         sectionIndex: Number(segments[3]),
         itemIndex: Number(segments[5])
       };
     }
-    if (segments[0] === "phan" && segments[1] && segments[2] === "muc" && segments[3] != null) {
-      return { view: "section", partId: segments[1], sectionIndex: Number(segments[3]) };
+    if (segments[2] === "muc" && segments[3] != null) {
+      return { view: "section", partId, tabId: null, sectionIndex: Number(segments[3]) };
     }
-    if (segments[0] === "phan" && segments[1]) {
-      return { view: "part", partId: segments[1] };
-    }
-    return { view: "home" };
+
+    return { view: "part", partId };
   }
 
   function render() {
@@ -349,10 +464,12 @@
     let node;
     if (route.view === "part") {
       node = renderPart(route.partId);
+    } else if (route.view === "tab") {
+      node = renderTab(route.partId, route.tabId);
     } else if (route.view === "section") {
-      node = renderSection(route.partId, route.sectionIndex);
+      node = renderSection(route.partId, route.tabId, route.sectionIndex);
     } else if (route.view === "item") {
-      node = renderItem(route.partId, route.sectionIndex, route.itemIndex);
+      node = renderItem(route.partId, route.tabId, route.sectionIndex, route.itemIndex);
     } else {
       node = renderHome();
     }

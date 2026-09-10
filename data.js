@@ -106,26 +106,43 @@ const LIFE_MAP_DATA = {
       label: "Sự nghiệp",
       group: "pillar",
       edge: "right",
-      // layout "venn": trang chi tiết của Phần này hiển thị dạng 3 vòng tròn lồng nhau
-      // (thuyết con nhóm) thay vì danh sách thường — xem renderCareerVenn() trong app.js.
-      layout: "venn",
-      sections: [
+      // Phần này có 2 tab (part.tabs) thay vì 1 danh sách sections phẳng — xem renderTab()
+      // trong app.js. Tab "connhim" dùng layout "venn" (3 vòng tròn lồng nhau, xem
+      // renderCareerVenn()); mỗi section trong đó cần field "spot" để biết vẽ ở đâu:
+      // "top" | "left" | "right" (3 vòng chính), "top-left" | "top-right" | "bottom"
+      // (3 vùng giao đôi), "center" (vùng giao cả 3).
+      tabs: [
         {
-          title: "Việc tôi giỏi",
-          items: ["Học kỹ năng mới mỗi năm", "Đọc sách chuyên môn thường xuyên"]
-        },
-        {
-          title: "Việc tôi thích",
-          items: []
-        },
-        {
-          title: "Việc ra tiền (Cái XH cần)",
-          items: [
-            "Đạt các mốc thăng tiến đã đặt ra",
-            "Hoàn thành dự án đúng hạn",
-            "Tăng thu nhập bền vững",
-            "Đầu tư phát triển bản thân"
+          id: "connhim",
+          label: "Thuyết con nhím",
+          layout: "venn",
+          sections: [
+            { title: "Việc tôi thích", items: [], spot: "top" },
+            {
+              title: "Việc tôi giỏi",
+              items: ["Học kỹ năng mới mỗi năm", "Đọc sách chuyên môn thường xuyên"],
+              spot: "left"
+            },
+            {
+              title: "Việc xã hội cần",
+              items: [
+                "Đạt các mốc thăng tiến đã đặt ra",
+                "Hoàn thành dự án đúng hạn",
+                "Tăng thu nhập bền vững",
+                "Đầu tư phát triển bản thân"
+              ],
+              spot: "right"
+            },
+            { title: "Hạnh phúc nhưng ít tiền", items: [], spot: "top-left" },
+            { title: "Chỉ là giấc mơ", items: [], spot: "top-right" },
+            { title: "Giàu có nhưng nhàm chán", items: [], spot: "bottom" },
+            { title: "Nghề nghiệp lý tưởng", items: [], spot: "center" }
           ]
+        },
+        {
+          id: "conduong",
+          label: "Con đường Thành Công",
+          sections: []
         }
       ]
     },
@@ -136,8 +153,16 @@ const LIFE_MAP_DATA = {
       edge: "bottom",
       sections: [
         {
-          title: "Gia đình lớn",
-          items: ["Ông, bà, bố, mẹ, cô, chú, bác, dì, anh, chị, em, họ hàng..."]
+          title: "Bố mẹ",
+          items: ["Nội", "Ngoại"]
+        },
+        {
+          title: "Họ hàng thân thiết",
+          items: []
+        },
+        {
+          title: "Họ hàng không thân thiết",
+          items: []
         },
         {
           title: "Gia đình nhỏ",

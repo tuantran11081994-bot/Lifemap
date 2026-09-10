@@ -6,7 +6,7 @@
   --color-primary: #8fc97a;
   --color-accent: #e8a33d;
   --color-accent-coral: #e2725b;
-  --color-highlight-red: #e63946;
+  --color-highlight-gold: #f2b705;
   --radius-frame: 28px;
   --gap: 28px;
   --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -366,7 +366,10 @@ button {
   line-height: 1.5;
 }
 
-/* ---------- Sự nghiệp: thuyết con nhóm (3 vòng tròn lồng nhau) ---------- */
+/* ---------- Thuyết con nhím: 3 vòng tròn + 3 vùng giao đôi + 1 tâm ----------
+   Bố cục: 1 vòng ở trên (Việc tôi thích), 2 vòng ở dưới (Việc tôi giỏi / Việc xã hội
+   cần) — theo đúng sơ đồ tham khảo. Toạ độ vòng tròn: top=(50%,34%) trái=(32%,68%)
+   phải=(68%,68%), bán kính 32% — các nhãn/điểm neo bên dưới đều tính theo 3 tâm này. */
 .venn-wrap {
   display: flex;
   justify-content: center;
@@ -382,7 +385,7 @@ button {
 
 .venn__circle {
   position: absolute;
-  width: 56%;
+  width: 64%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   transition: transform 0.25s ease, filter 0.25s ease;
@@ -394,77 +397,55 @@ button {
   z-index: 2;
 }
 
-.venn__circle--a {
-  left: 2%;
-  top: 4%;
+.venn__circle--top {
+  left: 18%;
+  top: 2%;
   background: rgba(143, 201, 122, 0.22);
   border: 1.5px solid rgba(143, 201, 122, 0.55);
 }
 
-.venn__circle--b {
-  right: 2%;
-  top: 4%;
+.venn__circle--left {
+  left: 0;
+  top: 36%;
   background: rgba(226, 114, 91, 0.22);
   border: 1.5px solid rgba(226, 114, 91, 0.55);
 }
 
-.venn__circle--c {
-  left: 22%;
-  bottom: 0;
+.venn__circle--right {
+  right: 0;
+  top: 36%;
   background: rgba(232, 163, 61, 0.22);
   border: 1.5px solid rgba(232, 163, 61, 0.55);
-}
-
-/* Vùng giao nhau cả 3 vòng (điểm "sweet spot") — 3 lớp lồng nhau, mỗi lớp bị
-   clip-path cắt theo đúng 1 vòng tròn (toạ độ khớp .venn__circle--a/b/c ở trên),
-   nên phần hiện ra cuối cùng chính là giao đúng hình học của cả 3, tô đỏ nổi bật. */
-.venn__center {
-  position: absolute;
-  inset: 0;
-  clip-path: circle(28% at 30% 32%);
-  filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.85));
-  pointer-events: none;
-}
-
-.venn__center-b {
-  position: absolute;
-  inset: 0;
-  clip-path: circle(28% at 70% 32%);
-}
-
-.venn__center-c {
-  position: absolute;
-  inset: 0;
-  clip-path: circle(28% at 50% 72%);
-  background: rgba(230, 57, 70, 0.8);
 }
 
 /* Nhãn đặt ở phần "khoảng trống" riêng của từng vòng (không giao với 2 vòng còn lại),
    neo bằng toạ độ %/% rồi tự căn giữa quanh điểm neo đó — tránh đè lên đường cong. */
 .venn__label {
   position: absolute;
-  width: 68%;
+  width: 56%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
 
-.venn__circle--a .venn__label {
-  left: 27%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-}
-
-.venn__circle--b .venn__label {
-  left: 73%;
-  top: 30%;
-  transform: translate(-50%, -50%);
-}
-
-.venn__circle--c .venn__label {
+.venn__circle--top .venn__label {
   left: 50%;
+  top: 16%;
+  transform: translate(-50%, -50%);
+}
+
+.venn__circle--left .venn__label {
+  left: 18%;
   top: 78%;
+  width: 48%;
+  transform: translate(-50%, -50%);
+}
+
+.venn__circle--right .venn__label {
+  left: 82%;
+  top: 78%;
+  width: 48%;
   transform: translate(-50%, -50%);
 }
 
@@ -478,6 +459,84 @@ button {
 
 .text-button--venn .text-button__count {
   font-size: 0.6em;
+}
+
+/* 3 vùng giao đôi (chỉ giao 2/3 vòng) — nhãn phụ, nhỏ và nhạt hơn nhãn chính,
+   đặt tại điểm nằm trong đúng 2 vòng liên quan và ngoài vòng còn lại. */
+.venn__overlap {
+  position: absolute;
+  width: 34%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.venn__overlap--top-left {
+  left: 32%;
+  top: 46%;
+}
+
+.venn__overlap--top-right {
+  left: 68%;
+  top: 46%;
+}
+
+.venn__overlap--bottom {
+  left: 50%;
+  top: 77%;
+}
+
+.text-button--venn-overlap {
+  flex-direction: column;
+  font-size: clamp(10.5px, 2.4vw, 12px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-text-soft);
+}
+
+/* Vùng giao cả 3 vòng ("Nghề nghiệp lý tưởng") — 3 lớp clip-path lồng nhau, mỗi lớp
+   cắt theo đúng 1 vòng tròn (toạ độ khớp .venn__circle--top/left/right ở trên), nên
+   phần hiện ra cuối cùng chính là giao đúng hình học của cả 3, tô vàng nổi bật. */
+.venn__center {
+  position: absolute;
+  inset: 0;
+  clip-path: circle(32% at 50% 34%);
+  filter: drop-shadow(0 0 10px rgba(242, 183, 5, 0.85));
+  pointer-events: none;
+}
+
+.venn__center-b {
+  position: absolute;
+  inset: 0;
+  clip-path: circle(32% at 32% 68%);
+}
+
+.venn__center-c {
+  position: absolute;
+  inset: 0;
+  clip-path: circle(32% at 68% 68%);
+  background: rgba(242, 183, 5, 0.85);
+}
+
+.venn__center-label {
+  position: absolute;
+  left: 50%;
+  top: 57%;
+  width: 46%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text-button--venn-center {
+  flex-direction: column;
+  gap: 2px;
+  font-size: clamp(11px, 2.6vw, 13px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-bg);
+}
+
+.text-button--venn-center:hover {
+  color: var(--color-bg-frame);
 }
 
 /* ---------- Pop-up chi tiết (3 chữ trong khung trung tâm) ---------- */
