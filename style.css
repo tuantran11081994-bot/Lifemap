@@ -389,6 +389,13 @@ button {
   width: 64%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.venn__circle:hover,
+.venn__circle:focus-within {
+  transform: scale(1.03);
+  z-index: 2;
 }
 
 .venn__circle--top {
@@ -412,14 +419,15 @@ button {
   border: 1.5px solid rgba(232, 163, 61, 0.55);
 }
 
-/* Khung neo — cùng vị trí/kích thước với vòng tròn tương ứng, nhưng được vẽ sau (xem
-   renderCareerVenn ở app.js) nên chữ bên trong luôn nổi trên mọi vòng tròn, kể cả ở
-   phần 2-3 vòng đè lên nhau. Đây chỉ là chữ minh hoạ, không phải nút bấm — muốn xem
-   chi tiết thì bấm ở danh sách .venn-cells bên dưới sơ đồ. */
+/* Khung neo vô hình — cùng vị trí/kích thước với vòng tròn tương ứng, nhưng được vẽ
+   sau (xem renderCareerVenn ở app.js) nên chữ bên trong luôn nổi trên mọi vòng tròn,
+   kể cả ở phần 2-3 vòng đè lên nhau. pointer-events: none để không chặn click vào
+   phần vòng tròn không có chữ; .venn__label bên trong bật lại pointer-events cho nút. */
 .venn__label-anchor {
   position: absolute;
   width: 64%;
   aspect-ratio: 1 / 1;
+  pointer-events: none;
 }
 
 .venn__label-anchor--top {
@@ -446,6 +454,7 @@ button {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  pointer-events: auto;
 }
 
 .venn__label-anchor--top .venn__label {
@@ -468,19 +477,16 @@ button {
   transform: translate(-50%, -50%);
 }
 
-.venn__label-text {
-  margin: 0;
+.text-button--venn {
+  flex-direction: column;
+  gap: 4px;
   font-size: clamp(12.5px, 3.1vw, 15px);
   font-weight: 700;
   line-height: 1.22;
-  color: var(--color-text);
 }
 
-.venn__label-count {
-  margin: 4px 0 0;
-  font-size: 0.65em;
-  font-weight: 700;
-  color: var(--color-accent);
+.text-button--venn .text-button__count {
+  font-size: 0.6em;
 }
 
 /* 3 vùng giao đôi (chỉ giao 2/3 vòng) — chỉ là chú thích mô tả, không phải nút bấm,
@@ -539,29 +545,30 @@ button {
   background: rgba(242, 183, 5, 0.85);
 }
 
-/* Chữ giữa vùng vàng — chỉ để đọc, không phải nút bấm (xem ghi chú ở đầu phần venn). */
+/* Khung vô hình rộng hơn hình vàng thấy được một chút — để vùng chạm dễ bấm hơn
+   mà chữ hiển thị vẫn gọn bên trong hình vàng (nút chiếm trọn khung này). */
 .venn__center-label {
   position: absolute;
   left: 50%;
   top: 56%;
   width: 38%;
+  height: 28%;
   transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
 }
 
-.venn__center-text {
-  margin: 0;
+.text-button--venn-center {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px;
   text-align: center;
   font-size: clamp(11px, 2.6vw, 13px);
   font-weight: 800;
   line-height: 1.15;
   color: var(--color-highlight-red);
-}
-
-/* Danh sách "ô" bấm được — thay cho việc bấm trực tiếp vào sơ đồ phía trên. */
-.venn-cells {
-  margin-top: 28px;
 }
 
 /* ---------- Pop-up chi tiết (3 chữ trong khung trung tâm) ---------- */
