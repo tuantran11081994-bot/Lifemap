@@ -191,11 +191,15 @@
   }
 
   // ---------- Thuyết con nhím: 3 vòng tròn lồng nhau + 3 vùng giao đôi + 1 tâm ----------
+  // Sơ đồ chỉ để MINH HOẠ (không có nút bấm nào trong đó — vùng giao nhau, đặc biệt
+  // vùng giao cả 3 vòng, quá nhỏ và khó bấm chính xác trên điện thoại). Muốn xem chi
+  // tiết thì bấm ở danh sách "ô" riêng ngay bên dưới sơ đồ — xem renderVennCells().
   // Mỗi section cần field "spot": "top" | "left" | "right" (vòng chính),
   // "top-left" | "top-right" | "bottom" (giao đôi), "center" (giao cả 3).
   const VENN_MAIN_SPOTS = ["top", "left", "right"];
+  const VENN_CLICKABLE_SPOTS = ["top", "left", "right", "center"];
 
-  function renderCareerVenn(partId, tabId, sections) {
+  function renderCareerVenn(sections) {
     const wrap = el("div", "venn-wrap");
     const diagram = el("div", "venn");
 
@@ -215,26 +219,25 @@
       }
     });
 
-    // Lượt 2: đặt hết chữ lên sau cùng — nhờ vậy chữ luôn nổi trên mọi vòng tròn,
-    // kể cả ở những chỗ 2-3 vòng đè lên nhau, bất kể vòng nào vẽ trước/sau.
-    sections.forEach((section, index) => {
+    // Lượt 2: đặt hết chữ lên sau cùng (luôn nổi trên mọi vòng tròn) — chỉ để đọc,
+    // không phải nút bấm.
+    sections.forEach((section) => {
       const spot = section.spot;
-      const goToSection = () => goTo(`#/phan/${partId}/tab/${tabId}/muc/${index}`);
 
       if (VENN_MAIN_SPOTS.includes(spot)) {
         const anchor = el("div", `venn__label-anchor venn__label-anchor--${spot}`);
         const label = el("div", "venn__label");
-        label.appendChild(
-          textButton(section.title, section.items.length, "text-button--venn", goToSection)
-        );
+        label.appendChild(el("p", "venn__label-text", section.title));
+        if (section.items.length > 0) {
+          label.appendChild(el("p", "venn__label-count", String(section.items.length)));
+        }
         anchor.appendChild(label);
         diagram.appendChild(anchor);
       } else if (spot === "center") {
         const centerLabel = el("div", "venn__center-label");
-        centerLabel.appendChild(textButton(section.title, null, "text-button--venn-center", goToSection));
+        centerLabel.appendChild(el("p", "venn__center-text", section.title));
         diagram.appendChild(centerLabel);
       } else {
-        // Vùng giao đôi chỉ là chú thích mô tả, không dẫn tới đâu — không phải nút bấm.
         const overlap = el("div", `venn__overlap venn__overlap--${spot}`);
         overlap.appendChild(el("p", "venn__overlap-text", section.title));
         diagram.appendChild(overlap);
@@ -243,6 +246,23 @@
 
     wrap.appendChild(diagram);
     return wrap;
+  }
+
+  // Danh sách "ô" bấm được riêng — thay cho việc bấm trực tiếp vào sơ đồ, để mỗi
+  // vùng có hẳn 1 hàng full-width dễ bấm thay vì phải nhắm trúng 1 mảnh hình nhỏ.
+  function renderVennCells(partId, tabId, sections) {
+    const list = el("ul", "section-list venn-cells");
+    sections.forEach((section, index) => {
+      if (!VENN_CLICKABLE_SPOTS.includes(section.spot)) return;
+      const item = el("li", "section-list__item");
+      item.appendChild(
+        textButton(section.title, section.items.length, "text-button--section", () =>
+          goTo(`#/phan/${partId}/tab/${tabId}/muc/${index}`)
+        )
+      );
+      list.appendChild(item);
+    });
+    return list;
   }
 
   function renderPart(partId) {
@@ -311,8 +331,9 @@
     view.appendChild(el("h1", "detail-title", tab.label));
 
     if (tab.layout === "venn") {
-      view.appendChild(el("p", "detail-subtitle", "Chạm vào từng vùng để xem chi tiết"));
-      view.appendChild(renderCareerVenn(part.id, tab.id, tab.sections));
+      view.appendChild(el("p", "detail-subtitle", "Chọn 1 mục bên dưới để xem chi tiết"));
+      view.appendChild(renderCareerVenn(tab.sections));
+      view.appendChild(renderVennCells(part.id, tab.id, tab.sections));
       view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
       return view;
     }
