@@ -61,9 +61,21 @@ const LIFE_MAP_DATA = {
       label: "Hạnh Phúc",
       group: "center",
       sections: [
-        { title: "Yêu và được yêu", items: [] },
-        { title: "Cho nhiều hơn nhận", items: [] },
-        { title: "Nhu cầu ít hơn khát vọng", items: [] }
+        {
+          title: "Yêu và được yêu",
+          items: [],
+          note: "Cấp độ cao nhất của cảm xúc."
+        },
+        {
+          title: "Cho nhiều hơn nhận",
+          items: [],
+          note: "Sự cho đi là thước đo của nhân cách."
+        },
+        {
+          title: "Nhu cầu ít hơn khát vọng",
+          items: [],
+          note: "Biết đủ về vật chất và danh vọng, nhưng luôn nuôi dưỡng hoài bão lớn."
+        }
       ]
     },
     {
@@ -74,7 +86,147 @@ const LIFE_MAP_DATA = {
       sections: [
         {
           title: "Thân thể",
-          items: ["Dinh dưỡng", "Tập luyện", "Nghỉ ngơi"]
+          items: [
+            {
+              title: "Dinh dưỡng",
+              articles: [
+                {
+                  title: "Quik Recomp",
+                  body: [
+                    {
+                      type: "paragraph",
+                      text: "Quik Recomp là hướng dẫn thiết lập dinh dưỡng nền tảng để giảm cân, giảm mỡ — không phải một chế độ ăn kiêng khắc nghiệt, mà là cách chọn thực phẩm và tính khẩu phần bền vững lâu dài."
+                    },
+                    { type: "heading", text: "I. Nhiệm vụ đầu tiên: loại bỏ" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Đường", text: "Làm tăng insulin (hormone tích mỡ). Không cần bỏ vĩnh viễn, nhưng nên cắt hẳn trong 14 ngày đầu để giảm cân nhanh, hiệu quả." },
+                        { label: "Chất cồn", text: "Ảnh hưởng tiêu hóa, trao đổi chất và là nguyên nhân lifestyle khiến thừa cân — cắt hẳn trong một thời gian." },
+                        { label: "Thức ăn nhanh", text: "Đồ chế biến công nghiệp ảnh hưởng sức khỏe, hệ tiêu hóa và khiến tăng cân." },
+                        { label: "Đồ ăn vặt", text: "Bữa ăn vặt làm tăng insulin, gây \"nghiện ăn\", khiến cơ thể không có thời gian đốt mỡ." },
+                        { label: "Thuốc giảm cân, đốt mỡ", text: "Không có \"viên nhộng\" nào thực sự giúp đốt mỡ hay khỏe mạnh — thậm chí có thể hại gan và hệ tiêu hóa." }
+                      ]
+                    },
+                    { type: "heading", text: "II. Thành phần bữa ăn" },
+                    {
+                      type: "paragraph",
+                      text: "Sai lầm thường gặp là chia thức ăn theo macro (protein/carb/fat) thay vì theo thực phẩm thật. Một bữa ăn giảm cân đầy đủ dinh dưỡng cần 4 nhóm: Chất đạm — Chất béo — Tinh bột — Rau xanh."
+                    },
+                    {
+                      type: "note",
+                      text: "Hãy thêm tiền tố \"lành mạnh\" trước mỗi nhóm thực phẩm. 300 kcal từ một miếng gà rán rất khác 300 kcal từ một tô salad — quan trọng là chất lượng thực phẩm, không chỉ là con số calo."
+                    },
+                    { type: "heading", text: "III. Công thức thiết lập bữa ăn" },
+                    { type: "paragraph", text: "Bước 1 — Tính DCI (Daily Calorie Intake) mục tiêu:" },
+                    {
+                      type: "list",
+                      items: [
+                        "Total DCI = TDEE − số calo muốn cắt giảm (20–25% TDEE)",
+                        "Ví dụ: TDEE = 3000 kcal → DCI mục tiêu = 2500 kcal"
+                      ]
+                    },
+                    { type: "paragraph", text: "Bước 2 — Chia khẩu phần theo tỷ lệ:" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nguồn carb chính = 10% DCI",
+                        "Nguồn protein chính = 70% DCI",
+                        "Chất béo lành mạnh = 10% DCI",
+                        "Rau xanh củ quả = 10% DCI"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Ví dụ: DCI = 2000 kcal → carb cần ăn = 10% × 2000 = 200 kcal ≈ 120g gạo trắng. Tra thành phần dinh dưỡng theo từ khóa \"100g + tên thực phẩm (tiếng Anh) + calories\" — nguồn USDA (Mỹ) hiện chính xác và cập nhật nhất."
+                    },
+                    {
+                      type: "note",
+                      text: "Củ, quả và hạt không tính vào rau xanh mà tính vào tinh bột. Chất béo lành mạnh dùng để cân bằng với lượng chất béo bão hòa sẵn có trong thịt, cá."
+                    },
+                    { type: "heading", text: "IV. Ví dụ 1 ngày ăn" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nguồn carb chính = 150g: 100g gạo trắng + 50g khoai lang (hoặc 50g gạo trắng + 100g bột đậu)",
+                        "Nguồn protein chính = 280g: 100g thịt gà + 150g cá hồi + 2 trứng gà",
+                        "Chất béo lành mạnh = 5g dầu olive + 5g kem dừa + 5g bơ tinh",
+                        "Rau xanh = 500g"
+                      ]
+                    },
+                    { type: "heading", text: "V. Mẹo nhớ nhanh (không cần công thức)" },
+                    { type: "paragraph", text: "\"01 ngày tôi có thể ăn\":" },
+                    {
+                      type: "list",
+                      items: [
+                        "Dưới 250g thịt hoặc cá biển",
+                        "4–5 quả trứng gà ta",
+                        "Dưới 150g tinh bột",
+                        "3–5 đĩa salad rau xanh",
+                        "1–2 thìa MCT oil / dầu dừa / bơ tinh",
+                        "Không ăn trái cây"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Có thể quy đổi thức ăn theo vật chứa quen thuộc (bát, tô, chén) để dễ ước lượng — ví dụ: 1,5 bát cơm chất đạm, 1/2 bát tinh bột, 2 bát rau, 1 muỗng MCT oil, 1 tô rau. Nên lập sẵn bảng kế hoạch 3 bữa/ngày cho cả tuần để duy trì lâu dài."
+                    },
+                    { type: "heading", text: "VI. Chọn thực phẩm" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thịt & cá nguyên miếng", text: "Chọn phần ít mỡ nhất (thăn bò, thăn heo, ức gà, cá hồi, cá ngừ...). Không dùng xúc xích, thịt hộp, cá hộp chế biến công nghiệp." },
+                        { label: "Trứng gà ta / nuôi thả", text: "2–4 quả/ngày, ưu tiên loại có Omega-3. Nên luộc lòng đào hoặc chiên ốp la thay vì chiên quá chín." },
+                        { label: "Chất béo lành mạnh", text: "Cá hồi, cá ngừ, dầu cá, dầu olive nguyên chất, MCT oil, bơ, bơ tinh (ghee) — khoảng 5% DCI." },
+                        { label: "Carb chính", text: "Ngoài gạo trắng có thể thay bằng diêm mạch, yến mạch, khoai lang, gạo lứt, quả hạch và hạt." },
+                        { label: "Rau xanh", text: "Ưu tiên rau ít tinh bột: xà lách, cải xoăn, bông cải xanh, cà chua... Củ quả (cà rốt, củ cải, su hào) tính vào tinh bột, không tính vào rau xanh." },
+                        { label: "Trái cây", text: "Không nên ăn nhiều vì dễ \"sình bụng\", khó tiêu. Nên ăn tráng miệng sau bữa chính, tránh nước ép riêng (mất chất xơ, calo cao) và tránh ăn quá no." }
+                      ]
+                    },
+                    { type: "heading", text: "VII. Nên uống gì" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Trà xanh", text: "Chống đói hiệu quả, giúp đầu óc tỉnh táo, tập trung." },
+                        { label: "Cà phê không đường", text: "Tăng trao đổi chất, duy trì tỉnh táo — có thể thêm 1 thìa kem dừa hoặc bơ lạt, bơ tinh nếu cần. Không dùng nếu dị ứng caffeine." },
+                        { label: "Nước khoáng", text: "Ưu tiên thay nước bình, nước vòi bằng nước có nhiều muối khoáng." },
+                        { label: "Nước muối biển pha loãng", text: "Bù khoáng, đủ nước — pha 1–2g muối vào 3 lít nước uống hằng ngày." }
+                      ]
+                    },
+                    { type: "heading", text: "VIII. Nên tránh gì" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thức ăn cay nóng", text: "Hại tiêu hóa, gan, thường chứa nhiều phụ gia thực phẩm." },
+                        { label: "Chất điều vị nhân tạo", text: "Bột ngọt, tương ớt, mayonnaise... chứa đường hóa học và phụ gia không tốt." },
+                        { label: "Các cây quả đậu", text: "Đậu nành, đậu đỏ, đậu phộng... chứa đường, khó tiêu, nhiều phytoestrogen có thể gây rối loạn hoóc-môn và tích mỡ." },
+                        { label: "Dầu thực vật", text: "Dầu đậu nành, dầu hướng dương, bơ thực vật (margarine) — khi làm nóng dễ oxy hóa, sinh chất có hại." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Đây là hướng dẫn nên tránh, hạn chế để khỏe mạnh và giảm cân, không phải sự cấm đoán tuyệt đối hay phải loại bỏ mãi mãi bất kỳ món ăn nào."
+                    },
+                    { type: "heading", text: "IX. Về chế độ ăn kiêng" },
+                    {
+                      type: "paragraph",
+                      text: "Bất kỳ chế độ ăn kiêng nào theo được lâu dài đều có ích. Hầu hết các chế độ ăn kiêng chỉ giới hạn calo, tinh bột mà không giải quyết gốc rễ: cách chọn thực phẩm, cách sắp xếp lối sống và tập luyện đúng — nên dễ gây áp lực tinh thần, chán nản và khó duy trì."
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Muốn cơ thể khỏe mạnh → ăn thức ăn lành mạnh",
+                        "Muốn giảm cân → làm theo các hướng dẫn ở trên",
+                        "Muốn giảm mỡ tích trữ → ăn ít bữa lại để cơ thể có thời gian \"đốt mỡ\""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "Tập luyện",
+            "Nghỉ ngơi"
+          ]
         },
         {
           title: "Tâm hồn",
@@ -177,16 +329,8 @@ const LIFE_MAP_DATA = {
       edge: "bottom",
       sections: [
         {
-          title: "Bố mẹ",
-          items: ["Nội", "Ngoại"]
-        },
-        {
-          title: "Họ hàng thân thiết",
-          items: []
-        },
-        {
-          title: "Họ hàng không thân thiết",
-          items: []
+          title: "Gia đình lớn",
+          items: ["Bố mẹ - Nội", "Bố mẹ - Ngoại", "Họ hàng thân thiết", "Họ hàng không thân thiết"]
         },
         {
           title: "Gia đình nhỏ",

@@ -24,6 +24,12 @@
     return node;
   }
 
+  // Mục con (item) có thể là chuỗi thường (chưa có nội dung) hoặc object
+  // { title, articles: [{ title, body }] } khi đã có bài viết chi tiết.
+  function itemTitle(item) {
+    return typeof item === "string" ? item : item.title;
+  }
+
   function textButton(label, count, className, onClick) {
     const btn = document.createElement("button");
     btn.type = "button";
@@ -400,10 +406,10 @@
     }
 
     const list = el("ul", "item-list");
-    section.items.forEach((text, index) => {
+    section.items.forEach((entry, index) => {
       const item = el("li", "item-list__item");
       item.appendChild(
-        textButton(text, null, "text-button--item", () =>
+        textButton(itemTitle(entry), null, "text-button--item", () =>
           goTo(`${ctx.basePath}/muc/${sectionIndex}/con/${index}`)
         )
       );
@@ -418,20 +424,92 @@
   function renderItem(partId, tabId, sectionIndex, itemIndex) {
     const ctx = getSectionsContext(partId, tabId);
     const section = ctx && ctx.sections[sectionIndex];
-    const text = section && section.items[itemIndex];
+    const entry = section && section.items[itemIndex];
     const view = el("div", "view view--item");
 
-    if (!ctx || !section || text == null) {
+    if (!ctx || !section || entry == null) {
       view.appendChild(el("p", "empty-state", "Không tìm thấy mục này."));
       view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
 
     view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title}`));
-    view.appendChild(el("h1", "detail-title", text));
-    view.appendChild(el("p", "empty-state", "Nội dung sẽ được bổ sung sau."));
+    view.appendChild(el("h1", "detail-title", itemTitle(entry)));
+
+    const articles = typeof entry === "object" && entry.articles ? entry.articles : [];
+    if (articles.length === 0) {
+      view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+    } else {
+      const list = el("ul", "item-list");
+      articles.forEach((article, articleIndex) => {
+        const li = el("li", "item-list__item");
+        li.appendChild(
+          textButton(article.title, null, "text-button--item", () =>
+            goTo(`${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}/bai/${articleIndex}`)
+          )
+        );
+        list.appendChild(li);
+      });
+      view.appendChild(list);
+    }
+
     view.appendChild(
       renderBackFooter(section.title, () => goTo(`${ctx.basePath}/muc/${sectionIndex}`))
+    );
+
+    return view;
+  }
+
+  function renderArticleBody(container, body) {
+    body.forEach((block) => {
+      if (block.type === "heading") {
+        container.appendChild(el("h2", "article-heading", block.text));
+      } else if (block.type === "paragraph") {
+        container.appendChild(el("p", "article-paragraph", block.text));
+      } else if (block.type === "note") {
+        container.appendChild(el("p", "article-note", block.text));
+      } else if (block.type === "list") {
+        const ul = el("ul", "article-list");
+        block.items.forEach((entry) => {
+          const li = el("li", "article-list__item");
+          if (typeof entry === "string") {
+            li.textContent = entry;
+          } else {
+            li.appendChild(el("strong", "article-list__label", `${entry.label}: `));
+            li.appendChild(document.createTextNode(entry.text));
+          }
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+    });
+  }
+
+  function renderArticle(partId, tabId, sectionIndex, itemIndex, articleIndex) {
+    const ctx = getSectionsContext(partId, tabId);
+    const section = ctx && ctx.sections[sectionIndex];
+    const entry = section && section.items[itemIndex];
+    const articles = entry && typeof entry === "object" ? entry.articles : null;
+    const article = articles && articles[articleIndex];
+    const view = el("div", "view view--article");
+
+    if (!ctx || !section || !entry || !article) {
+      view.appendChild(el("p", "empty-state", "Không tìm thấy bài viết này."));
+      view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
+      return view;
+    }
+
+    view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title} · ${itemTitle(entry)}`));
+    view.appendChild(el("h1", "detail-title", article.title));
+
+    const body = el("div", "article-body");
+    renderArticleBody(body, article.body || []);
+    view.appendChild(body);
+
+    view.appendChild(
+      renderBackFooter(itemTitle(entry), () =>
+        goTo(`${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}`)
+      )
     );
 
     return view;
@@ -451,6 +529,23 @@
 
     if (segments[2] === "tab" && segments[3]) {
       const tabId = segments[3];
+      if (
+        segments[4] === "muc" &&
+        segments[5] != null &&
+        segments[6] === "con" &&
+        segments[7] != null &&
+        segments[8] === "bai" &&
+        segments[9] != null
+      ) {
+        return {
+          view: "article",
+          partId,
+          tabId,
+          sectionIndex: Number(segments[5]),
+          itemIndex: Number(segments[7]),
+          articleIndex: Number(segments[9])
+        };
+      }
       if (segments[4] === "muc" && segments[5] != null && segments[6] === "con" && segments[7] != null) {
         return {
           view: "item",
@@ -466,6 +561,23 @@
       return { view: "tab", partId, tabId };
     }
 
+    if (
+      segments[2] === "muc" &&
+      segments[3] != null &&
+      segments[4] === "con" &&
+      segments[5] != null &&
+      segments[6] === "bai" &&
+      segments[7] != null
+    ) {
+      return {
+        view: "article",
+        partId,
+        tabId: null,
+        sectionIndex: Number(segments[3]),
+        itemIndex: Number(segments[5]),
+        articleIndex: Number(segments[7])
+      };
+    }
     if (segments[2] === "muc" && segments[3] != null && segments[4] === "con" && segments[5] != null) {
       return {
         view: "item",
@@ -494,6 +606,14 @@
       node = renderSection(route.partId, route.tabId, route.sectionIndex);
     } else if (route.view === "item") {
       node = renderItem(route.partId, route.tabId, route.sectionIndex, route.itemIndex);
+    } else if (route.view === "article") {
+      node = renderArticle(
+        route.partId,
+        route.tabId,
+        route.sectionIndex,
+        route.itemIndex,
+        route.articleIndex
+      );
     } else {
       node = renderHome();
     }

@@ -238,7 +238,8 @@ button {
 /* ---------- Màn hình chi tiết (Phần / Mục nhỏ) ---------- */
 .view--part,
 .view--section,
-.view--item {
+.view--item,
+.view--article {
   max-width: 640px;
   margin: 0 auto;
   padding: 32px 24px 60px;
@@ -365,6 +366,63 @@ button {
   margin: 0;
   font-size: 15.5px;
   line-height: 1.5;
+}
+
+/* ---------- Bài viết chi tiết (trong 1 Mục con) ---------- */
+.article-body {
+  margin-top: 24px;
+}
+
+.article-heading {
+  margin: 28px 0 10px;
+  font-size: clamp(16px, 2.6vw, 19px);
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.article-body > .article-heading:first-child {
+  margin-top: 0;
+}
+
+.article-paragraph {
+  margin: 0 0 14px;
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.article-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.article-list__item {
+  position: relative;
+  padding: 6px 0 6px 18px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-soft);
+}
+
+.article-list__item::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.article-list__label {
+  color: var(--color-text);
+}
+
+.article-note {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-left: 2px solid var(--color-accent);
+  background: rgba(232, 163, 61, 0.08);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-text-soft);
 }
 
 /* ---------- Thuyết con nhím: 3 vòng tròn + 3 vùng giao đôi + 1 tâm ----------
