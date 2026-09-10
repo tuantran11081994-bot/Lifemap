@@ -851,7 +851,31 @@
     return { view: "part", partId };
   }
 
+  // Ghi nhớ route hiện tại để phục hồi khi trang được mở lại không kèm hash
+  // (vd bookmark/home-screen icon trỏ vào URL gốc) — refresh bình thường thì
+  // trình duyệt tự giữ nguyên hash nên không cần cơ chế này.
+  const ROUTE_STORAGE_KEY = "lifemap:lastRoute";
+
+  function saveCurrentRoute() {
+    try {
+      localStorage.setItem(ROUTE_STORAGE_KEY, location.hash);
+    } catch (e) {
+      // localStorage có thể bị chặn (private mode...) — bỏ qua, không ảnh hưởng điều hướng.
+    }
+  }
+
+  function restoreLastRouteIfNeeded() {
+    if (location.hash) return;
+    try {
+      const saved = localStorage.getItem(ROUTE_STORAGE_KEY);
+      if (saved) location.hash = saved;
+    } catch (e) {
+      // Không đọc được localStorage thì giữ nguyên hành vi mặc định (về trang chủ).
+    }
+  }
+
   function render() {
+    saveCurrentRoute();
     closeModal();
     const route = parseHash();
     let node;
@@ -882,5 +906,6 @@
   }
 
   window.addEventListener("hashchange", render);
+  restoreLastRouteIfNeeded();
   render();
 })();

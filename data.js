@@ -5,7 +5,7 @@
 //   - section.items   = các Mục con của Mục nhỏ đó
 //   - section.detail  = (tuỳ chọn) khi Mục nhỏ không có Mục con mà có nội dung mô tả
 //                        trực tiếp — mảng { label, text }, hiển thị dạng tab chi tiết
-//                        (vd Mức độ / Định nghĩa / Hành động) thay vì thông báo "chưa có nội dung"
+//                        (vd Mức độ / Vai Trò / Hành động) thay vì thông báo "chưa có nội dung"
 //
 // group: "center" (3 chữ trong khung trung tâm) hoặc "pillar" (4 thành phần quanh khung)
 // edge: chỉ dùng cho group "pillar" — vị trí quanh khung trung tâm (top | bottom | left | right)
@@ -516,7 +516,7 @@ const LIFE_MAP_DATA = {
         },
         {
           title: "Trí Tuệ",
-          items: []
+          items: ["Học (Nạp kiến thức)", "Tư Duy (Dùng kiến thức)"]
         }
       ]
     },
@@ -532,7 +532,7 @@ const LIFE_MAP_DATA = {
           detail: [
             { label: "Mức độ", text: "Không quan trọng nhưng nên có." },
             {
-              label: "Định nghĩa",
+              label: "Vai Trò",
               text: "Đây là những người chỉ giúp tôi mua vui, nhậu nhẹt, giải trí."
             },
             {
