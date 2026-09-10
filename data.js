@@ -512,7 +512,65 @@ const LIFE_MAP_DATA = {
         },
         {
           title: "Tâm hồn",
-          items: []
+          items: [],
+          articles: [
+            {
+              title: "Loại bỏ 6 độc tố của tâm hồn",
+              body: [
+                {
+                  type: "paragraph",
+                  text: "Trong Phật giáo, lục độc (6 độc tố) là 6 trạng thái tâm bất thiện gốc rễ, làm ô nhiễm tâm hồn và là nguyên nhân sâu xa của mọi khổ đau: Tham, Sân, Si, Mạn, Nghi, Ác kiến."
+                },
+                { type: "heading", text: "I. Lục độc là gì?" },
+                {
+                  type: "list",
+                  items: [
+                    { label: "Tham", text: "Lòng ham muốn, chiếm giữ quá mức về vật chất, danh vọng, tình cảm." },
+                    { label: "Sân", text: "Nóng giận, oán ghét, thù hận khi không được như ý." },
+                    { label: "Si", text: "U mê, thiếu sáng suốt, không thấy rõ bản chất sự vật (vô minh)." },
+                    { label: "Mạn", text: "Ngã mạn, tự cao, xem thường người khác." },
+                    { label: "Nghi", text: "Hoài nghi, thiếu niềm tin đúng đắn vào chân lý, nhân quả." },
+                    { label: "Ác kiến", text: "Tà kiến — nhận thức, quan điểm sai lệch về đạo lý, nhân quả." }
+                  ]
+                },
+                { type: "heading", text: "II. Ảnh hưởng đến tâm hồn" },
+                {
+                  type: "list",
+                  items: [
+                    { label: "Che mờ trí tuệ", text: "Tâm mất sáng suốt, khó phân biệt đúng sai." },
+                    { label: "Tạo nghiệp bất thiện", text: "Dẫn tới hành động, lời nói gây khổ cho mình và người khác." },
+                    { label: "Mất bình an nội tâm", text: "Tâm luôn xáo động, lo âu, bất mãn, khó có hạnh phúc thật sự." },
+                    { label: "Phá vỡ các mối quan hệ", text: "Gây xung đột, xa cách với người xung quanh." }
+                  ]
+                },
+                {
+                  type: "note",
+                  text: "Lục độc không tồn tại độc lập — chúng nương vào nhau mà sinh khởi, gốc rễ sâu xa nhất là Si (vô minh)."
+                },
+                { type: "heading", text: "III. Cách loại bỏ" },
+                {
+                  type: "paragraph",
+                  text: "Con đường loại bỏ lục độc trong Phật giáo xoay quanh Tam học: Giới – Định – Tuệ, kết hợp tu tập riêng cho từng độc tố."
+                },
+                {
+                  type: "table",
+                  headers: ["Độc tố", "Cách loại bỏ"],
+                  rows: [
+                    ["Tham", "Tập bố thí, buông xả; quán chiếu vô thường để bớt bám chấp."],
+                    ["Sân", "Tu tập từ bi, nhẫn nhịn; quán chiếu để hiểu và cảm thông thay vì oán ghét."],
+                    ["Si", "Học và thực hành giáo lý (văn – tư – tu) để mở trí tuệ."],
+                    ["Mạn", "Giữ tâm khiêm hạ, thấy rõ ai cũng có sở đoản để bớt tự cao."],
+                    ["Nghi", "Tìm hiểu giáo lý rõ ràng, thực hành và tự chứng nghiệm để có chánh tín."],
+                    ["Ác kiến", "Học chánh kiến (nhân quả, vô thường, vô ngã) để sửa nhận thức sai lệch."]
+                  ]
+                },
+                {
+                  type: "note",
+                  text: "Gốc rễ là tu tập Chánh niệm và Trí tuệ — khi thấy rõ bản chất vô thường, vô ngã của vạn pháp, lục độc sẽ tự nhiên suy yếu."
+                }
+              ]
+            }
+          ]
         },
         {
           title: "Trí Tuệ",

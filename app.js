@@ -408,7 +408,19 @@
     view.appendChild(el("h1", "detail-title", section.title));
 
     if (section.items.length === 0) {
-      if (section.detail && section.detail.length > 0) {
+      if (section.articles && section.articles.length > 0) {
+        const list = el("ul", "item-list");
+        section.articles.forEach((article, articleIndex) => {
+          const li = el("li", "item-list__item");
+          li.appendChild(
+            textButton(article.title, null, "text-button--item", () =>
+              goTo(`${ctx.basePath}/muc/${sectionIndex}/bai/${articleIndex}`)
+            )
+          );
+          list.appendChild(li);
+        });
+        view.appendChild(list);
+      } else if (section.detail && section.detail.length > 0) {
         const fields = el("ul", "detail-fields");
         section.detail.forEach((field) => {
           const li = el("li", "detail-field");
@@ -714,21 +726,27 @@
   function renderArticle(partId, tabId, sectionIndex, itemIndex, articleIndex) {
     const ctx = getSectionsContext(partId, tabId);
     const section = ctx && ctx.sections[sectionIndex];
-    const entry = section && section.items[itemIndex];
-    const articles = entry && typeof entry === "object" ? entry.articles : null;
+    const direct = itemIndex == null;
+    const entry = direct ? null : section && section.items[itemIndex];
+    const articles = direct
+      ? section && section.articles
+      : entry && typeof entry === "object" ? entry.articles : null;
     const article = articles && articles[articleIndex];
     const view = el("div", "view view--article");
 
-    if (!ctx || !section || !entry || !article) {
+    if (!ctx || !section || (!direct && !entry) || !article) {
       view.appendChild(el("p", "empty-state", "Không tìm thấy bài viết này."));
       view.appendChild(renderBackFooter("Về bản đồ", () => goTo("#/")));
       return view;
     }
 
-    view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title} · ${itemTitle(entry)}`));
+    const eyebrowTail = direct ? section.title : `${section.title} · ${itemTitle(entry)}`;
+    view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${eyebrowTail}`));
     view.appendChild(el("h1", "detail-title", article.title));
 
-    const articlePath = `${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}/bai/${articleIndex}`;
+    const articlePath = direct
+      ? `${ctx.basePath}/muc/${sectionIndex}/bai/${articleIndex}`
+      : `${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}/bai/${articleIndex}`;
     const highlightKey = `lifemap:highlight:${articlePath}`;
     const highlightCtx = { set: new Set(readLocal(highlightKey, [])), storageKey: highlightKey };
 
@@ -739,8 +757,8 @@
     view.appendChild(renderArticleNotes(`lifemap:notes:${articlePath}`));
 
     view.appendChild(
-      renderBackFooter(itemTitle(entry), () =>
-        goTo(`${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}`)
+      renderBackFooter(direct ? section.title : itemTitle(entry), () =>
+        goTo(direct ? `${ctx.basePath}/muc/${sectionIndex}` : `${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}`)
       )
     );
 
@@ -778,6 +796,16 @@
           articleIndex: Number(segments[9])
         };
       }
+      if (segments[4] === "muc" && segments[5] != null && segments[6] === "bai" && segments[7] != null) {
+        return {
+          view: "article",
+          partId,
+          tabId,
+          sectionIndex: Number(segments[5]),
+          itemIndex: null,
+          articleIndex: Number(segments[7])
+        };
+      }
       if (segments[4] === "muc" && segments[5] != null && segments[6] === "con" && segments[7] != null) {
         return {
           view: "item",
@@ -808,6 +836,16 @@
         sectionIndex: Number(segments[3]),
         itemIndex: Number(segments[5]),
         articleIndex: Number(segments[7])
+      };
+    }
+    if (segments[2] === "muc" && segments[3] != null && segments[4] === "bai" && segments[5] != null) {
+      return {
+        view: "article",
+        partId,
+        tabId: null,
+        sectionIndex: Number(segments[3]),
+        itemIndex: null,
+        articleIndex: Number(segments[5])
       };
     }
     if (segments[2] === "muc" && segments[3] != null && segments[4] === "con" && segments[5] != null) {
