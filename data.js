@@ -516,7 +516,160 @@ const LIFE_MAP_DATA = {
         },
         {
           title: "Trí Tuệ",
-          items: ["Học (Nạp kiến thức)", "Tư Duy (Dùng kiến thức)"]
+          items: [
+            {
+              title: "Học (Nạp kiến thức)",
+              articles: [
+                {
+                  title: "Kỹ Năng Tự Học",
+                  body: [
+                    {
+                      type: "paragraph",
+                      text: "Chuyên đề 05 — Phương pháp Tự Học (ghi chép ngày 22-03-2025)."
+                    },
+                    { type: "heading", text: "I. Tổng quan" },
+                    { type: "subheading", text: "1. Kiến thức tiền đề" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thành công", text: "Gồm 3 yếu tố: mục tiêu, tự phát triển, quan hệ với người khác." }
+                      ]
+                    },
+                    { type: "paragraph", text: "Tự phát triển là một chuỗi quá trình:" },
+                    {
+                      type: "flow",
+                      steps: [
+                        "Tự phát triển",
+                        "Người khác trang bị cho ta (đệ tử)",
+                        "Người khác giúp đỡ (bạn)",
+                        "Người khác thuê (làm thuê)"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Tự học là một thành phần của \"tự phát triển\" — mà tự phát triển chính là sự vĩ đại của cả chuỗi phát triển đó."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Kết quả tự học cần đạt tối thiểu mức 3 trên cả 3 cột (3-3-3):"
+                    },
+                    {
+                      type: "table",
+                      headers: ["Kiến thức", "Kỹ Năng", "Thái độ"],
+                      rows: [
+                        ["1. Nhớ", "—", "1. Nghe"],
+                        ["2. Hiểu", "—", "2. Đáp ứng"],
+                        ["3. Vận dụng", "—", "3. Có quan điểm riêng"],
+                        ["4. Phân tích", "—", "4. Chi phối quan điểm/giá trị"],
+                        ["5. Tổng hợp/đánh giá", "—", "5. Đặc trưng hóa"],
+                        ["6. Sáng tạo", "—", "—"]
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Thiếu cột Kỹ Năng (chưa có nội dung nguồn) — mục tiêu tối thiểu là đạt mức 3 (3-3-3) trên cả 3 cột."
+                    },
+                    { type: "subheading", text: "4 mức người hướng dẫn" },
+                    {
+                      type: "list",
+                      items: [
+                        "Loại 1 — Nói cho ta hiểu: thầy bình thường.",
+                        "Loại 2 — Nói mà ta bị thuyết phục: thầy giỏi.",
+                        "Loại 3 — Nói có minh chứng giúp ta hưng phấn: thầy xuất sắc.",
+                        "Loại 4 — Khơi cho ta động lực và cảm hứng: thầy thiên tài."
+                      ]
+                    },
+                    { type: "subheading", text: "2. Vì sao cần kỹ năng Tự Học" },
+                    { type: "paragraph", text: "Xét theo góc độ người thầy, có 5 nguồn học sau đây:" },
+                    {
+                      type: "list",
+                      items: [
+                        "Thầy trên bục giảng",
+                        "Thầy Sách & Internet",
+                        "Thầy là bạn bè",
+                        "Thầy là chính mình (tự học)",
+                        "Thầy là thần tượng"
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Rất tiếc trong thực tế không phải ai cũng tự nhiên biết cách học — mỗi người cần tự tìm ra kỹ năng Tự Học riêng phù hợp với mình, ngoài 4 nguồn thầy còn lại."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Bản chất của tự học là điều chỉnh thông tin mình nhận được sao cho phù hợp với phong cách của chính mình. Khi điều chỉnh đúng, người học sẽ rất dễ tiếp cận và vận dụng ngay được kiến thức mới."
+                    },
+                    { type: "subheading", text: "3. Phong cách học" },
+                    {
+                      type: "paragraph",
+                      text: "Mỗi người có phong cách học khác nhau, chia theo cách xử lý và tiếp nhận thông tin cá nhân:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Trực quan", text: "Học qua tranh ảnh, sơ đồ tư duy, hình vẽ." },
+                        { label: "Ngôn ngữ", text: "Đọc to, viết ra." },
+                        { label: "Logic hóa", text: "Sắp xếp, suy luận theo trình tự, biến kiến thức thành tư duy của riêng mình." },
+                        { label: "Thính giác", text: "Nghe giảng." },
+                        { label: "Vận động", text: "Vận động thể chất, đóng vai, thực hành trực tiếp." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Biết rõ phong cách học của bản thân giúp chọn đúng cách tiếp nhận kiến thức, học nhanh và nhớ lâu hơn."
+                    },
+                    { type: "heading", text: "II. Các bí quyết chuẩn bị cho việc Học (điều kiện cần)" },
+                    {
+                      type: "list",
+                      items: [
+                        "Động lực học",
+                        "Tạo thói quen học chủ động",
+                        "Có trách nhiệm với việc tự học",
+                        "Học tập độc lập",
+                        "Đối phó với căng thẳng",
+                        "Không gian học",
+                        "Quản trị thời gian"
+                      ]
+                    },
+                    { type: "heading", text: "III. Các kỹ năng học (điều kiện đủ)" },
+                    { type: "subheading", text: "1. Kỹ năng tìm kiếm thông tin" },
+                    {
+                      type: "list",
+                      items: [
+                        "Mọi thông tin tốt nhất đều được tìm thấy trong sách in của các thư viện lớn.",
+                        "Tìm kiếm tài liệu bổ sung cho cuốn sách chính."
+                      ]
+                    },
+                    { type: "subheading", text: "2. Kỹ năng đọc" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Đọc thông minh", text: "Đọc lướt để nắm sơ qua nội dung, xem có phù hợp không." },
+                        { label: "Đọc chủ động", text: "Tìm đọc những thông tin mình muốn." },
+                        { label: "Kiểm soát tốc độ đọc", text: "Đọc lướt thì nhanh, đọc hiểu thì chậm." }
+                      ]
+                    },
+                    { type: "subheading", text: "3. Kỹ năng nghe chủ động" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nghe tập trung, nắm được các ý chính.",
+                        "Hỏi lại người thầy để khui kiến thức."
+                      ]
+                    },
+                    { type: "subheading", text: "4. Kỹ năng ghi chép" },
+                    { type: "subheading", text: "5. Kỹ năng viết" },
+                    { type: "heading", text: "Sự lặp lại" },
+                    {
+                      type: "paragraph",
+                      text: "Lặp lại ngay lập tức, lặp lại liên tục, lặp lại đều đặn — đó là chìa khóa của việc tự học."
+                    }
+                  ]
+                }
+              ]
+            },
+            "Tư Duy (Dùng kiến thức)"
+          ]
         }
       ]
     },

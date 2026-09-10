@@ -588,6 +588,16 @@
     return wrap;
   }
 
+  // Sơ đồ chuỗi bước (vd chuỗi quá trình phát triển) — các bước xếp dọc, nối bằng mũi tên.
+  function renderArticleFlow(steps) {
+    const wrap = el("div", "flow");
+    steps.forEach((step, i) => {
+      if (i > 0) wrap.appendChild(el("div", "flow-arrow", "↓"));
+      wrap.appendChild(el("div", "flow-step", step));
+    });
+    return wrap;
+  }
+
   // headingRefs (tuỳ chọn): mảng để gom { id, text } của các block "heading" —
   // dùng làm mục lục (xem renderArticleToc), mỗi heading được gắn id để scroll tới.
   // highlightCtx (tuỳ chọn): { set, storageKey } — bật highlight-khi-bấm cho các dòng nội dung.
@@ -629,6 +639,8 @@
         container.appendChild(renderArticleClock(block.segments));
       } else if (block.type === "table") {
         container.appendChild(renderArticleTable(block));
+      } else if (block.type === "flow") {
+        container.appendChild(renderArticleFlow(block.steps));
       }
     });
   }
