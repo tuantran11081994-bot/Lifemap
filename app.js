@@ -30,6 +30,25 @@
     return typeof item === "string" ? item : item.title;
   }
 
+  // ---------- Lưu cục bộ trên máy (không đăng nhập, không đồng bộ cloud) ----------
+  // Ghi chú + highlight của mỗi bài viết chỉ lưu trong localStorage của trình duyệt đang dùng.
+  function readLocal(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw != null ? JSON.parse(raw) : fallback;
+    } catch (e) {
+      return fallback;
+    }
+  }
+
+  function writeLocal(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      // Bỏ qua nếu localStorage không khả dụng (chế độ riêng tư, đầy dung lượng...)
+    }
+  }
+
   function textButton(label, count, className, onClick) {
     const btn = document.createElement("button");
     btn.type = "button";
@@ -460,10 +479,120 @@
     return view;
   }
 
+  // Bấm vào 1 dòng nội dung (đoạn văn / lưu ý / mục trong danh sách) để highlight —
+  // trạng thái highlight lưu theo từng bài viết trong localStorage (xem highlightCtx.set).
+  function makeHighlightable(node, key, highlightCtx) {
+    if (!highlightCtx) return;
+    node.classList.add("is-highlightable");
+    if (highlightCtx.set.has(key)) node.classList.add("is-highlighted");
+    node.addEventListener("click", () => {
+      if (highlightCtx.set.has(key)) {
+        highlightCtx.set.delete(key);
+        node.classList.remove("is-highlighted");
+      } else {
+        highlightCtx.set.add(key);
+        node.classList.add("is-highlighted");
+      }
+      writeLocal(highlightCtx.storageKey, Array.from(highlightCtx.set));
+    });
+  }
+
+  const SVG_NS = "http://www.w3.org/2000/svg";
+
+  // Sơ đồ vòng tròn 12 múi (đồng hồ sinh học, chu kỳ ngày...) — segments theo chiều kim
+  // đồng hồ bắt đầu từ đỉnh 12h, mỗi segment: { time: "11:00–13:00", lines: ["Tim,", "não bộ"] }.
+  function renderArticleClock(segments) {
+    const wrap = el("div", "clock-wheel-wrap");
+    const svg = document.createElementNS(SVG_NS, "svg");
+    svg.setAttribute("viewBox", "0 0 300 300");
+    svg.setAttribute("class", "clock-wheel");
+
+    const cx = 150;
+    const cy = 150;
+    const n = segments.length;
+    const anglePer = 360 / n;
+
+    function polar(angleDeg, radius) {
+      const rad = ((angleDeg - 90) * Math.PI) / 180;
+      return { x: cx + radius * Math.cos(rad), y: cy + radius * Math.sin(rad) };
+    }
+
+    segments.forEach((seg, i) => {
+      const startAngle = i * anglePer - anglePer / 2;
+      const endAngle = startAngle + anglePer;
+      const p1 = polar(startAngle, 140);
+      const p2 = polar(endAngle, 140);
+      const largeArc = anglePer > 180 ? 1 : 0;
+
+      const path = document.createElementNS(SVG_NS, "path");
+      path.setAttribute(
+        "d",
+        `M${cx},${cy} L${p1.x},${p1.y} A140,140 0 ${largeArc} 1 ${p2.x},${p2.y} Z`
+      );
+      path.setAttribute("class", `clock-wheel__wedge clock-wheel__wedge--${i % 2 === 0 ? "a" : "b"}`);
+      svg.appendChild(path);
+
+      const tickPos = polar(startAngle, 154);
+      const tick = document.createElementNS(SVG_NS, "text");
+      tick.setAttribute("x", String(tickPos.x));
+      tick.setAttribute("y", String(tickPos.y));
+      tick.setAttribute("class", "clock-wheel__tick");
+      tick.setAttribute("text-anchor", "middle");
+      tick.setAttribute("dominant-baseline", "middle");
+      tick.textContent = seg.time.split("–")[0].split("-")[0].trim();
+      svg.appendChild(tick);
+
+      const labelPos = polar(i * anglePer, 92);
+      const label = document.createElementNS(SVG_NS, "text");
+      label.setAttribute("x", String(labelPos.x));
+      label.setAttribute("class", "clock-wheel__label");
+      label.setAttribute("text-anchor", "middle");
+      const lines = seg.lines || [seg.time];
+      const lineHeight = 11;
+      const startY = labelPos.y - ((lines.length - 1) * lineHeight) / 2;
+      lines.forEach((lineText, lineIndex) => {
+        const tspan = document.createElementNS(SVG_NS, "tspan");
+        tspan.setAttribute("x", String(labelPos.x));
+        tspan.setAttribute("y", String(startY + lineIndex * lineHeight));
+        tspan.textContent = lineText;
+        label.appendChild(tspan);
+      });
+      svg.appendChild(label);
+    });
+
+    wrap.appendChild(svg);
+    return wrap;
+  }
+
+  // Bảng dữ liệu dạng lưới (vd bảng công thức, tỷ lệ) — cuộn ngang trên mobile nếu rộng.
+  function renderArticleTable(block) {
+    const wrap = el("div", "article-table-wrap");
+    const table = document.createElement("table");
+    table.className = "article-table";
+
+    const thead = document.createElement("thead");
+    const headRow = document.createElement("tr");
+    block.headers.forEach((text) => headRow.appendChild(el("th", null, text)));
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement("tbody");
+    block.rows.forEach((row) => {
+      const tr = document.createElement("tr");
+      row.forEach((cell) => tr.appendChild(el("td", null, cell)));
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    wrap.appendChild(table);
+    return wrap;
+  }
+
   // headingRefs (tuỳ chọn): mảng để gom { id, text } của các block "heading" —
   // dùng làm mục lục (xem renderArticleToc), mỗi heading được gắn id để scroll tới.
-  function renderArticleBody(container, body, headingRefs) {
-    body.forEach((block) => {
+  // highlightCtx (tuỳ chọn): { set, storageKey } — bật highlight-khi-bấm cho các dòng nội dung.
+  function renderArticleBody(container, body, headingRefs, highlightCtx) {
+    body.forEach((block, blockIndex) => {
       if (block.type === "heading") {
         const heading = el("h2", "article-heading", block.text);
         if (headingRefs) {
@@ -475,12 +604,16 @@
       } else if (block.type === "subheading") {
         container.appendChild(el("h3", "article-subheading", block.text));
       } else if (block.type === "paragraph") {
-        container.appendChild(el("p", "article-paragraph", block.text));
+        const p = el("p", "article-paragraph", block.text);
+        makeHighlightable(p, `b${blockIndex}`, highlightCtx);
+        container.appendChild(p);
       } else if (block.type === "note") {
-        container.appendChild(el("p", "article-note", block.text));
+        const note = el("p", "article-note", block.text);
+        makeHighlightable(note, `b${blockIndex}`, highlightCtx);
+        container.appendChild(note);
       } else if (block.type === "list") {
         const ul = el("ul", "article-list");
-        block.items.forEach((entry) => {
+        block.items.forEach((entry, itemIndex) => {
           const li = el("li", "article-list__item");
           if (typeof entry === "string") {
             li.textContent = entry;
@@ -488,9 +621,14 @@
             li.appendChild(el("strong", "article-list__label", `${entry.label}: `));
             li.appendChild(document.createTextNode(entry.text));
           }
+          makeHighlightable(li, `b${blockIndex}-i${itemIndex}`, highlightCtx);
           ul.appendChild(li);
         });
         container.appendChild(ul);
+      } else if (block.type === "clock") {
+        container.appendChild(renderArticleClock(block.segments));
+      } else if (block.type === "table") {
+        container.appendChild(renderArticleTable(block));
       }
     });
   }
@@ -556,6 +694,43 @@
     return wrap;
   }
 
+  // Bảng ghi chú tự điền ở cuối bài viết — mỗi dòng là 1 ô contenteditable, tự lưu vào
+  // localStorage của máy đang dùng (không cần đăng nhập/đồng bộ, đúng quy ước dev-conventions.md).
+  function renderArticleNotes(storageKey) {
+    const wrap = el("div", "notes");
+    wrap.appendChild(el("h2", "article-heading", "Ghi chú của tôi"));
+    wrap.appendChild(el("p", "notes-hint", "Chạm vào dòng để ghi chú — tự lưu trên máy này."));
+
+    const list = el("div", "notes-list");
+    const saved = readLocal(storageKey, null);
+    const initialLines = Array.isArray(saved) && saved.length > 0 ? saved : ["", "", ""];
+
+    function persist() {
+      const lines = Array.from(list.querySelectorAll(".notes-line")).map((node) => node.textContent);
+      writeLocal(storageKey, lines);
+    }
+
+    function addRow(text) {
+      const line = document.createElement("div");
+      line.className = "notes-line";
+      line.contentEditable = "true";
+      line.textContent = text || "";
+      line.addEventListener("input", persist);
+      list.appendChild(line);
+    }
+
+    initialLines.forEach(addRow);
+
+    const addBtn = textButton("+ Thêm dòng", null, "text-button--notes-add", () => {
+      addRow("");
+      persist();
+    });
+
+    wrap.appendChild(list);
+    wrap.appendChild(addBtn);
+    return wrap;
+  }
+
   function renderArticle(partId, tabId, sectionIndex, itemIndex, articleIndex) {
     const ctx = getSectionsContext(partId, tabId);
     const section = ctx && ctx.sections[sectionIndex];
@@ -573,14 +748,20 @@
     view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title} · ${itemTitle(entry)}`));
     view.appendChild(el("h1", "detail-title", article.title));
 
+    const articlePath = `${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}/bai/${articleIndex}`;
+    const highlightKey = `lifemap:highlight:${articlePath}`;
+    const highlightCtx = { set: new Set(readLocal(highlightKey, [])), storageKey: highlightKey };
+
     const headingRefs = [];
     const body = el("div", "article-body");
-    renderArticleBody(body, article.body || [], headingRefs);
+    renderArticleBody(body, article.body || [], headingRefs, highlightCtx);
     view.appendChild(body);
 
     if (headingRefs.length > 0) {
       view.appendChild(renderArticleToc(headingRefs));
     }
+
+    view.appendChild(renderArticleNotes(`lifemap:notes:${articlePath}`));
 
     view.appendChild(
       renderBackFooter(itemTitle(entry), () =>

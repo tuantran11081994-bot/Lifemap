@@ -432,6 +432,154 @@ button {
   color: var(--color-text-soft);
 }
 
+/* Bấm vào 1 dòng (đoạn văn / lưu ý / mục danh sách) để highlight — trạng thái lưu theo máy */
+.is-highlightable {
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, transform 0.12s ease;
+}
+
+.is-highlightable:active {
+  transform: scale(0.99);
+}
+
+.is-highlighted {
+  background: rgba(242, 183, 5, 0.2);
+}
+
+.article-note.is-highlighted {
+  background: rgba(242, 183, 5, 0.28);
+}
+
+/* ---------- Sơ đồ vòng tròn (vd đồng hồ sinh học 12 múi giờ) ---------- */
+.clock-wheel-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto 24px;
+}
+
+.clock-wheel {
+  width: 100%;
+  max-width: clamp(240px, 78vw, 320px);
+  height: auto;
+}
+
+.clock-wheel__wedge--a {
+  fill: rgba(143, 201, 122, 0.14);
+  stroke: rgba(244, 239, 226, 0.22);
+  stroke-width: 1;
+}
+
+.clock-wheel__wedge--b {
+  fill: rgba(143, 201, 122, 0.04);
+  stroke: rgba(244, 239, 226, 0.22);
+  stroke-width: 1;
+}
+
+.clock-wheel__label {
+  fill: var(--color-text);
+  font-family: var(--font);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.clock-wheel__tick {
+  fill: var(--color-accent);
+  font-family: var(--font);
+  font-size: 7px;
+  font-weight: 700;
+}
+
+/* ---------- Bảng dữ liệu trong bài viết (cuộn ngang trên mobile) ---------- */
+.article-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0 16px;
+  border: 1px solid rgba(244, 239, 226, 0.12);
+  border-radius: 12px;
+}
+
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.article-table th,
+.article-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(244, 239, 226, 0.12);
+}
+
+.article-table th {
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.article-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-table td:first-child,
+.article-table th:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--color-bg);
+}
+
+/* ---------- Ghi chú của tôi (bảng tự điền, cuối bài viết) ---------- */
+.notes {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(244, 239, 226, 0.16);
+}
+
+.notes-hint {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--color-text-soft);
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.notes-line {
+  min-height: 38px;
+  padding: 9px 12px;
+  background: var(--color-bg-frame);
+  border: 1px solid rgba(244, 239, 226, 0.2);
+  border-radius: 10px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.notes-line:focus {
+  border-color: var(--color-primary);
+}
+
+.notes-line:empty::before {
+  content: "Nhập ghi chú…";
+  color: var(--color-text-soft);
+}
+
+.text-button--notes-add {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 6px 2px;
+}
+
 /* ---------- Mục lục bài viết (nút 3 gạch góc phải trên) ---------- */
 .toc {
   position: fixed;

@@ -366,6 +366,143 @@ const LIFE_MAP_DATA = {
                       text: "Hãy cập nhật Fitness Profile và các ghi chú thường xuyên để theo dõi sự thay đổi của các chỉ số thể chất quan trọng khác."
                     }
                   ]
+                },
+                {
+                  title: "Chu kỳ sinh học đào thải & hấp thụ",
+                  body: [
+                    {
+                      type: "paragraph",
+                      text: "Mỗi cơ quan trong cơ thể có một khung giờ hoạt động mạnh nhất trong ngày. Vòng tròn dưới đây tóm tắt chu kỳ 24 giờ đó — theo chiều kim đồng hồ, mỗi múi tương ứng 2 giờ."
+                    },
+                    {
+                      type: "clock",
+                      segments: [
+                        { time: "11:00–13:00", lines: ["Tim,", "não bộ"] },
+                        { time: "13:00–15:00", lines: ["Ruột non"] },
+                        { time: "15:00–17:00", lines: ["Bàng quang"] },
+                        { time: "17:00–19:00", lines: ["Thận"] },
+                        { time: "19:00–21:00", lines: ["Hệ", "tim mạch"] },
+                        { time: "21:00–23:00", lines: ["Hệ miễn", "dịch"] },
+                        { time: "23:00–01:00", lines: ["Túi mật,", "ống dẫn mật"] },
+                        { time: "01:00–03:00", lines: ["Gan"] },
+                        { time: "03:00–05:00", lines: ["Phổi"] },
+                        { time: "05:00–07:00", lines: ["Ruột già"] },
+                        { time: "07:00–09:00", lines: ["Dạ dày"] },
+                        { time: "09:00–11:00", lines: ["Tùy tạng", "và lá lách"] }
+                      ]
+                    },
+                    { type: "heading", text: "Chi tiết theo khung giờ" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "00:00 - 04:00", text: "Cơ thể tổng hợp tế bào máu mới từ tủy xương." },
+                        { label: "01:00 - 03:00", text: "Gan hoạt động mạnh nhất." },
+                        { label: "03:00 - 05:00", text: "Phổi hoạt động mạnh nhất." },
+                        { label: "05:00 - 07:00", text: "Ruột già hoạt động mạnh nhất." },
+                        { label: "07:00 - 09:00", text: "Dạ dày hấp thu tốt nhất." },
+                        { label: "09:00 - 11:00", text: "Tùy tạng và lá lách hoạt động mạnh nhất." },
+                        { label: "11:00 - 13:00", text: "Tim và não bộ hoạt động mạnh nhất." },
+                        { label: "13:00 - 15:00", text: "Ruột non hấp thu mạnh nhất." },
+                        { label: "15:00 - 17:00", text: "Bàng quang hoạt động mạnh nhất." },
+                        { label: "17:00 - 19:00", text: "Thận hoạt động mạnh nhất." },
+                        { label: "19:00 trở đi", text: "Cần giảm sự hấp thu và gia tăng sự thanh lọc đào thải." },
+                        { label: "19:00 - 21:00", text: "Làm sạch hệ tuần hoàn, tim mạch." },
+                        { label: "21:00 - 23:00", text: "Hệ thống miễn dịch hoạt động mạnh nhất." },
+                        { label: "23:00 - 01:00", text: "Túi mật, ống dẫn mật hoạt động mạnh nhất." }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  title: "Bảng tiêu chuẩn ăn chay thực dưỡng",
+                  body: [
+                    { type: "heading", text: "Tỷ lệ thành phần bữa ăn" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Ngũ cốc", text: "50–60% khẩu phần." },
+                        { label: "Rau củ quả", text: "25–30% khẩu phần." },
+                        { label: "Súp (miso súp)", text: "5% khẩu phần." },
+                        { label: "Các loại đậu và rong biển", text: "5–10% khẩu phần." }
+                      ]
+                    },
+                    { type: "subheading", text: "Ngũ cốc" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thường ngày", text: "Gạo lứt, đại mạch, hạt kê, hạt bắp, lúa mì, lúa mạch, lúa mạch đen, kiều mạch..." },
+                        { label: "Thỉnh thoảng", text: "Gạo nếp lứt, mì sợi nguyên cám không men, bánh mì nguyên cám, yến mạch cắt nhỏ, yến mạch cán, bột bắp, hạt pastar..." }
+                      ]
+                    },
+                    { type: "subheading", text: "Rau củ quả" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thường ngày", text: "Rau cải xoăn, cải xoong, cải rổ, cải thảo, hành lá, bông cải, súp lơ, bắp cải, hành tây, bí, cà rốt, củ cải, củ cải trắng, củ sen, ngưu bàng..." },
+                        { label: "Thỉnh thoảng", text: "Cần tây, lá thơm, dưa leo, nấm, xà lách, đậu nành, đậu tây..." }
+                      ]
+                    },
+                    { type: "subheading", text: "Các loại đậu" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thường ngày", text: "Đậu đỏ, đậu răng ngựa, đậu lăng, đậu nành đen." },
+                        { label: "Thỉnh thoảng", text: "Đậu nành, đậu thận, đậu Pinto, đậu khô nguyên cám, đậu bơ, đậu/cám, các sản phẩm từ đậu như đậu hủ, đậu hủ khô..." }
+                      ]
+                    },
+                    { type: "subheading", text: "Rong biển" },
+                    {
+                      type: "paragraph",
+                      text: "Tảo bẹ, rong biển khô, rong biển Nori, rong biển đen, rong biển sợi đen, rong biển Dulse, rong biển tím, đông sương, tảo nâu..."
+                    },
+                    { type: "subheading", text: "Các loại thực phẩm khác" },
+                    {
+                      type: "paragraph",
+                      text: "Cá thịt trắng, các loại hạt rang, đậu phộng, các thức uống, chất tạo ngọt tự nhiên (mật lúa mạch hoặc siro gạo), các loại trái cây khô, tươi hoặc tự trồng."
+                    },
+                    { type: "heading", text: "Nhịn ăn dài ngày & phương pháp dưỡng sinh Ohsawa" },
+                    {
+                      type: "note",
+                      text: "Nếu cần nhịn ăn dài ngày để cải thiện sức khỏe mà cơ thể đang quá suy nhược, nên thực hiện làm nhiều đợt ngắn ngày. Trong thời gian chuyển tiếp giữa các đợt nên ăn uống theo phương pháp dưỡng sinh (hợp lý và cân bằng Âm – Dương) kết hợp tập luyện để nâng thể trạng, tốt nhất là ăn theo công thức số 7 hoặc số 6."
+                    },
+                    { type: "subheading", text: "10 công thức ăn uống (phương pháp dưỡng sinh Ohsawa)" },
+                    {
+                      type: "table",
+                      headers: ["Công thức", "Ngũ cốc (%)", "Rau củ (%)", "Súp (%)", "Thịt (%)", "Trái cây (%)", "Tráng miệng (%)"],
+                      rows: [
+                        ["7", "100", "", "", "", "", ""],
+                        ["6", "90", "10", "", "", "", ""],
+                        ["5", "80", "20", "", "", "", ""],
+                        ["4", "70", "20", "10", "", "", ""],
+                        ["3", "60", "30", "10", "", "", ""],
+                        ["2", "50", "30", "10", "10", "", ""],
+                        ["1", "40", "30", "10", "20", "", ""],
+                        ["-1", "30", "30", "10", "20", "10", ""],
+                        ["-2", "20", "30", "10", "25", "10", "5"],
+                        ["-3", "10", "30", "10", "30", "15", "5"]
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Thức uống: uống vừa đủ, càng ít càng tốt. Trích: Minh triết trong ăn uống của phương Đông – Ngô Đức Vượng."
+                    },
+                    { type: "heading", text: "Công thức nước chanh mật ong mỗi sáng" },
+                    {
+                      type: "table",
+                      headers: ["Nguyên liệu", "Tỉ lệ"],
+                      rows: [
+                        ["Chanh tươi (dùng cả vỏ cắt nhỏ hoặc ép nguyên trái, lấy cả hạt)", "1/2 trái"],
+                        ["Mật ong (hoặc đường tự nhiên: đường thốt nốt, đường mía, mật mía...)", "Vừa đủ ngọt"],
+                        ["Muối (muối hạt rang, muối hồng, muối hầm...)", "2–3 hạt"],
+                        ["Gừng tươi (nên nướng hoặc nấu cùng nước để dương hoá)", "2–3 lát"],
+                        ["Nước ấm (tốt nhất là nước kiềm)", "130ml"]
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Nước chanh mật ong cân bằng âm dương ngũ hành sẽ có 5 vị (đắng, cay, mặn, chua, ngọt). Nên uống trước bữa sáng 30 phút, uống chậm và nhai kỹ tất cả gừng và vỏ chanh. Công thức có thể điều chỉnh theo cảm nhận mỗi người."
+                    }
+                  ]
                 }
               ]
             },
