@@ -419,6 +419,32 @@ button {
   border: 1.5px solid rgba(232, 163, 61, 0.55);
 }
 
+/* Khung neo vô hình — cùng vị trí/kích thước với vòng tròn tương ứng, nhưng được vẽ
+   sau (xem renderCareerVenn ở app.js) nên chữ bên trong luôn nổi trên mọi vòng tròn,
+   kể cả ở phần 2-3 vòng đè lên nhau. pointer-events: none để không chặn click vào
+   phần vòng tròn không có chữ; .venn__label bên trong bật lại pointer-events cho nút. */
+.venn__label-anchor {
+  position: absolute;
+  width: 64%;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+}
+
+.venn__label-anchor--top {
+  left: 18%;
+  top: 2%;
+}
+
+.venn__label-anchor--left {
+  left: 0;
+  top: 36%;
+}
+
+.venn__label-anchor--right {
+  right: 0;
+  top: 36%;
+}
+
 /* Nhãn đặt ở phần "khoảng trống" riêng của từng vòng (không giao với 2 vòng còn lại),
    neo bằng toạ độ %/% rồi tự căn giữa quanh điểm neo đó — tránh đè lên đường cong. */
 .venn__label {
@@ -428,22 +454,23 @@ button {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  pointer-events: auto;
 }
 
-.venn__circle--top .venn__label {
+.venn__label-anchor--top .venn__label {
   left: 50%;
   top: 16%;
   transform: translate(-50%, -50%);
 }
 
-.venn__circle--left .venn__label {
+.venn__label-anchor--left .venn__label {
   left: 18%;
   top: 78%;
   width: 48%;
   transform: translate(-50%, -50%);
 }
 
-.venn__circle--right .venn__label {
+.venn__label-anchor--right .venn__label {
   left: 82%;
   top: 78%;
   width: 48%;

@@ -199,18 +199,11 @@
     const wrap = el("div", "venn-wrap");
     const diagram = el("div", "venn");
 
-    sections.forEach((section, index) => {
+    // Lượt 1: vẽ hết các "hình" (3 vòng tròn + vùng giao vàng) trước.
+    sections.forEach((section) => {
       const spot = section.spot;
-      const goToSection = () => goTo(`#/phan/${partId}/tab/${tabId}/muc/${index}`);
-
       if (VENN_MAIN_SPOTS.includes(spot)) {
-        const circle = el("div", `venn__circle venn__circle--${spot}`);
-        const label = el("div", "venn__label");
-        label.appendChild(
-          textButton(section.title, section.items.length, "text-button--venn", goToSection)
-        );
-        circle.appendChild(label);
-        diagram.appendChild(circle);
+        diagram.appendChild(el("div", `venn__circle venn__circle--${spot}`));
       } else if (spot === "center") {
         // Vùng giao cả 3 vòng ("sweet spot") — 3 lớp clip-path lồng nhau, xem style.css.
         const centerA = el("div", "venn__center");
@@ -219,7 +212,24 @@
         centerB.appendChild(centerC);
         centerA.appendChild(centerB);
         diagram.appendChild(centerA);
+      }
+    });
 
+    // Lượt 2: đặt hết chữ lên sau cùng — nhờ vậy chữ luôn nổi trên mọi vòng tròn,
+    // kể cả ở những chỗ 2-3 vòng đè lên nhau, bất kể vòng nào vẽ trước/sau.
+    sections.forEach((section, index) => {
+      const spot = section.spot;
+      const goToSection = () => goTo(`#/phan/${partId}/tab/${tabId}/muc/${index}`);
+
+      if (VENN_MAIN_SPOTS.includes(spot)) {
+        const anchor = el("div", `venn__label-anchor venn__label-anchor--${spot}`);
+        const label = el("div", "venn__label");
+        label.appendChild(
+          textButton(section.title, section.items.length, "text-button--venn", goToSection)
+        );
+        anchor.appendChild(label);
+        diagram.appendChild(anchor);
+      } else if (spot === "center") {
         const centerLabel = el("div", "venn__center-label");
         centerLabel.appendChild(textButton(section.title, null, "text-button--venn-center", goToSection));
         diagram.appendChild(centerLabel);

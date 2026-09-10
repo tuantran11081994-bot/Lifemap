@@ -17,9 +17,21 @@ const LIFE_MAP_DATA = {
       label: "Độc Lập",
       group: "center",
       sections: [
-        { title: "Tự ra quyết định", items: [] },
-        { title: "Tự chịu trách nhiệm", items: [] },
-        { title: "Tự lực - không phụ thuộc người khác", items: [] }
+        {
+          title: "Tự ra quyết định",
+          items: [],
+          note: "Tôi là thuyền trưởng duy nhất lái con tàu cuộc đời mình."
+        },
+        {
+          title: "Tự chịu trách nhiệm",
+          items: [],
+          note: "Mọi kết quả hiện tại đều là tấm gương phản chiếu hành động và phản ứng của chính tôi."
+        },
+        {
+          title: "Tự lực - không phụ thuộc người khác",
+          items: [],
+          note: "Trân trọng mọi sự hỗ trợ xung quanh, nhưng luôn có đủ thực lực để tự bước đi một mình."
+        }
       ]
     },
     {
