@@ -7,6 +7,7 @@
   --color-accent: #e8a33d;
   --color-accent-coral: #e2725b;
   --color-highlight-gold: #f2b705;
+  --color-highlight-red: #d62828;
   --radius-frame: 28px;
   --gap: 28px;
   --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -461,7 +462,7 @@ button {
   font-size: 0.6em;
 }
 
-/* 3 vùng giao đôi (chỉ giao 2/3 vòng) — nhãn phụ, nhỏ và nhạt hơn nhãn chính,
+/* 3 vùng giao đôi (chỉ giao 2/3 vòng) — chỉ là chú thích mô tả, không phải nút bấm,
    đặt tại điểm nằm trong đúng 2 vòng liên quan và ngoài vòng còn lại. */
 .venn__overlap {
   position: absolute;
@@ -485,8 +486,8 @@ button {
   top: 77%;
 }
 
-.text-button--venn-overlap {
-  flex-direction: column;
+.venn__overlap-text {
+  margin: 0;
   font-size: clamp(10.5px, 2.4vw, 12px);
   font-weight: 600;
   line-height: 1.2;
@@ -517,26 +518,30 @@ button {
   background: rgba(242, 183, 5, 0.85);
 }
 
+/* Khung vô hình rộng hơn hình vàng thấy được một chút — để vùng chạm dễ bấm hơn
+   mà chữ hiển thị vẫn gọn bên trong hình vàng (nút chiếm trọn khung này). */
 .venn__center-label {
   position: absolute;
   left: 50%;
-  top: 57%;
-  width: 46%;
+  top: 56%;
+  width: 38%;
+  height: 28%;
   transform: translate(-50%, -50%);
-  text-align: center;
 }
 
 .text-button--venn-center {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   gap: 2px;
+  padding: 4px;
+  text-align: center;
   font-size: clamp(11px, 2.6vw, 13px);
   font-weight: 800;
-  line-height: 1.2;
-  color: var(--color-bg);
-}
-
-.text-button--venn-center:hover {
-  color: var(--color-bg-frame);
+  line-height: 1.15;
+  color: var(--color-highlight-red);
 }
 
 /* ---------- Pop-up chi tiết (3 chữ trong khung trung tâm) ---------- */
@@ -642,6 +647,14 @@ button {
 
 .modal-item-list li {
   padding: 8px 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--color-text-soft);
+}
+
+.modal-section__note {
+  margin: 0;
+  padding: 0 0 16px 4px;
   font-size: 14.5px;
   line-height: 1.55;
   color: var(--color-text-soft);

@@ -81,9 +81,22 @@
       const row = el("div", "modal-section");
 
       const inner = el("div", "modal-section__body-inner");
-      const ul = el("ul", "modal-item-list");
-      section.items.forEach((text) => ul.appendChild(el("li", null, text)));
-      inner.appendChild(ul);
+      if (section.items.length === 0 && section.detail && section.detail.length > 0) {
+        const fields = el("ul", "detail-fields");
+        section.detail.forEach((field) => {
+          const li = el("li", "detail-field");
+          li.appendChild(el("p", "detail-field__label", field.label));
+          li.appendChild(el("p", "detail-field__text", field.text));
+          fields.appendChild(li);
+        });
+        inner.appendChild(fields);
+      } else if (section.items.length === 0 && section.note) {
+        inner.appendChild(el("p", "modal-section__note", section.note));
+      } else {
+        const ul = el("ul", "modal-item-list");
+        section.items.forEach((text) => ul.appendChild(el("li", null, text)));
+        inner.appendChild(ul);
+      }
 
       const body = el("div", "modal-section__body");
       body.appendChild(inner);
@@ -211,8 +224,9 @@
         centerLabel.appendChild(textButton(section.title, null, "text-button--venn-center", goToSection));
         diagram.appendChild(centerLabel);
       } else {
+        // Vùng giao đôi chỉ là chú thích mô tả, không dẫn tới đâu — không phải nút bấm.
         const overlap = el("div", `venn__overlap venn__overlap--${spot}`);
-        overlap.appendChild(textButton(section.title, null, "text-button--venn-overlap", goToSection));
+        overlap.appendChild(el("p", "venn__overlap-text", section.title));
         diagram.appendChild(overlap);
       }
     });

@@ -27,9 +27,21 @@ const LIFE_MAP_DATA = {
       label: "Tự Do",
       group: "center",
       sections: [
-        { title: "Tự do về thời gian", items: [] },
-        { title: "Tự do về tài chính", items: [] },
-        { title: "Tự do tự chủ", items: [] }
+        {
+          title: "Tự do về thời gian",
+          items: [],
+          note: "Làm điều mình muốn vào bất cứ lúc nào mình thích."
+        },
+        {
+          title: "Tự do về tài chính",
+          items: [],
+          note: "Được sống theo phong cách mà mình muốn."
+        },
+        {
+          title: "Tự do tự chủ",
+          items: [],
+          note: "Dám sống thật với chính mình và hoàn toàn làm chủ số phận của bản thân."
+        }
       ]
     },
     {
