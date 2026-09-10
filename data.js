@@ -219,6 +219,151 @@ const LIFE_MAP_DATA = {
                         "Muốn giảm cân → làm theo các hướng dẫn ở trên",
                         "Muốn giảm mỡ tích trữ → ăn ít bữa lại để cơ thể có thời gian \"đốt mỡ\""
                       ]
+                    },
+                    { type: "heading", text: "X. Lịch trình một ngày" },
+                    { type: "subheading", text: "Buổi sáng" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Đo cân nặng", text: "Làm ngay sau khi thức dậy và vệ sinh cá nhân, chân trần, không mặc hoặc mặc ít quần áo khi cân." },
+                        { label: "Pha bình nước \"đốt mỡ\"", text: "Mix #1: 1–2g muối biển + 1–2 thìa giấm táo hữu cơ + 2–3 lít nước. Mix #2: 1–2g muối + 3 lít nước suối." },
+                        { label: "Đi bộ dưới ánh nắng", text: "10–15 phút ngoài trời có nắng, mang theo áo khoác và nước uống — giúp setup lại đồng hồ sinh học, khởi động trao đổi chất, \"đốt mỡ\"." },
+                        { label: "Làm việc hàng ngày", text: "KHÔNG ăn sáng. Thực hiện các công việc thường ngày (đi học, đi làm, chăm sóc vườn...)." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Nếu ăn sáng, lượng thức ăn (đặc biệt là mỡ) từ tối hôm trước còn chưa được cơ thể dùng hết. Ăn vào sẽ kích thích insulin, ngăn cơ thể \"đốt mỡ\" tích trữ để lấy năng lượng — điều này dễ xảy ra hơn với các hoạt động buổi sáng."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Trong 2–3 ngày đầu có thể thấy đói. Hãy uống nước hầm xương hoặc nước giấm táo hữu cơ pha muối biển, hoặc dùng các mẹo chống đói sau:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Uống cà phê", text: "Giảm cảm giác đói, tăng trao đổi chất dẫn tới đốt nhiều calories hơn, tăng tỉnh táo và tập trung." },
+                        { label: "Uống trà xanh", text: "Giảm ghrelin (hormone đói), tăng leptin (hormone no) khiến tinh thần thoải mái." },
+                        { label: "Nhai kẹo gôm không đường", text: "Đánh lừa cảm giác đói bụng và tăng sự tập trung." },
+                        { label: "Di chuyển nhiều hơn", text: "Ngồi lâu ảnh hưởng lưng dưới và tạo thói quen lười biếng, dễ căng thẳng dẫn tới đói bụng. Hãy đi lại nhiều hơn cùng ly cà phê/trà xanh ưa thích." }
+                      ]
+                    },
+                    { type: "subheading", text: "Bữa ăn đầu tiên" },
+                    {
+                      type: "paragraph",
+                      text: "Ăn sau 12 giờ kể từ bữa ăn cuối cùng hôm trước, theo đúng thành phần thức ăn đã thiết lập cho 1 ngày. Ăn bằng 1/2 hoặc ít hơn khẩu phần cả ngày."
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Ăn món ăn \"lành mạnh\" mà bạn thích",
+                        "Uống nhiều nước trước, trong và sau khi ăn",
+                        "Ăn thật nhiều rau xanh",
+                        "Sau bữa ăn không nên ngồi xuống hoặc đi ngủ",
+                        "Hãy đứng uống tiếp ly cà phê hoặc đi lại trò chuyện với bạn bè, đồng nghiệp"
+                      ]
+                    },
+                    { type: "subheading", text: "Buổi tối" },
+                    {
+                      type: "paragraph",
+                      text: "Bữa ăn thứ hai — ăn nốt khẩu phần còn lại của ngày."
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        "Không ăn quá trễ (sau 8 giờ tối) để tránh ảnh hưởng giấc ngủ",
+                        "Ăn nhiều rau xanh hơn",
+                        "Uống nước sau khi ăn xong",
+                        "Ăn xong hãy rửa chén hoặc làm các công việc nhẹ nhàng"
+                      ]
+                    },
+                    { type: "subheading", text: "Giấc ngủ" },
+                    {
+                      type: "list",
+                      items: [
+                        "Khi có dấu hiệu buồn ngủ (ngáp, mỏi mắt) hãy đi ngủ",
+                        "Không dùng điện thoại, máy vi tính sau 11 giờ đêm",
+                        "Có thể đọc sách",
+                        "Đi ngủ sớm là một yếu tố tiên quyết cho việc giảm cân, khỏe mạnh"
+                      ]
+                    },
+                    { type: "heading", text: "XI. Lưu ý ăn uống" },
+                    { type: "subheading", text: "Chất đạm" },
+                    {
+                      type: "list",
+                      items: [
+                        "Ăn đủ chất đạm, chiếm 30–50% lượng thức ăn một ngày",
+                        "2–3 quả trứng gà ta trong 1 tuần để có đủ chất đạm, vitamin và cholesterol cần thiết cho việc sản xuất hoóc-môn",
+                        "Chất đạm từ thịt đỏ, cá biển, đậu nành không biến đổi gen có chất lượng tốt"
+                      ]
+                    },
+                    { type: "subheading", text: "Chất béo lành mạnh" },
+                    {
+                      type: "list",
+                      items: [
+                        "Theo khuyến cáo của WHO, nên ăn 200g cá ngừ hoặc cá hồi 1 tuần để có đủ chất béo thiết yếu (Omega-3, Omega-6)",
+                        "Cung cấp đủ Omega-3, Omega-6 từ nguồn tự nhiên: cá ngừ, cá hồi, MCT oil, trái bơ...",
+                        "Có thể dùng viên dầu cá, liều lượng 1 viên = 1g (1000mg) mỗi ngày"
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Các loại dầu thực vật chế biến công nghiệp (dầu đậu nành, dầu hướng dương, dầu bắp, dầu hạt cải, dầu mè, dầu cám gạo...) chứa chất béo chuyển đổi (trans fat) có hại và hàm lượng Omega-6 rất cao so với Omega-3, không tốt cho sức khỏe. Hãy chọn dầu ăn, chất béo tự nhiên như dầu dừa, dầu olive, dầu cọ, bơ sữa — tránh dầu thực vật, đặc biệt là lạm dụng."
+                    },
+                    { type: "subheading", text: "Tinh bột lành mạnh" },
+                    {
+                      type: "list",
+                      items: [
+                        "Ăn các loại tinh bột lành mạnh đến từ ngũ cốc nguyên hạt, không qua chế biến",
+                        "Hạn chế ăn khoai tây chiên, snack, bỏng ngô",
+                        "Chọn thực phẩm làm từ bột mì hay lúa mạch có dòng chữ \"Gluten-free\" và tốt nhất nên hạn chế ăn"
+                      ]
+                    },
+                    { type: "subheading", text: "Vitamin và khoáng chất" },
+                    {
+                      type: "list",
+                      items: [
+                        "Cung cấp đủ các vitamin A, B, C, D, E, K bằng bữa ăn có đầy đủ chất đạm, chất béo lành mạnh, rau xanh và tinh bột lành mạnh",
+                        "Vitamin D3, Vitamin E là hai loại thường bị thiếu hụt ở hầu hết người lớn — có thể dùng thực phẩm bổ sung (supplement) để bù đắp",
+                        "Có thể tra cứu RDA (Recommended Daily Allowances) hay RAI (Recommended Adequate Intake) trên các trang của FDA, WHO..."
+                      ]
+                    },
+                    { type: "subheading", text: "Nước và các chất điện giải" },
+                    {
+                      type: "list",
+                      items: [
+                        "3/4 cơ thể con người là dung dịch nước, các chất điện giải và rất nhiều thứ khác",
+                        "Cung cấp 2–3 lít nước một ngày để giữ sức khỏe",
+                        "Ưu tiên nước suối, nước khoáng thay vì nước máy/giếng chưa qua xử lý"
+                      ]
+                    },
+                    { type: "heading", text: "XII. Các chỉ số mục tiêu" },
+                    { type: "subheading", text: "% Body fat" },
+                    {
+                      type: "paragraph",
+                      text: "Kết thúc phase #2, bạn có thể đạt được mức % Body fat khỏe mạnh:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thiết yếu", text: "Nam 2–5% · Nữ 10–13%" },
+                        { label: "VĐV điền kinh", text: "Nam 6–13% · Nữ 14–20%" },
+                        { label: "Fitness", text: "Nam 14–17% · Nữ 21–24%" },
+                        { label: "Trung bình", text: "Nam 18–24% · Nữ 25–31%" },
+                        { label: "Béo phì", text: "Nam >25% · Nữ >32%" }
+                      ]
+                    },
+                    { type: "subheading", text: "FFMI (Fat Free Mass Index)" },
+                    {
+                      type: "list",
+                      items: [
+                        "Lưu ý sự tăng giảm của FFMI — đến phase #2, việc tập luyện cơ bắp có thể khiến FFMI duy trì hoặc tăng nhẹ, nhưng quan trọng là so sánh tương quan với % Body fat (mục tiêu chính của chương trình)",
+                        "FFMI ở mức trên trung bình kèm % Body fat khỏe mạnh là đích đến cuối cùng"
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      text: "Hãy cập nhật Fitness Profile và các ghi chú thường xuyên để theo dõi sự thay đổi của các chỉ số thể chất quan trọng khác."
                     }
                   ]
                 }

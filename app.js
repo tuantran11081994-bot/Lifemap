@@ -464,6 +464,8 @@
     body.forEach((block) => {
       if (block.type === "heading") {
         container.appendChild(el("h2", "article-heading", block.text));
+      } else if (block.type === "subheading") {
+        container.appendChild(el("h3", "article-subheading", block.text));
       } else if (block.type === "paragraph") {
         container.appendChild(el("p", "article-paragraph", block.text));
       } else if (block.type === "note") {

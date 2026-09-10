@@ -384,6 +384,13 @@ button {
   margin-top: 0;
 }
 
+.article-subheading {
+  margin: 20px 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
 .article-paragraph {
   margin: 0 0 14px;
   font-size: 15.5px;
