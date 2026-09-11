@@ -336,6 +336,19 @@
     if (tab.layout === "venn") {
       view.appendChild(el("p", "detail-subtitle", "Chạm vào từng vùng để xem chi tiết"));
       view.appendChild(renderCareerVenn(part.id, tab.id, tab.sections));
+
+      if (tab.article) {
+        const tabPath = `#/phan/${part.id}/tab/${tab.id}`;
+        const highlightKey = `lifemap:highlight:${tabPath}`;
+        const highlightCtx = { set: new Set(readLocal(highlightKey, [])), storageKey: highlightKey };
+
+        view.appendChild(el("h2", "article-heading", tab.article.title));
+        const body = el("div", "article-body");
+        renderArticleBody(body, tab.article.body || [], highlightCtx);
+        view.appendChild(body);
+        view.appendChild(renderArticleNotes(`lifemap:notes:${tabPath}`));
+      }
+
       view.appendChild(renderBackFooter(part.label, () => goTo(`#/phan/${part.id}`)));
       return view;
     }
@@ -406,7 +419,9 @@
     view.appendChild(el("h1", "detail-title", section.title));
 
     if (section.items.length === 0) {
-      if (section.articles && section.articles.length > 0) {
+      if (section.articles && section.articles.length === 1) {
+        appendArticleContent(view, section.articles[0], `${ctx.basePath}/muc/${sectionIndex}/bai/0`);
+      } else if (section.articles && section.articles.length > 1) {
         const list = el("ul", "item-list");
         section.articles.forEach((article, articleIndex) => {
           const li = el("li", "item-list__item");
@@ -468,6 +483,8 @@
     const articles = typeof entry === "object" && entry.articles ? entry.articles : [];
     if (articles.length === 0) {
       view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
+    } else if (articles.length === 1) {
+      appendArticleContent(view, articles[0], `${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}/bai/0`);
     } else {
       const list = el("ul", "item-list");
       articles.forEach((article, articleIndex) => {
@@ -719,6 +736,18 @@
     wrap.appendChild(list);
     wrap.appendChild(addBtn);
     return wrap;
+  }
+
+  // Khi 1 Mục nhỏ/Mục con chỉ có đúng 1 bài viết, bỏ qua lớp danh sách trung gian
+  // (tránh trùng nhãn) và render thẳng nội dung bài viết đó vào view hiện tại.
+  function appendArticleContent(container, article, articlePath) {
+    const highlightKey = `lifemap:highlight:${articlePath}`;
+    const highlightCtx = { set: new Set(readLocal(highlightKey, [])), storageKey: highlightKey };
+
+    const body = el("div", "article-body");
+    renderArticleBody(body, article.body || [], highlightCtx);
+    container.appendChild(body);
+    container.appendChild(renderArticleNotes(`lifemap:notes:${articlePath}`));
   }
 
   function renderArticle(partId, tabId, sectionIndex, itemIndex, articleIndex) {
