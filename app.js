@@ -126,7 +126,7 @@
       const body = el("div", "modal-section__body");
       body.appendChild(inner);
 
-      const toggle = textButton(section.title, section.items.length, "text-button--modal-section", () =>
+      const toggle = textButton(section.title, null, "text-button--modal-section", () =>
         row.classList.toggle("is-open")
       );
 
@@ -188,9 +188,7 @@
     LIFE_MAP_DATA.parts
       .filter((p) => p.group === "pillar")
       .forEach((part) => {
-        const count = part.tabs
-          ? part.tabs.reduce((sum, tab) => sum + tab.sections.length, 0)
-          : part.sections.length;
+        const count = part.tabs ? part.tabs.length : part.sections.length;
         const wrap = el("div", `pillar pillar--${part.edge}`);
         wrap.style.gridArea = part.edge;
         wrap.appendChild(
@@ -250,7 +248,7 @@
         const anchor = el("div", `venn__label-anchor venn__label-anchor--${spot}`);
         const label = el("div", "venn__label");
         label.appendChild(
-          textButton(section.title, section.items.length, "text-button--venn", goToSection)
+          textButton(section.title, null, "text-button--venn", goToSection)
         );
         anchor.appendChild(label);
         diagram.appendChild(anchor);
@@ -290,7 +288,7 @@
       part.tabs.forEach((tab) => {
         const item = el("li", "section-list__item");
         item.appendChild(
-          textButton(tab.label, tab.sections.length, "text-button--section", () =>
+          textButton(tab.label, null, "text-button--section", () =>
             goTo(`#/phan/${part.id}/tab/${tab.id}`)
           )
         );
@@ -309,7 +307,7 @@
     part.sections.forEach((section, index) => {
       const item = el("li", "section-list__item");
       item.appendChild(
-        textButton(section.title, section.items.length, "text-button--section", () =>
+        textButton(section.title, null, "text-button--section", () =>
           goTo(`#/phan/${part.id}/muc/${index}`)
         )
       );
@@ -354,7 +352,7 @@
     tab.sections.forEach((section, index) => {
       const item = el("li", "section-list__item");
       item.appendChild(
-        textButton(section.title, section.items.length, "text-button--section", () =>
+        textButton(section.title, null, "text-button--section", () =>
           goTo(`#/phan/${part.id}/tab/${tab.id}/muc/${index}`)
         )
       );
@@ -614,7 +612,7 @@
   // dùng chung cho nội dung nằm ngay đầu bài lẫn nội dung ẩn bên trong 1 tiêu đề gập lại.
   function renderContentBlock(target, block, blockIndex, highlightCtx) {
     if (block.type === "paragraph") {
-      const p = el("p", "article-paragraph", block.text);
+      const p = el("p", block.italic ? "article-paragraph article-paragraph--italic" : "article-paragraph", block.text);
       makeHighlightable(p, `b${blockIndex}`, highlightCtx);
       target.appendChild(p);
     } else if (block.type === "note") {

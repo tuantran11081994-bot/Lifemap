@@ -457,6 +457,13 @@ button {
   line-height: 1.6;
 }
 
+/* Dùng cho nội dung ẩn (trong 1 tiêu đề gập lại) từng là tiêu đề phụ — nghiêng để
+   tách biệt rõ với chữ tiêu đề phụ (cùng màu) đứng ngay phía trên nó. */
+.article-paragraph--italic {
+  font-style: italic;
+  color: var(--color-text-soft);
+}
+
 .article-list {
   list-style: none;
   margin: 0 0 14px;

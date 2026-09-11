@@ -576,7 +576,7 @@ const LIFE_MAP_DATA = {
           title: "Trí Tuệ",
           items: [
             {
-              title: "Học (Nạp kiến thức)",
+              title: "Học (hiểu mình)",
               articles: [
                 {
                   title: "Kỹ Năng Tự Học",
@@ -726,7 +726,147 @@ const LIFE_MAP_DATA = {
                 }
               ]
             },
-            "Tư Duy (Dùng kiến thức)"
+            {
+              title: "Tư duy (Hiểu người)",
+              articles: [
+                {
+                  title: "Kỹ Năng TƯ DUY",
+                  body: [
+                    {
+                      type: "paragraph",
+                      text: "Bài 01 — Tư Duy (ghi chép ngày 25-11-2023)."
+                    },
+                    { type: "heading", text: "Tổng quan" },
+                    { type: "subheading", text: "Khái niệm" },
+                    {
+                      type: "list",
+                      items: [
+                        "Tư duy là hoạt động của tinh thần.",
+                        "Thông minh là bản năng trời phú.",
+                        "Thông minh giúp tư duy nhanh hơn chứ không thay thế được tư duy.",
+                        "Tư duy chính là nhận thức ở cấp độ cao."
+                      ]
+                    },
+                    { type: "paragraph", text: "Nhận thức có 6 cấp độ:" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Cấp 1: Nhớ", text: "Nhắc lại được thông tin." },
+                        { label: "Cấp 2: Hiểu", text: "Diễn giải được thông tin." },
+                        { label: "Cấp 3: Vận dụng", text: "Đưa thông tin đã hiểu vào một tình huống thực tiễn." },
+                        { label: "Cấp 4: Phân tích", text: "Chia nhỏ thông tin rồi chỉ ra mối liên hệ giữa chúng, so sánh, đối chiếu, lựa chọn rồi mới áp dụng." },
+                        { label: "Cấp 5: Tổng hợp (Đánh giá)", text: "Đưa ra nhận định riêng dựa trên việc phân tích toàn bộ thông tin." },
+                        { label: "Cấp 6: Sáng tạo", text: "Nhìn thông tin ở một hướng khác để đưa ra giải pháp hoàn toàn khác, tạo ra sự khác biệt." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Nhận thức từ cấp độ 4 trở lên thì người ta gọi là tư duy."
+                    },
+                    { type: "subheading", text: "Nhận thức" },
+                    {
+                      type: "paragraph",
+                      text: "Nhận thức là những hành động để tiếp thu kiến thức thông qua suy nghĩ, kinh nghiệm và các giác quan. Nhận thức chia làm 2 loại:"
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Nhận thức cảm tính", text: "Cảm giác, Tri giác, Biểu tượng." },
+                        { label: "Nhận thức lý tính", text: "Công cụ khái niệm, Công cụ phán đoán, Công cụ suy luận." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Khi nhận thức chuyển sang lý tính thì khái niệm tư duy xuất hiện."
+                    },
+                    { type: "heading", text: "Các phương pháp tư duy" },
+                    { type: "subheading", text: "1. Tư duy mà không tư duy gì cả" },
+                    { type: "paragraph", text: "Tức là không có tư duy." },
+                    { type: "subheading", text: "2. Tư duy kinh nghiệm" },
+                    { type: "paragraph", text: "Đây là nguyên liệu của tư duy logic và tư duy sáng tạo." },
+                    { type: "subheading", text: "3. Tư duy logic" },
+                    { type: "paragraph", text: "Suy luận để đưa ra giải pháp." },
+                    { type: "subheading", text: "4. Tư duy phản biện (tư duy logic bậc cao hay tư duy phân tích)" },
+                    {
+                      type: "paragraph",
+                      text: "Nhìn vấn đề ở góc nhìn khác, độc đáo hơn, sáng tỏ hơn, rõ ràng và tỉ mỉ hơn. Nó là tư duy: Tại sao của Tại sao của Tại sao."
+                    },
+                    { type: "subheading", text: "5. Tư duy sáng tạo" },
+                    {
+                      type: "paragraph",
+                      text: "Xét sự vật theo góc nhìn hoàn toàn mới, vượt ra khỏi mọi quy chuẩn, vượt ra khỏi mọi cái mình hoặc ai đó từng làm."
+                    },
+                    { type: "paragraph", italic: true, text: "7 nguyên tắc rèn luyện:" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nhìn vấn đề khác đi mỗi ngày.",
+                        "Luôn gắn mọi chuyện với thực tế.",
+                        "Tập đi theo hướng khác, không đi theo hướng cũ.",
+                        "Thư giãn thật tối đa khi mình sáng tạo.",
+                        "Tập gạt mọi khó khăn và lo lắng sang một bên.",
+                        "Bỏ tư tưởng ỷ lại.",
+                        "Tập chọn góc nhìn."
+                      ]
+                    },
+                    { type: "subheading", text: "6. Tư duy đột phá" },
+                    {
+                      type: "paragraph",
+                      text: "Đây là tư duy bậc cao của tư duy sáng tạo. Nó là sáng tạo, sáng tạo của sáng tạo — nghĩa là tạo ra sự khác biệt, khác biệt của khác biệt."
+                    },
+                    { type: "paragraph", italic: true, text: "7 nguyên tắc của tư duy đột phá:" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "1. Nguyên tắc sự khác nhau độc đáo", text: "Mỗi vấn đề luôn khác nhau và khác nhau rất độc đáo." },
+                        { label: "2. Nguyên tắc mục đích của mục đích", text: "Hãy liên tục mở rộng mục đích của mình, bỏ sức vào mục đích cần đạt chứ đừng tập trung vào mục tiêu trước mắt." },
+                        { label: "3. Nguyên tắc giải pháp dài hạn", text: "Giải pháp hôm nay phải đảm bảo được sự thay đổi của môi trường tương lai, dùng cho 3-5 năm nữa." },
+                        { label: "4. Nguyên tắc thiết lập hệ thống", text: "Giải pháp phải giải quyết được mọi biến số (nhân tố liên quan tới quyết định) một cách hài hoà." },
+                        { label: "5. Nguyên tắc thu thập số liệu", text: "Thu thập thông tin cần thiết để quyết định tung giải pháp, chứ không phải thật nhiều thông tin." },
+                        { label: "6. Nguyên tắc lôi kéo người tham gia", text: "Con người xung quanh bạn là nguồn thông tin lớn nhất — hãy cho họ tham gia, loại bỏ sự ngạo mạn của kẻ lãnh đạo." },
+                        { label: "7. Nguyên tắc cải tiến liên tục", text: "Cải tiến việc đang làm, liên tục huấn luyện, lên kế hoạch dự phòng và xác lập tiêu chí cụ thể để đo hiệu quả." }
+                      ]
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "1. Sự khác nhau độc đáo — tuyệt đối không tập trung phát minh lại cái bánh xe: bỏ ngay \"điều này đã đúng với tôi trong quá khứ\", \"đây là cách chúng tôi đang làm\", \"đối thủ áp dụng nó, ta áp dụng nhanh hơn sẽ thắng\". Hãy tìm sự khác biệt độc đáo của vấn đề, đặt câu hỏi: mục đích cuối cùng để xử lý vấn đề là gì, và điều kiện đi kèm để thực hiện nó."
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "2. Mục đích của mục đích — xác định nhu cầu và mục đích của người liên quan; mục đích tạo ra cơ hội chứ không phải để giải quyết vấn đề; liên tục tự hỏi: liệt kê hết mục đích chưa, đã mở chưa, mục đích lớn có xuất hiện không."
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "3. Giải pháp dài hạn — chỉ có nghĩ về tương lai thì mới có tính đột phá; mọi quy trình phải gắn với yếu tố tương lai. Cách tìm viễn cảnh tương lai: dùng kế hoạch viễn tưởng, phương pháp hình dung, viết ra kịch bản, đặt giả thiết."
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "4. Thiết lập hệ thống — hệ thống là một nhóm các nhân tố tồn tại liên quan tới một quyết định; cần thiết lập một ma trận hệ thống để nhìn hết các biến số."
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "5. Thu thập số liệu — thông tin phải có ý nghĩa cho vấn đề ở thì hiện tại và cần độ chính xác cao (thực tế gần như không thể)."
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "6. Lôi kéo người tham gia — một mình bạn không thể lấp hết các lỗ hổng kiến thức và chi tiết kỹ thuật; họ chính là người lên ý tưởng chứ không phải bạn. Tạo các cuộc nói chuyện không phải là họp (cà phê, ăn trưa...), liên tục khen họ, tìm mọi cách để họ tham gia."
+                    },
+                    {
+                      type: "paragraph",
+                      italic: true,
+                      text: "7. Cải tiến liên tục — cải tiến cho lần tiếp theo, thậm chí thay đổi toàn bộ cho lần sau; sơ kết các hoạt động liên tục."
+                    }
+                  ]
+                }
+              ]
+            },
+            "Quy luật (Hiểu bối cảnh)"
           ]
         }
       ]
