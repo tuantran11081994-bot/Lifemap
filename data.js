@@ -871,7 +871,621 @@ const LIFE_MAP_DATA = {
                 }
               ]
             },
-            "Quy luật (Hiểu bối cảnh)"
+            {
+              title: "Quy luật (Hiểu bối cảnh)",
+              articles: [
+                {
+                  title: "Quy luật bản chất con người",
+                  body: [
+                    { type: "heading", text: "1. TỔNG QUAN" },
+                    {
+                      type: "list",
+                      items: [
+                        "Tất cả mọi người đều giao tiếp với 1 vẻ ngoài rất đáng yêu, họ tỏ ra tự tin, họ tỏ ra tràn trề ý tưởng, họ tỏ ra rất thú vị. Chúng ta thực chất đang mắc phải bùa mê của họ.",
+                        "Chỉ khi dính đòn, chịu hậu quả nặng nề vs những cảm giác đó bạn mới nhận ra: sự tự tin là giả tạo, ý tưởng của họ là ngông cuồng và ko chín chắn.",
+                        "Hậu quả là họ phá hoại toàn bộ sự nghiệp của ta, bởi bản chất của họ là sự ganh ghét ngấm ngầm lúc nào cũng muốn hạ bệ ta. Bản chất là do họ ích kỷ.",
+                        "Còn ở phía ta, trong chính con người chúng ta luôn có 1 kẻ thứ 2 rất xa lạ, nó ẩn náu, luôn thôi thúc ta từng ngày, từng giờ, xúi giục ta làm những điều sai trái.",
+                        "Như vậy, có 2 vấn đề sinh ra trong cuộc đời này:",
+                        "1 là: Những h.vi bẩn thỉu của người đối diện.",
+                        "2 là: Những h.vi rất khốn nạn của chính mình.",
+                        "Nếu nắm được bản chất con người nó giúp ta giải quyết triệt để 7 yếu tố sau:",
+                        "1 là: Khi bạn hiểu BCCN, nó sẽ chuyển hóa bạn thành 1 kẻ quan sát chuyên nghiệp và điềm tĩnh.",
+                        "2 là: QL BCCN sẽ biến bạn trở thành 1 bậc thầy diễn kịch.",
+                        "3 là: Nó cho bạn 1 khả năng chống trả khi đấu trí với những dạng người đầy tính động vật.",
+                        "4 là: Nó cho bạn những đòn bẩy để thuyết phục và tác động tới người khác.",
+                        "5 là: Nó Giúp bạn nhận ra nguồn lực thật của mình, hiểu được bản chất thật của mình.",
+                        "6 là: Nó giúp bạn có 1 phương hướng để nâng phần người lên, tức là biết cảm thông với người khác.",
+                        "7 là: Nó sẽ chuyển hoá cách nhìn nhận của chính mình vs tiềm năng của chính mình."
+                      ]
+                    },
+                    { type: "heading", text: "2. CÁC QUY LUẬT BCCN (18 QUY LUẬT)" },
+                    { type: "subheading", text: "1. QL1: SỰ THIẾU SÁNG SUỐT (ngu)" },
+                    {
+                      type: "list",
+                      items: [
+                        "Do sự chi phối hoàn toàn của yếu tố cảm xúc.",
+                        "Phải thừa nhận sâu sắc về sự thiếu sáng suốt của chính mình do sự can thiệp thô bạo của cảm xúc, mà cảm xúc thì nằm ngoài sự kiểm soát của ta.",
+                        "Luôn luôn phải ý thức rằng mình đang rất thiếu sáng suốt, nghĩa là bạn đang phản ứng chứ ko phải tư duy.",
+                        "Hãy rèn luyện để củng cố tư duy não. Sức mạnh quyết định ở tư duy và sẽ cực kỳ lớn nếu kết hợp được cả cảm xúc.",
+                        "Nhận diện được các định kiến trong đầu mình:",
+                        { label: "Định kiến xác quyết", text: "tức là tìm mọi cách để chứng minh điều ta muốn tin." },
+                        { label: "Định kiến tin chắc", text: "cố gắng bám vào 1 ý tưởng, trong bạn vẫn đầy nghi ngờ nhưng lại tự lừa mình là đúng." },
+                        { label: "Định kiến bên ngoài", text: "tôi hiểu rõ bản chất người khác, thực ra chỉ là cái vẻ bên ngoài." },
+                        { label: "Định kiến nhóm", text: "ý tưởng của tôi là của chính tôi, thực chất nó là của 1 nhóm người." },
+                        { label: "Định kiến đổ lỗi", text: "tôi làm việc này vì học được kinh nghiệm của mình, thực tế đây là kẻ đang đổ lỗi." },
+                        { label: "Định kiến hơn người", text: "tôi khác biệt và sáng suốt hơn người, thực tế thì không." },
+                        "Luôn cảnh giác vs các loại kích động:",
+                        "Kích động từ thủa đầu đời.",
+                        "Kích động từ thành công hoặc thất bại bất ngờ."
+                      ]
+                    },
+                    { type: "subheading", text: "2. QL2: SỰ ÁI KỶ" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Ái kỷ nghĩa là tự yêu bản thân; đánh giá quá cao bản thân; ngưỡng mộ quá mức bản thân. Cũng có thể hiểu là đánh giá người khác thấp kém; cũng có thể hiểu là không bao giờ cảm thông với người khác." },
+                        "Nó là một thứ bệnh gây thất bại hàng đầu trong cuộc sống này.",
+                        "Cách sử dụng ái kỷ đúng là:",
+                        "Một phần nhỏ phải hướng vào bên trong mình (được hiểu là tự trọng);",
+                        "Phần lớn còn lại phải hướng ra bên ngoài (tức là yêu mọi người). Đồng thời phải nhận ra những kẻ ái kỷ bệnh hoạn để dẹp bỏ kẻ đó đi.",
+                        "Diễn giải:",
+                        "Loài người có 1 nhu cầu không bao giờ kết thúc đó là họ cần được chú ý, vì loài người hoàn toàn là loại động vật XH. Chỉ khi họ được chú ý họ mới cảm thấy đang được sống, lập tức họ sẽ trầm cảm nếu ko được chú ý.",
+                        "Kẻ hiểu chuyện là mang sự chú ý đó đến cho mọi người, nhưng có quá nhiều người cần để chú ý, nên họ đi đến giải pháp là tự trở thành trung tâm của chính mình, và thế là bệnh ái kỷ hình thành như 1 quy luật.",
+                        "Biểu hiện của bệnh ái kỷ:",
+                        "Nếu bị sỉ nhục hoặc thách thức, lập tức họ có biểu hiện phẫn nộ rất cao; có 1 khao khát trả thù.",
+                        "Họ tràn ngập cảm xúc luôn đòi sự công bằng ở mọi người.",
+                        "Họ lấy công bằng là cách duy nhất để đấu tranh vs sự bất an của họ",
+                        "Họ rất dễ nổi cáu",
+                        "Họ nhạy cảm quá mức",
+                        "Họ có tín hiệu là luôn coi mình là nạn nhân",
+                        "Họ tức giận khi người khác được chú ý",
+                        "Họ luôn lo lắng người khác nghĩ gì về mình.",
+                        { label: "Đối vs kẻ có biểu hiện này", text: "Chỉ có 1 cách duy nhất là lập tức tránh xa họ ra." },
+                        "Đối vs mình:",
+                        "Phải hiểu và thừa nhận “Ái kỷ” là 1 quy luật",
+                        "Phải trung thực tuyệt đối vs mình: Mình ái kỷ đến mức nào?",
+                        "Hãy rèn luyện ái kỷ lành mạnh: tức là ái người khác nữa."
+                      ]
+                    },
+                    { type: "subheading", text: "3. QL3: QL MẶT NẠ" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Con người luôn mang chiếc mặt nạ kể cả những lúc không cần mang. Họ đeo mặt nạ nhằm thể hiện hình ảnh đẹp nhất có thể, những hình ảnh bên ngoài này nhằm che dấu bộ mặt thật rất khủng khiếp của họ.",
+                        "Nhưng thật may mắn, không có chiếc mặt nạ nào là ko có vết nứt cả. Nó luôn để rò rỉ những cảm xúc thật qua ngôn ngữ, qua các hành vi phi ngôn ngữ. Nó thể hiện rõ nhất trên gương mặt, chuyển biến của giọng nói, sự căng thẳng cơ thể, các tín hiệu lo lắng.",
+                        "Do đó, hãy:",
+                        "Biến mình thành kẻ đọc hiểu siêu đẳng để lột trần những ngôn ngữ có tính kẽ hở này.",
+                        "Do mọi người có thói quen “nhìn mặt mà bắt hình dong” nên ta phải học cách thể hiện vẻ bên ngoài tốt nhất có thể để chiếc mặt nạ của ta phát huy tối đa tác dụng.",
+                        "Hóa giải:",
+                        "Hiểu và chấp nhận đặc tính sân khấu của cuộc đời, tuyệt đối đừng dạy đời, đừng chỉ trích việc mặt nạ của kẻ khác.",
+                        "Tuyệt đối không được ngây thơ vì vẻ bên ngoài của con người. Phải biến mình thành bậc thầy giải mã chiếc mặt nạ người đối diện. Điều này phải luyện từng ngày."
+                      ]
+                    },
+                    { type: "subheading", text: "4. QL4: QL TÍNH CÁCH" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Tính cách theo tiếng Hy Lạp được hiểu là dụng cụ để khắc và đóng dấu, tức là biểu tượng của sự lặp lại.",
+                        "Tính cách con người được hình thành dần dần qua thói quen, đó là sự lặp lại của các hành vi nhất định, do đó, bắt buộc phải tìm bằng được tính cách của họ rồi hãy tính.",
+                        "Cách tìm tính cách:",
+                        "Hãy đẩy họ vào nghịch cảnh; nhìn cách họ làm việc với người khác; đẩy họ vào tính huống cần nhẫn nại và khả năng học hỏi.",
+                        "Sau khi đọc được tính cách thì hãy tập trung vào những người tích cực, tránh xa những kẻ tiêu cực.",
+                        "Mặt khác, phải hiểu thật thấu đáo tính cách của chính mình; hãy rèn luyện cả đời để đập vỡ những thứ xấu xa, hướng mình tới những việc tốt đẹp theo định hướng của mình.",
+                        "Các dạng tính cách độc hại:",
+                        { label: "Dạng siêu hoàn hảo", text: "Chăm chỉ, tận tâm - Thực tế thì là do họ ko thể ủy thác cv cho bất cứ ai, họ muốn kiểm soát mọi thứ, luôn để tiêu chuẩn rất cao, họ ko kiểm soát người khác họ không chịu được." },
+                        { label: "Dạng thường xuyên nổi loạn", text: "Họ nhìn rất thú vị, luôn tỏ ra là người ghét kẻ cầm quyền, yêu người thua thiệt, họ thu hút được mọi người - nhưng thực tế họ nổi loạn là do họ không kiểm soát được họ, họ ko cân bằng được tâm lý, họ muốn nổi trội hơn, họ không mang tí đạo đức nào cả." },
+                        { label: "Dạng cá nhân hóa mọi VĐ", text: "Là dạng bất kể ai nói cái gì họ đều vận vào đời họ để nghĩ rằng người ta đang nói về minh và luôn coi mình là kẻ được đối xử ko đúng." },
+                        { label: "Dạng nam châm", text: "Họ hút bạn bằng năng lượng của họ, những câu chuyện thú vị, nét biểu cảm sinh động, dí dỏm - thực tế, họ chỉ có nhu cầu được nổi bật, họ muốn lôi bạn vào vở kịch của họ. Bạn sẽ cảm thấy tội lỗi nếu muốn thoát ra." },
+                        { label: "Dạng khoác lác", text: "Bạn bị ấn tượng sâu sắc vs những ý tưởng của họ - hãy lùi lại 1 nhịp, kiểm tra quá khứ của họ, bạn sẽ nhận ra họ là kẻ ko quá nguy hiểm nhưng bạn bị mất quá nhiều thời gian vì những thứ điên dồ của họ." },
+                        { label: "Dạng ám ảnh tình dục", text: "Họ tràn trề năng lượng tình dục theo cách là họ ko kiềm chế được. Họ có xu hướng xem tất cả các MQH khác giới đều như 1 khả năng tình dục tiềm ẩn." },
+                        { label: "Dạng cứu tinh", text: "Họ giúp đỡ bạn tối đa, rất nhiệt tình, cho tới khi bạn cần độc lập thì bạn nhận ra rằng họ ko muốn giúp mà là muốn kiểm soát bạn." },
+                        { label: "Dạng dạy đời", text: "Họ ăn nói hùng hồn, phẫn nộ bất công - bản chất là họ bị xung đột với chính họ và ko có khả năng thỏa hiệp vs chính mâu thuẫn đó nên mới xì ra ngoài." }
+                      ]
+                    },
+                    { type: "subheading", text: "5. QL 5: QL của SỰ KHAO KHÁT." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Bản chất là mỗi người chúng ta đều mong muốn liên tục sở hữu những gì mình ko có.",
+                        "Khao khát vì ta liên tục phóng chiếu sự tưởng tượng về cái mà mình muốn.",
+                        "Sự vắng mặt và có mặt có sức ảnh hưởng cực kỳ quan trọng. Do đó hãy liên tục tạo ra 1 số bí ẩn quanh bạn. Hãy sử dụng sự vắng mặt như 1 đòn chiến lược để tạo ra khao khát quay lại của chính bạn.",
+                        "Tốt nhất, bạn hãy sở hữu những gì mà người đó bị cấm ko cho dùng, khi đó sự khao khát của kẻ đối diện sẽ mang tính phát điên.",
+                        "“Cỏ bên kia hàng rào luôn xanh hơn nhà mình”",
+                        "Diễn giải:",
+                        "Hầu hết con người sẽ ko bao giờ hài lòng với hoàn cảnh của mình.",
+                        "Tâm trí ta luôn muốn điều mới mẻ và tốt nhất là khác biệt.",
+                        "Càng tưởng tượng đến mức ko bao giờ đạt được, khi đó mong muốn cái ta có lại càng khủng khiếp, thậm chí cái đó là 1 thứ rẻ rách.",
+                        "Cách hành động:",
+                        "Hãy cho người khác 1 cảm giác thỉnh thoảng bạn ko cần tới sự đồng hành của họ.",
+                        "Thỉnh thoảng hãy tỏ ra khinh thường những cách xử sự mà bạn đã áp dụng vs họ.",
+                        "Đánh giá cao 1 người nào đó ngoài họ như 1 sự vô tình."
+                      ]
+                    },
+                    { type: "subheading", text: "6. QL 6: QL của SỰ THIỂN CẬN" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Con người ta luôn có đặc trưng là nhìn ngắn hạn, chỉ tập trung vào cái trước mắt.",
+                        "Ai cũng thích cái dễ còn cái khó thì nhè lại. Mà cái khó thường có tính dài hạn.",
+                        "Hành vi:",
+                        "Tập trung vào đón đầu xu hướng thì sẽ thấy KQ ở xa vời. Còn hành động theo ngắn hạn thì thấy KQ ngay lập tức.",
+                        "Kết luận:",
+                        "Ngta thường sẽ chọn hành vi phản ứng thay vì hành vi phát triển.",
+                        "Hãy luôn hành động vs 1 tư duy có 1 tầm nhìn nhất định nào đó, cộng với sự kiên nhẫn bạn sẽ hạ bất cứ ai."
+                      ]
+                    },
+                    { type: "subheading", text: "7. QL 7: QL của SỰ PHÒNG VỆ" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Chúng ta luôn có cơ chế phòng thủ khi người khác có ý định thuyết phục ta thay đổi 1 cái gì đó.",
+                        "Đừng tấn công niềm tin của kẻ thuyết phục, nhưng cũng đừng làm người bị thuyết phục bị mất an toàn.",
+                        "Trong suốt quá trình thuyết phục, hãy cho họ thấy nếu họ làm theo ý mình họ sẽ trở nên cao thượng và vị tha (2 thứ cám dỗ nhất với mọi người)",
+                        "Về chính mình:",
+                        "Học cách chế ngự sự ngoan cố của mình",
+                        "Đưa ra các giải pháp có tính thảo luận, ko phải áp đặt.",
+                        "Để tránh sự tự vệ của kẻ khác hãy:",
+                        "Bắt đầu, hãy biến mình thành kẻ lắng nghe sâu sắc. Nếu nghe đúng bạn sẽ biến họ thành ngôi sao của chương trình, lúc đó sẽ xuất hiện các chỗ trống để bạn gieo trồng ý tưởng.",
+                        "Truyền cho họ 1 tâm trạng đúng: tâm trạng khoan dung, luôn chấp nhận họ, tuyệt đối ko phán xét họ.",
+                        "Xác nhận “sự tự đánh giá cao của bạn thân” của họ.",
+                        "Xoa dịu những bất an cho họ: bất an từ ngoài hình, quyền lực, đến khí chất của mình."
+                      ]
+                    },
+                    { type: "subheading", text: "8. QL 8: QL của SỰ TỰ PHÁ HOẠI" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Đây còn gọi là quy luật Thái Độ Tiêu Cực.",
+                        "Thủ tiêu sự mạo hiểm của chính ta trong mọi tình huống",
+                        "Tạo thói quen chuyên đổ lỗi",
+                        "Ko học hỏi được điều gì.",
+                        "Phá hoại sự nghiệp, phá hoại tất cả các MQH, phá hoại cả cuộc đời.",
+                        "Rèn luyện TĐ tích cực: Cởi mở hơn, Khoan dung hơn, Thừa nhận hơn.",
+                        "Loại bỏ thái độ tiêu cực:",
+                        { label: "TĐ thù địch", text: "Họ luôn cảm thấy họ bị áp bức và mong muốn trả thù." },
+                        { label: "TĐ lo lắng", text: "Họ luôn dự đoán những điều trước mắt là khó khăn và trở ngại, họ ngồi chờ sự chỉ trích và phản bội." },
+                        { label: "TĐ né tránh", text: "Luôn nhìn thế giới vs vẻ bất an, hoài nghi, trốn tránh." },
+                        { label: "TĐ trầm cảm", text: "Luôn nhìn thế giới vs sự từ bỏ, mất mát, u buồn." },
+                        { label: "TĐ bực tức", text: "Nhìn TG vs 1 sự bất mãn và thất vọng trầm trọng suốt đời." }
+                      ]
+                    },
+                    { type: "subheading", text: "9. QL 9 : QL của SỰ KÌM NÉN." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Con người, bên dưới vẻ ngoài lịch sự, dễ mến là các bất an, ích kỷ, sự kiềm chế cảm xúc, sự hung hăng, mong muốn trả thù.",
+                        "Các dấu hiệu của bóng tối này thường có tín hiệu: họ tỏ ra 1 cách thánh thiện, đáng yêu bất thường, thể hiện rất rõ nó là công cụ của sự che đậy.",
+                        "Về phía mình:",
+                        "Ý thức được mặt tối của chính mình",
+                        "Kiểm soát nó, dành năng lượng cho nó ít thôi",
+                        "Kết hợp nó vs mặt tích cực trong tính cách ta sẽ trở thành kẻ hoàn thiện hơn.",
+                        "Nếu giải quyết được bóng tối thì năng lượng sáng tạo sẽ được giải phóng.",
+                        "Giải quyết được bóng tối lập tức bạn sẽ kéo người khác đến vs mình."
+                      ]
+                    },
+                    { type: "subheading", text: "10. QL 10: QL của SỰ ĐỐ KỴ." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Con người luôn có xu hướng so sánh bản thân vs người khác.",
+                        "Họ luôn chú ý đến sự khác biệt của kẻ khác mà mình ko có.",
+                        "Họ liên tục so sánh để thúc đẩy sự vượt trội của chính mình.",
+                        "Mặt khác, khi so sánh lập tức dẫn người ta đến cảm giác tự ti và thất vọng.",
+                        "Họ tấn công người khác công khai hoặc ngấm ngầm, sau đó tìm mọi cách giải thích các hành vi mất dạy đó, và không bao giờ thừa nhận hành vi đó là do đố kỵ cả.",
+                        "Nhận diện các dấu hiệu của đố kỵ:",
+                        "Đột ngột bạn nhân được những lời khen ngợi, hoặc tình cảm quá dạt dào.",
+                        "Những hành động tốt bụng bất thường.",
+                        "Những tín hiệu vô cùng khó chịu khi thấy bạn thành công."
+                      ]
+                    },
+                    { type: "note", text: "“CỨ THÊM 1 THÀNH CÔNG LÀ THÊM 1 KẺ THÙ”" },
+                    {
+                      type: "list",
+                      items: [
+                        "Cách giải mã sự độ kỵ:",
+                        "C1: Tìm đố kỵ bằng dấu hiệu:",
+                        "Ánh mắt",
+                        "Các lời khen rất hiểm độc",
+                        "Cắn trộm sau lưng",
+                        "Đẩy và kéo",
+                        "C2: Các dạng người đố kỵ:",
+                        "Kẻ luôn có hiện tượng chủ trương bình đẳng.",
+                        "Kẻ luôn tự cho phép mình lười nhác",
+                        "Kẻ nghiện địa vị",
+                        "Kẻ gắn bó.",
+                        "C3: Các điểm kích hoạt sự đố kỵ:",
+                        "Khi đột ngột bạn có 1 địa vị mới (phổ biến nhất): Hãy đổ cho may mắn.",
+                        "Bạn phát lộ 1 năng khiếu bẩm sinh: hãy giấu mình đi, lôi nhược điểm ra."
+                      ]
+                    },
+                    { type: "subheading", text: "11. QL 11: QL của SỰ VĨ CUỒNG." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Loài người luôn có nhu cầu rất sâu sắc với việc đánh giá cao bản thân. Chúng ta luôn tưởng tượng ra sự vượt trội của mình.",
+                        "Chỉ 1 TC nho nhỏ lập tức sinh ra sự vĩ cuồng, nó là hiện tượng rất tự nhiên. TC càng cao thì vĩ cuồng càng cao.",
+                        "Chúng ta ngu xuẩn nhất ở chỗ là bất cứ TC nào đều có sự đóng góp của 3 thành tố:",
+                        "MAY MẮN",
+                        "TU THÂN",
+                        "SỰ GIÚP ĐỠ CỦA NGƯỜI KHÁC",
+                        "Sau khi có được TC, chúng ta thường quên đi công sức của người khác đã giúp đỡ mình, mà nghĩ rằng 100% là do mình. Nếu ta ý thức được thì lập tức ta tìm được sự sáng suốt trong ta.",
+                        "Nếu gặp kẻ vĩ cuồng nặng thì tốt nhất là tránh xa ra.",
+                        "Còn với bản thân ta thì phải cực kỳ nghiêm khắc, quản trị sự vĩ cuồng của chính mình, vứt nó đi là tốt nhất."
+                      ]
+                    },
+                    { type: "subheading", text: "12. QL 12: QL của SỰ CỨNG NHẮC VỀ GIỚI TÍNH." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Mỗi con người đều mang bên trong tính chất của cả nam và nữ.",
+                        "Nhưng do môi trường, văn hóa, dư luận xã hội mà chúng ta giấu các tính cách đối lập đi, chỉ xì ra ngoài các tính cách mà xã hội gán ghép cho (Nam thì phải cứng rắn, nữ thì phải dịu dàng…)",
+                        "Mà bản chất thì mỗi giới tính lại có các điểm mạnh riêng, nếu nhận thức và phát huy được bạn sẽ có tư duy sinh động 1 cách lạ lùng.",
+                        "Phong cách tư duy:",
+                        { label: "Nam", text: "Tư duy logic, họ phân tích 1 sv rất sâu sắc, phân tích từng chi tiết sau đó ghép nó lại. Họ rất giỏi chuyên môn hóa." },
+                        { label: "Nữ", text: "Xu hướng phân tích tổng thể, ko nhắm tới từng yếu tố, mà nhắm tới sự kết nối tất cả thành tố. Khi giải quyết VĐ họ thường suy nghĩ vài phương án, nên họ giải quyết chậm, nhưng rất hài hòa và nhuần nhuyễn." },
+                        "Phong cách hành động:",
+                        { label: "Nam", text: "Có xu hướng tiến về phía trước, rồi khám phá tình huống, rồi tấn công, nếu có chướng ngại vật thì hùng hục như trâu để cố vượt qua." },
+                        { label: "Nữ", text: "Có xu hướng rút lui để suy nghĩ, lựa chọn, tránh xung đột. Tìm cách làm dịu mối quan hệ lại, rồi lấy chính công cụ đó để chiến thắng mà ko phải chiến đấu. Đôi khi là “áng binh bất động” cho đối thủ tự treo cổ. Đây chính là đỉnh cao của sự khôn ngoan." },
+                        "Kết luận: Thứ đẹp nhất ở 1 người đàn ông rắn rỏi là có thứ gì đó nữ tính. Thứ đẹp nhất ở 1 người phụ nữ dịu dàng là 1 cái gì đó rất nam tính."
+                      ]
+                    },
+                    { type: "subheading", text: "13. QL 13: QL của SỰ VÔ MỤC ĐÍCH." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Trong thâm sâu của con người họ luôn cảm nhận được 1 điều là chúng ta thiếu định hướng toàn diện.",
+                        "Chúng ta luôn ý thức về một mục đích rồi dùng kiến thức để đạt mục đích đó, nhưng thực chất mọi hành động của ta đều là “vô mục đích”",
+                        "Để tổn tại con người bắt đầu tìm ra phương hướng của hành động dựa vào bản năng, khi đó họ cảm thấy ít bất an hơn, sự trầm cảm bắt đầu tan biến.",
+                        "Với tư cách kể cần tồn tại, bạn phải:",
+                        "Nhận thức: Con người ko có mục đích sẽ lập tức mất đi sự tồn tại (đây là quy luật)",
+                        "Dùng toàn bộ ý thức của mình để tìm ra mục đích của mình.",
+                        "Rất sáng suốt loại bỏ những mục đích sai lầm mà thường nó rất dễ cám dỗ (h.vi rẻ tiền, dễ đạt, dễ tiếp cận, ít nỗ lực)"
+                      ]
+                    },
+                    { type: "subheading", text: "14. QL14: QL TÍNH CÁCH XÃ HỘI" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Trong tính cách con người có 1 khía cạnh đó là tính cách XH, nó lập tức xuất hiện khi bạn chui vào 1 nhóm nào đó, nó còn gọi là tính cách nhóm.",
+                        "Trong nhóm đó, ta có hiện tượng bắt chước những gì người khác nói và làm 1 cách vô thức. Ta trở thành 1 con người kỳ lạ so với chính ta. Ta tin vào những gì người khác trong nhóm đang tin.",
+                        "Ta có xu hướng liều lĩnh hơn, hành động thiếu sáng suốt, liên tục thay đổi hành vi của mình để phù hợp vs người xung quanh.",
+                        "Nếu ở trong nhóm lâu hơn nữa ta dần mất đi ý thức về sự độc đáo và khả năng suy nghĩ của bản thân. Thậm chí tính cách nhóm này sẽ áp chế con người thật của ta, ta sẽ trở thành kẻ hoàn toàn xa lạ.",
+                        "Kết luận:",
+                        "Tính cách nhóm có thể khiến chúng ta trở nên điên rồ.",
+                        "Hãy tỉnh táo nhận ra loại tính cách này, hãy hành động theo tính cách của mình. Nếu ko được thì hãy né đám đông ra."
+                      ]
+                    },
+                    { type: "subheading", text: "15. QL 15: QL của SỰ HAY THAY ĐỔI" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Quy luật quay xe",
+                        "Quy luật của sự không trung thành",
+                        "Con người rất mâu thuẫn, bên trong vừa muốn được người khác dẫn dắt, nhưng lại vừa muốn được tự do độc lập. Vừa tôn thờ vua nhưng trong lòng lại muốn giết vua.",
+                        "Đừng tìm mọi cách để có được lòng trung thành của nhân viên. Quyền uy là 1 thứ nghệ thuật, nó bao gồm quyền lực, sự công bằng và sự đồng cảm.",
+                        "Do đó luôn có sự lập lờ nước đôi ở tất cả mọi người.",
+                        "Sự trung thành là một phạm trù cực kỳ bất thường và bất ổn. Nặng hơn thì lòng trung thành chỉ là 1 sự giả tạo mà thôi.",
+                        "Với tư cách người trưởng thành:",
+                        "Nhận thức sâu sắc về quy luật này của người đối diện.",
+                        "Khi quan hệ vs người khác, hãy có 1 thái độ hướng ra bên ngoài, chứ đừng hướng tới mình nữa thì sẽ hạn chế đc sự quay xe; hay chỉ huy họ từ phía trước, hãy đi tiên phong.",
+                        "Khuấy động các xung đột trong chính họ và giữ sự bí ẩn cho chính mình."
+                      ]
+                    },
+                    { type: "subheading", text: "16. QL 16: QL của SỰ GÂY HẤN." },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Bên dưới vẻ ngoài lịch sự và văn minh, con người có 1 nhu cầu khao khát giống hệt nhau đó là họ tìm mọi cách để gây ảnh hưởng vs người khác nhằm mục tiêu giành được quyền lực.",
+                        "Nếu họ không đạt được mục đích quyền lực ấy họ bắt đầu trở nên hung hăng vs các hành vi đe dọa người đối diện, sẵn sàng làm mọi thứ để đạt được mục đích, họ làm với sự hăng máu tuyệt đối, được gọi là phẩm chất gây hấn.",
+                        "Với tư cách người trưởng thành:",
+                        "Biến mình thành 1 kẻ quan sát vượt trội để tìm cách thức gây hấn của những kẻ xung quanh. Nhận ra bằng đc các khuôn mẫu hành vi trong quá khứ của họ:",
+                        "Các nhu cầu ám ảnh họ là gì?",
+                        "Họ có mức độ gây hấn nguy hiểm đến mức nào?",
+                        "Còn vs chính ta: Hãy dùng năng lượng gây hấn để hướng nó vào các mục đích hữu ích. Tức là tấn công vào các VĐ của chính mình để đạt được mục đích lớn hơn."
+                      ]
+                    },
+                    { type: "subheading", text: "17. QL17: QL của SỰ THIỂN CẬN THUỘC VỀ THẾ HỆ" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Thế hệ mới sinh ra có xu hướng cách ly với thế hệ cũ.",
+                        "Khi bạn càng lớn sự thiển cận sẽ tăng gấp bội lần so vs các thế hệ mới sinh.",
+                        "Các giá trị và ý tưởng có tính chất thế hệ nó ngăn bạn tiếp cận các quan điểm của thế hệ mới.",
+                        "Với tư cách người trưởng thành:",
+                        "QL này tác động cực kỳ mạnh mẽ theo hướng tiêu cực.",
+                        "Hãy khai thác thật tốt hệ tư tưởng của thời đại sau.",
+                        "Hãy giải phóng tâm trí mình, bạn sẽ nhận được nhiều hơn rất nhiều và ko còn thiển cận nữa."
+                      ]
+                    },
+                    { type: "subheading", text: "18. QL 18: QL PHỦ NHẬN CÁI CHẾT" },
+                    {
+                      type: "list",
+                      items: [
+                        "Nội dung:",
+                        "Chúng ta liên tục suy nghĩ về cái chết, nó liên tục xuất hiện trong tâm trí ta.",
+                        "Việc hiểu được sự ngắn ngủi của cs giúp ta ý thức được sự cấp bách trong việc thực hiện mục đích cuộc đời. Con vật ko ý thức được QL chết nên nó sống rất hồn nhiên.",
+                        "Con người ta luôn sợ hãi cái chết, tưởng tượng ra nỗi đau của cơ thể, hình dung ra sự chia ly của người thân, kinh hãi nhất là ko biết thời điểm chết.",
+                        "Chúng ta bắt đầu tự đánh lừa bằng cách tạo ra các KN: KN về kiếp sau, KN về 1 TG mông lung, cực lạc của linh hồn.",
+                        "Với tư cách người nghiên cứu:",
+                        "Biến nhận thức cái chết thành 1 hoạt động bản năng: ko phải sợ, ko được sợ, nó là QL.",
+                        "Luôn ý thức rằng cs là cực kỳ ngắn ngủi, do đó nhanh chóng tách phần vô thức ra khỏi phần ý thức. Nghĩa là vô thức là sự sợ chết, ý thức là sự đón nhận cái chết.",
+                        "Nhìn thấy cái chết ở mọi người, nhìn thật nhiều khi đó ta sẽ thấy bt, lập tức sẽ loại bỏ đc sợ hãi.",
+                        "Mở rộng tâm trí của mình, nghĩa là giải thích được cho chính mình, chết nó là 1 quy luật tất yếu, không gì có thể chống lại."
+                      ]
+                    },
+                    { type: "note", text: "HÃY VUI VẺ LÊN!" }
+                  ]
+                },
+                {
+                  title: "Quy luật cuộc đời",
+                  body: [
+                    { type: "paragraph", text: "(QL Cuộc Đời được hiểu là ĐẠO)" },
+                    { type: "paragraph", text: "(QL Cuộc Đời chính là Trật Tự Cuộc Đời)" },
+                    { type: "heading", text: "MỞ ĐẦU" },
+                    {
+                      type: "paragraph",
+                      text: "Cuộc sống là khốn nạn, mệt mỏi, xấu xa, nặng nề. Để loại bỏ cái khốn nạn này thì chỉ có 1 cách duy nhất mà thôi đó là hãy tuân thủ các quy luật của cuộc sống này. Tuyệt đối ko được chống lại nó."
+                    },
+                    {
+                      type: "paragraph",
+                      text: "QLCĐ sinh ra để tìm cách ứng xử với sự khốn nạn của cuộc đời này, với đối tượng nghiên cứu là mỗi con người."
+                    },
+                    { type: "paragraph", text: "Kẻ tài giỏi nhất là kẻ đi được trên lề đường: 1 bên là trật tự và 1 bên là mạo hiểm." },
+                    { type: "heading", text: "QL 1: KHẲNG ĐỊNH BẢN THÂN MÀ SỐNG" },
+                    { type: "paragraph", text: "Còn gọi là QL sức mạnh. Hay QL hiên ngang đứng thẳng." },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Hiên ngang được hiểu là luôn tự chịu trách nhiệm và ko đổ lỗi cho ai." },
+                        "Không lụy bất kỳ ai. Cả cuộc đời chỉ được phép trông chờ vào 3 thằng: MÌNH + VỢ + TIỀN trong túi.",
+                        "Khi bạn nhận trách nhiệm cuộc sống về mình bạn sẽ có sức mạnh cực lớn. Nhưng bạn sẽ dễ bị tổn thương, bạn sẽ phải hy sinh đánh đổi 1 cái gì đó.",
+                        "Do đó, trong phong thái của mình:",
+                        "Đừng ủ rũ nữa",
+                        "Tuyệt đối ko khom người nữa",
+                        "Hãy nói ra suy nghĩ của mình",
+                        "Hãy thúc đẩy khao khát của bản thân.",
+                        "Đừng tập trung làm theo ý của thằng khác.",
+                        "Bước đi 1 cách hiên ngang và nhìn về phía trước",
+                        "Dám đương đầu với hiểm nguy",
+                        "Thúc đẩy hoocmon hành động và giảm hoocmon cảm xúc (kẻ cx thường gượng gạo, rụt rè, ủ rũ, chán đời, lẩn tránh, kêu ca)",
+                        "Những kẻ chiến bại là những kẻ có hoocmon cx, họ ko dám chiến đấu, có chiến đấu thì cũng nhanh chóng mất ý chí, rồi chấp nhận địa vị thấp kém.",
+                        "Còn những kẻ chiến thắng có hoocmon hành động, họ thắng và tiếp tục phô diễn và họ sẽ có tất cả."
+                      ]
+                    },
+                    { type: "note", text: "⚠️Chú ý:" },
+                    {
+                      type: "list",
+                      items: [
+                        "1. Cs này ai cũng bị bắt nạt, thường thì mọi người ko dám đáp trả bằng 1 sự giận dữ cần thiết. Nếu phản ứng “KHÔNG” ngay từ đầu, với thái độ quyết liệt thì sự áp bức sẽ dừng lại.",
+                        "2. QL này ko đồng nghĩa với ưỡn ngực vênh váo. Hiên ngang được hiểu là ý chí bên trong, đứng thẳng được hiểu theo nghĩa siêu hình.",
+                        "3. Nếu bạn là kẻ đứng cuối bảng (VD: 10/10) thì bạn sẽ trở thành miếng mồi thu hút những kẻ muốn hạ gục bạn."
+                      ]
+                    },
+                    { type: "heading", text: "QL 2: ĐỐI XỬ VỚI BẢN THÂN THẬT TỐT" },
+                    { type: "paragraph", text: "Hãy đối xử với chính mình như đối xử với 1 người mà bạn có trách nhiệm cao nhất trong cuộc đời này." },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Đầu tiên bạn phải hiểu bạn xứng đáng được tôn trọng, với kẻ khác và với cả chính bản thân mình. Do đó bạn phải có bổn phận là chăm sóc bản thân mình đầu tiên đã." },
+                        "Nếu bạn không chăm lo cho mình thì lập tức bạn sẽ bị trừng phạt, vì đó là quy luật.",
+                        "Để đối xử tốt với mình:",
+                        { label: "Điều gì thực sự tốt với mình", text: "gồm 2 thứ: mình ăn cái gì? Và mình làm cái gì?" },
+                        { label: "Rất nghiêm khắc vs chính mình", text: "ra lệnh cho mình phải rèn luyện thói quen nào, phải hoàn thành mục tiêu nào, được phép tận hưởng đến mức độ nào?" },
+                        "Ra lệnh cho mình ko được oán hận, thù hằn, hung hăng.",
+                        "Yêu bản thân là bảo vệ bằng được bản thân mình, tuyệt đối ko để ai lợi dụng, đồng nghĩa giữ kỷ luật nghiêm ngặt vs bản thân.",
+                        "Yêu mình là quyền được chọn chơi vs ai",
+                        "Yêu mình là tự đặt ra quy tắc riêng cho cuộc chơi của mình.",
+                        "Yêu mình là quyết tâm hành động."
+                      ]
+                    },
+                    { type: "note", text: "⚠️ Chú Ý: Phần lớn loài người ko hề tôn trọng chính mình, đồng nghĩa vs việc họ ko tôn trọng ai bao giờ, và ngược lại, ko ai tôn trọng họ." },
+                    { type: "note", text: "🔸Kết luận: Hãy hình thành 1 hữu thể tuyệt vời, vô cùng đẹp đẽ và hoành tráng bằng khả năng chăm sóc chính mình." },
+                    { type: "heading", text: "QL3: HÃY KẾT BẠN VỚI NHỮNG NGƯỜI MUỐN LÀM ĐIỀU TỐT CHO MÌNH, CHỨ KHÔNG PHẢI VS NHỮNG THẰNG GIỎI." },
+                    {
+                      type: "list",
+                      items: [
+                        "Lòng trung nghĩa bản chất nó chứa sự thoả thuận, yếu tố công bằng và đặc biệt là yếu tố trung thực.",
+                        "Do đó, tình bạn được hiểu là sự dàn xếp qua lại. Nghĩa là, khi chơi vs họ, ta thấy cuộc sống của cả ta và họ đều tốt lên.",
+                        "Hãy dành tâm trí để chọn những người tích cực ở quanh bạn. Đặc điểm đầu tiên của họ là ủng hộ sự vươn lên của bạn.",
+                        "Biểu hiện của sự ủng hộ là:",
+                        "Họ ko dung thứ cho bạn bất kỳ 1 tính cách nào liên quan đến hoài nghi, yếu đuối",
+                        "Luôn động viên bạn để làm những điều tốt cho chính bạn",
+                        "Trừng phạt bạn khi bạn làm sai.",
+                        "Tìm mọi cách để đẩy bạn vào những việc mà bạn nên làm.",
+                        "Dẹp ngay những kẻ:",
+                        "Cho bạn từng cốc bia, điếu thuốc, gái gú và những thứ nghiện ngập.",
+                        "Họ sẽ trừng phạt bạn khi bạn TC.",
+                        "Họ sẽ dùng mọi trò bẩn thỉu để dìm TC của bạn xuống."
+                      ]
+                    },
+                    { type: "note", text: "⚠️Chú Ý: Bạn rất ngây thơ nếu nghĩ rằng mình có thể chơi vs người mà họ giúp mình tốt lên. Vì những người này họ có quyền chọn có nên chơi vs bạn hay ko. Do đó, bạn phải chứng minh rằng mình xứng đáng để chơi đã." },
+                    { type: "heading", text: "QL4: SO SÁNH BẢN THÂN VỚI CHÍNH MÌNH NGÀY HÔM QUA CHỨ KO PHẢI VỚI NGƯỜI KHÁC." },
+                    { type: "paragraph", text: "(Hãy nhìn vào tấm gương, đừng nhìn ra cửa sổ)" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "hãy tập trung chú ý vào những điều đang diễn ra xung quanh mình cả về vật chất lẫn tinh thần." },
+                        "Cụ thể hơn, hãy liên tục hỏi:",
+                        "Điều gì khiến mình phải phiền lòng?",
+                        "Có điều gì mình khắc phục được ko?",
+                        "Mình có sẵn lòng với điều đó ko?"
+                      ]
+                    },
+                    { type: "paragraph", text: "Điều chỉnh liên tục 3 câu hỏi này bạn sẽ xác định được điều mình muốn." },
+                    {
+                      type: "list",
+                      items: [
+                        "Sự hạnh phúc tuyệt vời của con người nằm ở chỗ bạn giải phóng được năng lực của chính mình, nó biểu hiện qua việc bạn hiểu rất rõ chính mình, chứ ko phải hơn thua với người khác. Mình cuối năm khác mình đầu năm như thế nào đó chính là 1 khoản lợi nhuận.",
+                        "Hãy tập trung vào sở trường của mình, rồi cải tiến nó theo thời gian, đừng cố gắng giỏi mọi thứ.",
+                        "Một điều rất khốn nạn là: tuyệt đối đừng đánh giá quá cao những điều bạn chưa có, đồng thời đánh giá quá thấp những điều mình đang có."
+                      ]
+                    },
+                    { type: "paragraph", italic: true, text: "VD: bạn thua người bạn học về chức vụ, tiền bạc, bằng cấp, nhưng bạn lại thắng về khía cạnh gia đình. Vậy thì ai mới hơn ai?" },
+                    { type: "heading", text: "QL5: KHI ỨNG XỬ VỚI KẺ KHÁC, HÃY KHUẤT PHỤC Ý CHÍ KẺ ĐÓ CHỨ KO PHẢI THỂ XÁC." },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Thứ 1", text: "Hãy tôn trọng nguyên tắc giới hạn trật tự. Nghĩa là nếu có 2 nguyên lý để giải thích 1 thực tế nào đó thì hãy áp dụng nguyên lý đơn giản hơn." },
+                        { label: "Thứ 2", text: "Sử dụng vũ lực để bẻ gãy ý chí của kẻ khác là tối cần thiết: nghĩa là dùng vũ lực từ nhẹ đến nặng." },
+                        { label: "Thứ 3", text: "Nếu là dạy trẻ con thì cha mẹ phải đồng lòng." },
+                        { label: "Thứ 4", text: "Khi khuất phục ý chí kẻ khác, con người đều tồn tại: Tham, Sân, Si trong người, do đó tuyệt đối ko đc thò cái đó ra." }
+                      ]
+                    },
+                    { type: "note", text: "⚠️Chú Ý:" },
+                    {
+                      type: "list",
+                      items: [
+                        "Trong nghiệp vụ của cảnh sát, ngta sẽ nâng từ mức phạt nhẹ đến tù tội. Đối vs trẻ con cũng vậy, vợ cũng vậy.",
+                        "Không đánh trẻ em, chữ không tức là không bạo lực. Chứ vi phạm thì vẫn phải tẩn."
+                      ]
+                    },
+                    { type: "heading", text: "QL6: HÃY HOÀN HẢO CHÍNH MÌNH TRƯỚC KHI CHỈ TRÍCH NGƯỜI KHÁC." },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Hãy cố gắng đặt mình trong 1 trật tự hoàn hảo và rất hoàn hảo rồi hãy chỉ trích hoặc nhận xét người khác." },
+                        "Nghĩa là hãy luôn xem xét mình trước khi mở miệng từ những chuyện nhỏ nhất có thể:",
+                        "Mình có chăm chỉ ko?",
+                        "Mình có đang cay đắng và oán hận không?",
+                        "Mình có đang sống có phẩm giá và tự tôn trọng mình ko?",
+                        "Mình có đang có thói quen xấu hay ko?",
+                        "Mình có thực sự đang gánh vác trách nhiệm ko?",
+                        "Mình có bao giờ làm cho người khác cái gì ko?",
+                        "Nếu đang có những điều trên thì bạn đang là 1 thứ rẻ rách, hãy ngồi im để nhận sự khốn nạn của cuộc đời này. Tất cả vì bạn mà ra, đừng đổ lỗi cho ai cả chứ đừng nói đến chỉ trích người khác.",
+                        "Muốn được mở mồm nhận xét người khác thì dừng ngay lập tức các hành vi sai trái lại, sau đó tập các thói quen tốt, các hành vi đúng đắn, dần dần cuộc đời này sẽ tốt đẹp với bạn. Và bạn sẽ có 1 sức mạnh cực kỳ to lớn."
+                      ]
+                    },
+                    { type: "heading", text: "QL7: THEO ĐUỔI ĐIỀU Ý NGHĨA CHỨ KHÔNG PHẢI ĐIỀU CÓ LỢI." },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Đầu tiên về bản tính của ta hãy khắc phục được:" },
+                        "Bỏ kiêu ngạo, tăng khiêm tốn",
+                        "Bỏ thiếu sót: hèn nhát, dã tâm,oán hận, thù địch.",
+                        "Tuyệt đối đừng nói dối vì nói dối lập tức sẽ dẫn bạn xuống địa ngục.",
+                        "Sau đó hãy lập phương châm để chiến thắng tư lợi, tư lợi được hiểu là cái lợi trước mắt, sự ích kỷ, hèn kém, hẹp hòi.",
+                        "Nếu cố tình không hiểu thì tư lợi sẽ che đậy sự xấu xa, trốn tránh trách nhiệm, đồng nghĩa vs hèn nhát và nông cạn.",
+                        "Nếu tư lợi được lặp lại nhiều lần sẽ tạo nên đặc tính của kẻ mất dạy.",
+                        "Tư lợi sẽ khiến bạn bốc đồng, mà 1 phút bốc đồng bằng 1 đời bốc cứt."
+                      ]
+                    },
+                    { type: "heading", text: "QL8: NÓI SỰ THẬT" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Tuyệt đối đừng nói dối, vì nói dối sẽ làm bạn trở thành 1 kẻ xấu xa, liên tục, liên tục sai lầm trên chuỗi hành trình nói dối. Hậu quả là ko thể tính được." },
+                        "Các nguyên nhân nói dối:",
+                        "Nói dối để áp đặt quan điểm",
+                        "Nói dối để chứng minh mình đúng",
+                        "Nói dối để tỏ ra có năng lực",
+                        "Nói dối để tự nâng mình lên",
+                        "Nói dối để trốn tránh trách nhiệm",
+                        "Nói dối để nhận công sức về mình",
+                        "Nói dối để được thăng chức",
+                        "Nói dối mãi sẽ thành quen, ngay cả khi ko cần nói dối bạn sẽ vẫn cứ nói dối, bạn sẽ hủy hoại nhân cách của bạn, lập tức nghịch cảnh sẽ tìm đến bạn.",
+                        "Có nghĩa là: Đã mở mồm là phải nói thật, còn ko thì đừng nói.",
+                        { label: "Kết luận", text: "hãy nhìn đúng sự thật và nói ra sự thật (nếu cần phải nói) nó sẽ đem lại cho bạn cuộc sống dễ dàng nhất, nó có tác dụng xây được những dinh thự ngàn năm, mang lại cơm no áo ấm, nó rút gọn sự phức tạp, là nguồn tài nguyên tự nhiên vô tận, là ánh sáng trong đêm tối." }
+                      ]
+                    },
+                    { type: "heading", text: "QL9: LẮNG NGHE" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "lắng nghe được hiểu là nghe chính mình và lắng nghe những điều người khác nói." },
+                        "Khi lắng nghe bạn có sự truy cầu tri thức ở chính lập luận của mình và của người khác nữa, khi đó bạn mới có trí tuệ cao nhất.",
+                        "Khuyên bảo và đối thoại là 2 khái niệm khác nhau. Khuyên bảo là 1 chiều còn đối thoại là 2 chiều, đồng nghĩa vs sự khám phá, vì lúc đó là quá trình diễn giải và giải quyết vấn đề.",
+                        "Lắng nghe người khác chỉ tạo ra suy nghĩ nhất thời theo hướng phản ứng mà thôi. Khi bạn lắng nghe chính mình thì lúc đó mới thực sự là nghĩ.",
+                        "Lắng nghe là để kiểm tra kiến thức của kẻ đối diện, nhưng quan trọng hơn là bạn nhận được kiến thức vô biên.",
+                        "Rất ít người biết lắng nghe vì họ ko thấu cảm người đối diện, họ ko có kỹ thuật nghe, họ ko hiểu tác dụng của nghe.",
+                        "Lắng nghe chỉ có tác dụng khi bạn lắng nghe thấu cảm người khác. Nghe thấu cảm được hiểu là nghe bằng cả tim và não. Tức là liên tục đổi địa vị mình là người nói.",
+                        "Linh hồn của nghe thấu cảm là chăm chú nghe; lâu lâu tóm tắt lại ý người nói, lâu lâu hỏi lại 1 câu. Giả sử người nói là thằng ngu nhất thì hãy cứ kiên trì làm những động tác đó, đừng phán xét họ, bạn sẽ nhận ra 1 chân lý rằng ko có 1 kẻ nào mà ko có cái gì để dạy mình cả."
+                      ]
+                    },
+                    { type: "note", text: "Chú ý:" },
+                    {
+                      type: "list",
+                      items: [
+                        "1. Khi tận dụng kỹ năng lắng nghe hãy cẩn trọng vs những điều bạn nói vs người khác về những điều đang làm, đừng quá ngạo mạn về tương lại, cứ âm thầm mà làm.",
+                        "2. Hãy đơn giản nhất về ngôn từ, cụ thể và hữu ích.",
+                        "3. Bắt đầu đối thoại thì việc đầu tiên phải làm là làm rõ chủ đề, đừng sa vào ngôn từ, đừng nghĩ mình hiểu rồi.",
+                        "4. Khi đối thoại, linh hồn là phải biết mình đang đứng ở đâu.",
+                        "5. Nói những gì muốn nói, sau đó làm được những điều đã nói khi đó lời nói mới có tác dụng vs kẻ đang lắng nghe."
+                      ]
+                    },
+                    { type: "heading", text: "QL10: NHẬN THỨC CHÍNH XÁC VỀ BẢN THÂN VÀ MÔI TRƯỜNG." },
+                    {
+                      type: "list",
+                      items: [
+                        "Về bối cảnh:",
+                        "Kẻ nào cũng nghĩ mình đang hiểu rất rõ sv và hiện tượng của TG này, thực tế thì không.",
+                        "Kẻ hành động nếu hiểu TG thì chỉ có 1 cách: khi hành động bắt buộc phải xác định 1 mục tiêu cụ thể rồi tiến hành trên nền tảng các nhân tố ảnh hưởng đến mục tiêu đó, nếu ko bạn sẽ chết đuối trong môi trường này.",
+                        "Về bản thân ta:",
+                        "Ta luôn thấy mọi chuyện đơn giản khi bạn đang vận hành 1 cách chơn chu. Nhưng khi có 1 số thứ bắt đầu bị vỡ vụn, tấn công ta thì lúc ý đã quá muộn."
+                      ]
+                    },
+                    { type: "heading", text: "QL11: HÃY ĐỪNG NGĂN KẺ KHÁC ĐÓN NHẬN THỬ THÁCH, MÌNH CŨNG VẬY" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Đừng có luyện tập để an toàn, càng làm thế thì càng mất an toàn. Mà hãy cố luyện tập để thành thục, vì chỉ khi thành thục thì an toàn mới thực sự đến." },
+                        "Nghĩa là hãy bước ra vùng mạo hiểm. Đừng tìm cách giảm thiểu rủi ro mà hãy tìm cách tối ưu hóa nó.",
+                        "Về bản chất mọi hành vi chuẩn mực đều gắn với 1 con quỷ song sinh. Nghĩa là càng bao bọc thì sẽ càng làm con bạn mất an toàn.",
+                        "Nếu ko cho kẻ khác 1 sự mạo hiểm cần thiết thì họ sẽ ko phát triển được và chắc chắn họ sẽ chết sớm."
+                      ]
+                    },
+                    { type: "heading", text: "QL12: HÃY YÊU QUÝ MỌI NGƯỜI, CHÍ ÍT CŨNG CHẤP NHẬN SỰ KHÁC BIỆT CỦA HỌ." },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "ND", text: "Quy luật của cuộc đời này để tồn tại dành cho những kẻ ngây thơ là:" },
+                        "1. Con người có tính XH",
+                        "2. Con người có tính phản XH",
+                        "Con người có tính XH vì họ rất thích các thành viên trong nhóm của mình. Còn tính phản XH vì trong nhóm luôn xuất hiện 1 sự tha thứ chứ ko phải sự hơn thua. Nghĩa là khi bạn đem lòng yêu 1 ai đó thì không phải bạn chấp nhận những hạn chế của họ mà vì chính những hạn chế đó mà bạn yêu họ."
+                      ]
+                    },
+                    { type: "paragraph", italic: true, text: "VD: con cho chấp nhận nhược điểm của bạn nên dù đánh nó, nó vẫn yêu bạn. Con mèo thì ko." },
+                    { type: "heading", text: "KẾT LUẬN BÀI HỌC" },
+                    {
+                      type: "paragraph",
+                      text: "Quy luật cuộc đời được hiểu là yếu tố đường đi của cuộc đời này và đường đi ấy trở thành bắt buộc rồi. Nếu nhìn ở góc độ khác nó được hiểu là tính kỷ luật, tính trật tự, buộc phải tuân thủ."
+                    },
+                    { type: "paragraph", text: "Quy luật cuộc đời gồm:" },
+                    {
+                      type: "list",
+                      items: [
+                        "1. Sống hiên ngang.",
+                        "2. Đối xử vs bản thân thật tốt.",
+                        "3. Chỉ kết bạn vs những kẻ muốn điều tốt đẹp cho ta.",
+                        "4. Hãy luôn so sánh vs chính mình.",
+                        "5. Khuất phục ý chí kẻ khác, kể cả bằng bạo lực.",
+                        "6. Hoàn hảo chính mình rồi hãy mở mồm.",
+                        "7. Theo đuổi điều ý nghĩa đừng theo đuổi điều có lợi.",
+                        "8. Hãy nói sự thật, ít nhất là đừng nói dối.",
+                        "9. Hãy lắng nghe chính mình và kẻ khác.",
+                        "10. Hiểu mình và hiểu bối cảnh.",
+                        "11. Hãy mạo hiểm lên, đời bạn sẽ an toàn.",
+                        "12. Hãy chủ động yêu quý người khác, chí ít cũng chấp nhận nhược điểm của họ."
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         }
       ]
