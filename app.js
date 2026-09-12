@@ -495,6 +495,9 @@
     if (articles.length === 0) {
       view.appendChild(el("p", "empty-state", "Chưa có nội dung. Sẽ bổ sung sau."));
     } else if (articles.length === 1) {
+      if (entry.showArticleTitle) {
+        view.appendChild(el("h2", "article-heading", articles[0].title));
+      }
       appendArticleContent(view, articles[0], `${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}/bai/0`);
     } else {
       const list = el("ul", "item-list");

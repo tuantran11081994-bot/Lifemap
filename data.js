@@ -582,9 +582,10 @@ const LIFE_MAP_DATA = {
           items: [
             {
               title: "Học (hiểu mình)",
+              showArticleTitle: true,
               articles: [
                 {
-                  title: "Kỹ Năng Tự Học",
+                  title: "Kỹ năng Tự Học",
                   body: [
                     {
                       type: "paragraph",
@@ -733,9 +734,10 @@ const LIFE_MAP_DATA = {
             },
             {
               title: "Tư duy (Hiểu người)",
+              showArticleTitle: true,
               articles: [
                 {
-                  title: "Kỹ Năng TƯ DUY",
+                  title: "Kỹ năng Tư Duy",
                   body: [
                     {
                       type: "paragraph",
