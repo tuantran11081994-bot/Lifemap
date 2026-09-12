@@ -512,11 +512,13 @@ const LIFE_MAP_DATA = {
         },
         {
           title: "Tâm hồn",
-          items: [],
-          articles: [
+          items: [
             {
-              title: "Loại bỏ 6 độc tố của tâm hồn",
-              body: [
+              title: "Loại bỏ 6 độc tố của Tâm Hồn",
+              articles: [
+                {
+                  title: "Loại bỏ 6 độc tố của Tâm Hồn",
+                  body: [
                 {
                   type: "paragraph",
                   text: "Trong Phật giáo, lục độc (6 độc tố) là 6 trạng thái tâm bất thiện gốc rễ, làm ô nhiễm tâm hồn và là nguyên nhân sâu xa của mọi khổ đau: Tham, Sân, Si, Mạn, Nghi, Ác kiến."
@@ -568,12 +570,15 @@ const LIFE_MAP_DATA = {
                   type: "note",
                   text: "Gốc rễ là tu tập Chánh niệm và Trí tuệ — khi thấy rõ bản chất vô thường, vô ngã của vạn pháp, lục độc sẽ tự nhiên suy yếu."
                 }
+                  ]
+                }
               ]
             }
           ]
         },
         {
           title: "Trí Tuệ",
+          flagged: true,
           items: [
             {
               title: "Học (hiểu mình)",
@@ -873,7 +878,7 @@ const LIFE_MAP_DATA = {
     },
     {
       id: "friends",
-      label: "Bạn bè",
+      label: "Mối quan hệ",
       group: "pillar",
       edge: "left",
       sections: [
@@ -1049,6 +1054,7 @@ const LIFE_MAP_DATA = {
         },
         {
           title: "Chính mình",
+          flagged: true,
           items: [
             {
               title: "Thái Độ",
@@ -2136,17 +2142,12 @@ const LIFE_MAP_DATA = {
             { title: "Việc tôi thích", items: [], spot: "top" },
             {
               title: "Việc tôi giỏi",
-              items: ["Học kỹ năng mới mỗi năm", "Đọc sách chuyên môn thường xuyên"],
+              items: [],
               spot: "left"
             },
             {
               title: "Việc xã hội cần",
-              items: [
-                "Đạt các mốc thăng tiến đã đặt ra",
-                "Hoàn thành dự án đúng hạn",
-                "Tăng thu nhập bền vững",
-                "Đầu tư phát triển bản thân"
-              ],
+              items: [],
               spot: "right"
             },
             { title: "Hạnh phúc nhưng ít tiền", items: [], spot: "top-left" },
@@ -3064,6 +3065,7 @@ const LIFE_MAP_DATA = {
         },
         {
           title: "Gia đình nhỏ",
+          flagged: true,
           items: ["Vợ", "Con"]
         }
       ]

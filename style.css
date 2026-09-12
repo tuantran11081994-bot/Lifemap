@@ -98,6 +98,12 @@ button {
   color: var(--color-accent);
 }
 
+.flag-asterisk {
+  color: var(--color-highlight-red);
+  text-decoration: none;
+  margin-left: 2px;
+}
+
 @keyframes buttonPulse {
   0% {
     transform: scale(1);

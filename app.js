@@ -49,11 +49,12 @@
     }
   }
 
-  function textButton(label, count, className, onClick) {
+  function textButton(label, count, className, onClick, flagged) {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = `text-button ${className || ""}`.trim();
     const labelSpan = el("span", "text-button__label", label);
+    if (flagged) labelSpan.appendChild(el("span", "flag-asterisk", "*"));
     btn.appendChild(labelSpan);
     if (count != null) {
       btn.appendChild(el("span", "text-button__count", String(count)));
@@ -307,8 +308,12 @@
     part.sections.forEach((section, index) => {
       const item = el("li", "section-list__item");
       item.appendChild(
-        textButton(section.title, null, "text-button--section", () =>
-          goTo(`#/phan/${part.id}/muc/${index}`)
+        textButton(
+          section.title,
+          null,
+          "text-button--section",
+          () => goTo(`#/phan/${part.id}/muc/${index}`),
+          section.flagged
         )
       );
       list.appendChild(item);
@@ -365,8 +370,12 @@
     tab.sections.forEach((section, index) => {
       const item = el("li", "section-list__item");
       item.appendChild(
-        textButton(section.title, null, "text-button--section", () =>
-          goTo(`#/phan/${part.id}/tab/${tab.id}/muc/${index}`)
+        textButton(
+          section.title,
+          null,
+          "text-button--section",
+          () => goTo(`#/phan/${part.id}/tab/${tab.id}/muc/${index}`),
+          section.flagged
         )
       );
       list.appendChild(item);
@@ -416,7 +425,9 @@
     }
 
     view.appendChild(el("p", "detail-eyebrow", ctx.eyebrow));
-    view.appendChild(el("h1", "detail-title", section.title));
+    const sectionTitleEl = el("h1", "detail-title", section.title);
+    if (section.flagged) sectionTitleEl.appendChild(el("span", "flag-asterisk", "*"));
+    view.appendChild(sectionTitleEl);
 
     if (section.items.length === 0) {
       if (section.articles && section.articles.length === 1) {
