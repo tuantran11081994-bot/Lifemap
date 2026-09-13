@@ -2865,6 +2865,7 @@ const LIFE_MAP_DATA = {
         {
           id: "conduong",
           label: "Con đường Thành Công",
+          flagged: true,
           sections: [
             {
               title: "Các Nhân Tố Cốt Lõi Của Thành Công",

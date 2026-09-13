@@ -289,8 +289,12 @@
       part.tabs.forEach((tab) => {
         const item = el("li", "section-list__item");
         item.appendChild(
-          textButton(tab.label, null, "text-button--section", () =>
-            goTo(`#/phan/${part.id}/tab/${tab.id}`)
+          textButton(
+            tab.label,
+            null,
+            "text-button--section",
+            () => goTo(`#/phan/${part.id}/tab/${tab.id}`),
+            tab.flagged
           )
         );
         tabList.appendChild(item);
@@ -336,7 +340,9 @@
     }
 
     view.appendChild(el("p", "detail-eyebrow", part.label));
-    view.appendChild(el("h1", "detail-title", tab.label));
+    const tabTitleEl = el("h1", "detail-title", tab.label);
+    if (tab.flagged) tabTitleEl.appendChild(el("span", "flag-asterisk", "*"));
+    view.appendChild(tabTitleEl);
 
     if (tab.layout === "venn") {
       view.appendChild(el("p", "detail-subtitle", "Chạm vào từng vùng để xem chi tiết"));
