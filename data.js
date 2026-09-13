@@ -507,7 +507,66 @@ const LIFE_MAP_DATA = {
               ]
             },
             "Tập luyện",
-            "Nghỉ ngơi"
+            {
+              title: "Nghỉ ngơi",
+              showArticleTitle: true,
+              articles: [
+                {
+                  title: "Ngủ đủ giấc",
+                  body: [
+                    {
+                      type: "paragraph",
+                      text: "Giấc ngủ không phải là thời gian \"tắt máy\" mà là lúc cơ thể và não bộ làm việc âm thầm để phục hồi, củng cố những gì đã học và chuẩn bị năng lượng cho ngày hôm sau. Thiếu ngủ kéo dài ảnh hưởng trực tiếp đến sức khỏe thể chất, tinh thần và hiệu suất làm việc — không kém gì thiếu dinh dưỡng hay thiếu vận động."
+                    },
+                    { type: "heading", text: "I. Tầm quan trọng của giấc ngủ" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Phục hồi cơ thể", text: "Trong lúc ngủ sâu, cơ thể tiết hormone tăng trưởng để sửa chữa mô, phục hồi cơ bắp và tái tạo tế bào." },
+                        { label: "Củng cố trí nhớ", text: "Não sắp xếp lại và lưu trữ thông tin đã tiếp nhận trong ngày, giúp học tập và ghi nhớ hiệu quả hơn." },
+                        { label: "Cân bằng hormone", text: "Ngủ đủ giúp điều hòa hormone đói-no (ghrelin, leptin), hormone stress (cortisol) và hormone sinh dục — thiếu ngủ dễ gây thèm ăn, tăng cân, rối loạn nội tiết." },
+                        { label: "Tăng cường miễn dịch", text: "Hệ miễn dịch sản sinh kháng thể và tế bào miễn dịch chủ yếu trong lúc ngủ, giúp cơ thể chống lại bệnh tật tốt hơn." },
+                        { label: "Ổn định tâm trạng", text: "Thiếu ngủ làm tăng nguy cơ lo âu, cáu gắt, giảm khả năng kiểm soát cảm xúc và ra quyết định." }
+                      ]
+                    },
+                    { type: "heading", text: "II. Giấc ngủ REM là gì?" },
+                    {
+                      type: "paragraph",
+                      text: "Một giấc ngủ đêm gồm nhiều chu kỳ nối tiếp nhau (mỗi chu kỳ khoảng 90 phút), luân phiên giữa giấc ngủ NREM (Non-REM, gồm 3 giai đoạn từ thiu thiu đến ngủ sâu) và giấc ngủ REM (Rapid Eye Movement — chuyển động mắt nhanh)."
+                    },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Đặc điểm", text: "Mắt đảo nhanh dưới mí, nhịp thở và nhịp tim tăng nhẹ, não hoạt động gần giống lúc thức, trong khi cơ bắp gần như \"tê liệt\" tạm thời để cơ thể không cử động theo giấc mơ." },
+                        { label: "Vai trò", text: "Đây là giai đoạn diễn ra hầu hết các giấc mơ sống động; giúp củng cố trí nhớ dài hạn, xử lý và \"tiêu hóa\" cảm xúc trong ngày, đồng thời hỗ trợ phát triển và duy trì các kết nối thần kinh." },
+                        { label: "Thời điểm xuất hiện", text: "REM xuất hiện nhiều lần trong đêm, mỗi lần dài hơn về sau — tỷ lệ REM tăng dần và tập trung nhiều nhất ở nửa sau giấc ngủ, gần sáng." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Ngủ quá ít hoặc thức dậy quá sớm khiến cơ thể mất chủ yếu phần REM ở nửa sau giấc ngủ — đây là lý do ngủ đủ 7–9 tiếng quan trọng hơn nhiều so với việc chỉ \"chợp mắt\" vài tiếng."
+                    },
+                    { type: "heading", text: "III. Ngủ thế nào để có sức khỏe tốt" },
+                    {
+                      type: "list",
+                      items: [
+                        { label: "Ngủ đủ thời lượng", text: "Người trưởng thành cần khoảng 7–9 tiếng mỗi đêm; ngủ quá ít hoặc quá nhiều đều ảnh hưởng không tốt đến sức khỏe." },
+                        { label: "Giữ giờ giấc cố định", text: "Đi ngủ và thức dậy vào cùng một khung giờ mỗi ngày, kể cả cuối tuần, để đồng hồ sinh học ổn định." },
+                        { label: "Hạn chế ánh sáng xanh trước khi ngủ", text: "Tránh điện thoại, máy tính ít nhất 30–60 phút trước giờ ngủ vì ánh sáng xanh ức chế hormone melatonin gây buồn ngủ." },
+                        { label: "Tránh caffeine và rượu bia buổi tối", text: "Caffeine có thể ảnh hưởng giấc ngủ nhiều giờ sau khi uống; rượu bia tuy gây buồn ngủ nhanh nhưng làm giảm chất lượng giấc ngủ sâu và REM." },
+                        { label: "Không gian ngủ tối, yên tĩnh, mát", text: "Phòng ngủ nên tối, nhiệt độ mát vừa phải, hạn chế tiếng ồn để dễ đi vào giấc ngủ sâu." },
+                        { label: "Tránh ăn no hoặc tập nặng sát giờ ngủ", text: "Nên ăn tối trước giờ ngủ ít nhất 2–3 tiếng và tránh vận động mạnh ngay trước khi ngủ." },
+                        { label: "Vận động và tiếp xúc ánh sáng ban ngày", text: "Vận động đều đặn và ra ngoài trời sáng vào ban ngày giúp củng cố nhịp sinh học, ngủ sâu hơn vào ban đêm." }
+                      ]
+                    },
+                    {
+                      type: "note",
+                      text: "Dấu hiệu thiếu ngủ mạn tính: mệt mỏi kéo dài, khó tập trung, dễ cáu gắt, thèm ăn nhiều hơn bình thường, hay ốm vặt. Nếu gặp các dấu hiệu này thường xuyên, nên ưu tiên điều chỉnh lại giờ giấc ngủ trước khi tìm giải pháp khác."
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         },
         {
