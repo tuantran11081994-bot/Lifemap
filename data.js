@@ -1517,10 +1517,10 @@ const LIFE_MAP_DATA = {
           title: "Bạn",
           items: [
             {
-              title: "Cố Vấn",
+              title: "Cố Vấn (Giúp đỡ)",
               articles: [
                 {
-                  title: "Cố Vấn",
+                  title: "Cố Vấn (Giúp đỡ)",
                   body: [
                     { type: "heading", text: "Những điều cần biết trước khi giúp đỡ người khác" },
                     {
