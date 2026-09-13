@@ -214,6 +214,31 @@
     return footer;
   }
 
+  // Đường dẫn (breadcrumb) ở đầu mỗi trang chi tiết — mỗi đoạn là 1 chữ-nút, bấm vào
+  // để quay thẳng về đúng tầng đó thay vì phải bấm "Quay lại" nhiều lần liên tiếp.
+  function renderEyebrow(segments) {
+    const p = el("p", "detail-eyebrow");
+    segments.forEach((segment, index) => {
+      if (index > 0) p.appendChild(document.createTextNode(" · "));
+      p.appendChild(textButton(segment.label, null, "text-button--eyebrow", segment.onClick));
+    });
+    return p;
+  }
+
+  // Các đoạn breadcrumb chung cho mọi trang trong 1 Phần: Phần (+ Tab, nếu có).
+  function baseCrumbSegments(partId, tabId) {
+    const part = partsById[partId];
+    if (!part) return [];
+    const segments = [{ label: part.label, onClick: () => goTo(`#/phan/${partId}`) }];
+    if (tabId) {
+      const tab = part.tabs && part.tabs.find((t) => t.id === tabId);
+      if (tab) {
+        segments.push({ label: tab.label, onClick: () => goTo(`#/phan/${partId}/tab/${tabId}`) });
+      }
+    }
+    return segments;
+  }
+
   // ---------- Thuyết con nhím: 3 vòng tròn lồng nhau + 3 vùng giao đôi + 1 tâm ----------
   // Mỗi section cần field "spot": "top" | "left" | "right" (vòng chính),
   // "top-left" | "top-right" | "bottom" (giao đôi), "center" (giao cả 3).
@@ -339,7 +364,7 @@
       return view;
     }
 
-    view.appendChild(el("p", "detail-eyebrow", part.label));
+    view.appendChild(renderEyebrow(baseCrumbSegments(partId, null)));
     const tabTitleEl = el("h1", "detail-title", tab.label);
     if (tab.flagged) tabTitleEl.appendChild(el("span", "flag-asterisk", "*"));
     view.appendChild(tabTitleEl);
@@ -430,7 +455,7 @@
       return view;
     }
 
-    view.appendChild(el("p", "detail-eyebrow", ctx.eyebrow));
+    view.appendChild(renderEyebrow(baseCrumbSegments(partId, tabId)));
     const sectionTitleEl = el("h1", "detail-title", section.title);
     if (section.flagged) sectionTitleEl.appendChild(el("span", "flag-asterisk", "*"));
     view.appendChild(sectionTitleEl);
@@ -494,7 +519,11 @@
       return view;
     }
 
-    view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${section.title}`));
+    const itemCrumb = baseCrumbSegments(partId, tabId).concat({
+      label: section.title,
+      onClick: () => goTo(`${ctx.basePath}/muc/${sectionIndex}`)
+    });
+    view.appendChild(renderEyebrow(itemCrumb));
     view.appendChild(el("h1", "detail-title", itemTitle(entry)));
 
     const articles = typeof entry === "object" && entry.articles ? entry.articles : [];
@@ -787,8 +816,17 @@
       return view;
     }
 
-    const eyebrowTail = direct ? section.title : `${section.title} · ${itemTitle(entry)}`;
-    view.appendChild(el("p", "detail-eyebrow", `${ctx.eyebrow} · ${eyebrowTail}`));
+    const articleCrumb = baseCrumbSegments(partId, tabId).concat({
+      label: section.title,
+      onClick: () => goTo(`${ctx.basePath}/muc/${sectionIndex}`)
+    });
+    if (!direct) {
+      articleCrumb.push({
+        label: itemTitle(entry),
+        onClick: () => goTo(`${ctx.basePath}/muc/${sectionIndex}/con/${itemIndex}`)
+      });
+    }
+    view.appendChild(renderEyebrow(articleCrumb));
     view.appendChild(el("h1", "detail-title", article.title));
 
     const articlePath = direct

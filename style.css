@@ -296,6 +296,15 @@ button {
   text-transform: uppercase;
 }
 
+/* Mỗi đoạn trong đường dẫn (breadcrumb) là 1 chữ-nút — bấm để quay thẳng về đúng tầng đó */
+.text-button--eyebrow {
+  padding: 4px 1px;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
 .detail-title {
   margin: 0 0 6px;
   font-size: clamp(26px, 5vw, 36px);
